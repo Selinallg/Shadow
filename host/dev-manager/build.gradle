@@ -32,7 +32,7 @@ dependencies {
     implementation 'com.tencent.shadow.dynamic:dynamic-manager'
     implementation 'com.tencent.shadow.core:manager'
     implementation 'com.tencent.shadow.dynamic:dynamic-loader'
-    implementation project(':sample-constant')
+    implementation project(':dev-constant')
 
     compileOnly 'com.tencent.shadow.core:common'
     compileOnly 'com.tencent.shadow.dynamic:dynamic-host'

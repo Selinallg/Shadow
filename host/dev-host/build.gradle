@@ -27,11 +27,11 @@ android {
     }
     sourceSets {
         debug {
-            assets.srcDir('build/generated/assets/sample-manager/debug/')
+            assets.srcDir('build/generated/assets/dev-manager/debug/')
             assets.srcDir('build/generated/assets/plugin-zip/debug/')
         }
         release {
-            assets.srcDir('build/generated/assets/sample-manager/release/')
+            assets.srcDir('build/generated/assets/dev-manager/release/')
             assets.srcDir('build/generated/assets/plugin-zip/release/')
         }
     }
@@ -47,8 +47,8 @@ dependencies {
 
     implementation 'com.tencent.shadow.core:common'
     implementation 'com.tencent.shadow.dynamic:dynamic-host'
-    implementation project(':sample-constant')
-    implementation project(':sample-host-lib')
+    implementation project(':dev-constant')
+    implementation project(':dev-host-lib')
 }
 
 def createCopyTask(projectName, buildType, name, apkName, inputFile, taskName) {
@@ -68,14 +68,14 @@ def createCopyTask(projectName, buildType, name, apkName, inputFile, taskName) {
 
 def generateAssets(generateAssetsTask, buildType) {
 
-    def moduleName = 'sample-manager'
+    def moduleName = 'dev-manager'
     def pluginManagerApkFile = file(
-            "${project(":sample-manager").getBuildDir()}" +
+            "${project(":dev-manager").getBuildDir()}" +
                     "/outputs/apk/${buildType}/" +
                     "${moduleName}-${buildType}.apk"
     )
     generateAssetsTask.dependsOn createCopyTask(
-            ':sample-manager',
+            ':dev-manager',
             buildType,
             moduleName,
             'pluginmanager.apk',
@@ -85,7 +85,7 @@ def generateAssets(generateAssetsTask, buildType) {
 
     def pluginZip = file("${getRootProject().getBuildDir()}/plugin-${buildType}.zip")
     generateAssetsTask.dependsOn createCopyTask(
-            ':sample-app',
+            ':dev-app',
             buildType,
             'plugin-zip',
             "plugin-${buildType}.zip",
