@@ -21,10 +21,10 @@ def includeSample() {
             'sample-base-lib',
             'sample-base',
             'sample-app'
-    project(':sample-constant').projectDir = file('host/sample-constant')
-    project(':sample-host').projectDir = file('host/sample-host')
-    project(':sample-host-lib').projectDir = file('host/sample-host-lib')
-    project(':sample-manager').projectDir = file('host/sample-manager')
+    project(':sample-constant').projectDir = file('projects/sample/source/sample-host/sample-constant')
+    project(':sample-host').projectDir = file('projects/sample/source/sample-host/sample-host')
+    project(':sample-host-lib').projectDir = file('projects/sample/source/sample-host/sample-host-lib')
+    project(':sample-manager').projectDir = file('projects/sample/source/sample-host/sample-manager')
 
     project(':sample-loader').projectDir = file('projects/sample/source/sample-plugin/sample-loader')
     project(':sample-runtime').projectDir = file('projects/sample/source/sample-plugin/sample-runtime')
@@ -33,6 +33,34 @@ def includeSample() {
     project(':sample-base-lib').projectDir = file('projects/sample/source/sample-plugin/sample-base-lib')
     project(':sample-base').projectDir = file('projects/sample/source/sample-plugin/sample-base')
     project(':sample-app').projectDir = file('projects/sample/source/sample-plugin/sample-app')
+}
+
+includeDev()
+
+def includeDev() {
+    include 'dev-constant',
+            'dev-host',
+            'dev-host-lib',
+            'dev-manager'
+//            'sample-loader',
+//            'sample-runtime',
+//            'pinnedheaderexpandablelistview',
+//            'slidingmenu',
+//            'sample-base-lib',
+//            'sample-base',
+//            'sample-app'
+    project(':dev-constant').projectDir = file('host/dev-constant')
+    project(':dev-host').projectDir = file('host/dev-host')
+    project(':dev-host-lib').projectDir = file('host/dev-host-lib')
+    project(':dev-manager').projectDir = file('host/dev-manager')
+
+//    project(':sample-loader').projectDir = file('projects/sample/source/sample-plugin/sample-loader')
+//    project(':sample-runtime').projectDir = file('projects/sample/source/sample-plugin/sample-runtime')
+//    project(':pinnedheaderexpandablelistview').projectDir = file('projects/sample/source/sample-plugin/third-party/pinnedheaderexpandablelistview')
+//    project(':slidingmenu').projectDir = file('projects/sample/source/sample-plugin/third-party/slidingmenu')
+//    project(':sample-base-lib').projectDir = file('projects/sample/source/sample-plugin/sample-base-lib')
+//    project(':sample-base').projectDir = file('projects/sample/source/sample-plugin/sample-base')
+//    project(':sample-app').projectDir = file('projects/sample/source/sample-plugin/sample-app')
 }
 
 
