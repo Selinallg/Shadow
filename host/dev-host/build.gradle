@@ -3,8 +3,8 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion project.COMPILE_SDK_VERSION
     defaultConfig {
-        // com.tencent.shadow.sample.host
-        applicationId project.SAMPLE_HOST_APP_APPLICATION_ID
+        // com.tencent.shadow.dev.host
+        applicationId project.DEV_HOST_APP_APPLICATION_ID
         minSdkVersion project.MIN_SDK_VERSION
         targetSdkVersion project.TARGET_SDK_VERSION
         versionCode project.VERSION_CODE

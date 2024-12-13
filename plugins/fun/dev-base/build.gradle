@@ -43,7 +43,7 @@ android {
     // 将插件applicationId设置为和宿主相同
     productFlavors {
         plugin {
-            applicationId project.SAMPLE_HOST_APP_APPLICATION_ID
+            applicationId project.DEV_HOST_APP_APPLICATION_ID
         }
     }
 
