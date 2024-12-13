@@ -3,9 +3,9 @@ import java.nio.file.Files
 rootProject.name = 'shadow'
 
 copyLocalPropertiesForIncludeBuilds()
-includeBuild 'projects/sdk/coding'
-includeBuild 'projects/sdk/core'
-includeBuild 'projects/sdk/dynamic'
+includeBuild 'shadow/coding'
+includeBuild 'shadow/core'
+includeBuild 'shadow/dynamic'
 
 includeSample()
 
@@ -45,7 +45,7 @@ def copyLocalPropertiesForIncludeBuilds() {
     def rootFile = file('local.properties')
     if (rootFile.exists()) {
         ['coding', 'core', 'dynamic'].forEach {
-            def includeBuildFile = file("projects/sdk/${it}/local.properties")
+            def includeBuildFile = file("shadow/${it}/local.properties")
             if (!includeBuildFile.exists()) {
                 Files.copy(rootFile.toPath(), includeBuildFile.toPath())
             }

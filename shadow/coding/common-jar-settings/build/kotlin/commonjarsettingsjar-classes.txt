@@ -1,0 +1,1 @@
+E:\Wspace\NoloOS\Shadow\shadow\coding\common-jar-settings\build\classes\java\main\com\tencent\shadow\coding\common_jar_settings\AndroidJar.class;E:\Wspace\NoloOS\Shadow\shadow\coding\common-jar-settings\build\classes\kotlin\main\com\tencent\shadow\coding\common_jar_settings\CommonJarSettingsPlugin.class
