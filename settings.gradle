@@ -21,10 +21,11 @@ def includeSample() {
             'sample-base-lib',
             'sample-base',
             'sample-app'
-    project(':sample-constant').projectDir = file('projects/sample/source/sample-constant')
-    project(':sample-host').projectDir = file('projects/sample/source/sample-host')
-    project(':sample-host-lib').projectDir = file('projects/sample/source/sample-host-lib')
-    project(':sample-manager').projectDir = file('projects/sample/source/sample-manager')
+    project(':sample-constant').projectDir = file('host/sample-constant')
+    project(':sample-host').projectDir = file('host/sample-host')
+    project(':sample-host-lib').projectDir = file('host/sample-host-lib')
+    project(':sample-manager').projectDir = file('host/sample-manager')
+
     project(':sample-loader').projectDir = file('projects/sample/source/sample-plugin/sample-loader')
     project(':sample-runtime').projectDir = file('projects/sample/source/sample-plugin/sample-runtime')
     project(':pinnedheaderexpandablelistview').projectDir = file('projects/sample/source/sample-plugin/third-party/pinnedheaderexpandablelistview')
