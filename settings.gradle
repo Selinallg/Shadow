@@ -7,46 +7,7 @@ includeBuild 'projects/sdk/coding'
 includeBuild 'projects/sdk/core'
 includeBuild 'projects/sdk/dynamic'
 
-includeTest()
 includeSample()
-includeSampleDynamicApk()
-
-def includeTest() {
-    include 'test-dynamic-host',
-            'test-dynamic-manager',
-            'test-dynamic-loader',
-            'test-dynamic-runtime',
-            'common-jar-settings-test',
-            'constant',
-            'custom-view',
-            'plugin-use-host-code-lib',
-            'test-manager',
-            'general-cases-lib',
-            'test-plugin-general-cases',
-            'general-cases-app',
-            'androidx-cases-lib',
-            'androidx-cases-app',
-            'test-plugin-androidx-cases',
-            'plugin-service-for-host',
-            'test-none-dynamic-host'
-    project(':test-dynamic-host').projectDir = file('projects/test/dynamic/host/test-dynamic-host')
-    project(':test-dynamic-manager').projectDir = file('projects/test/dynamic/manager/test-dynamic-manager')
-    project(':test-dynamic-loader').projectDir = file('projects/test/dynamic/plugin/test-dynamic-loader')
-    project(':test-dynamic-runtime').projectDir = file('projects/test/dynamic/plugin/test-dynamic-runtime')
-    project(':common-jar-settings-test').projectDir = file('projects/test/common-jar-settings-test')
-    project(':constant').projectDir = file('projects/test/lib/constant')
-    project(':custom-view').projectDir = file('projects/test/lib/custom-view')
-    project(':plugin-use-host-code-lib').projectDir = file('projects/test/lib/plugin-use-host-code-lib')
-    project(':test-manager').projectDir = file('projects/test/lib/test-manager')
-    project(':general-cases-lib').projectDir = file('projects/test/plugin/general-cases/general-cases-lib')
-    project(':androidx-cases-lib').projectDir = file('projects/test/plugin/androidx-cases/androidx-cases-lib')
-    project(':androidx-cases-app').projectDir = file('projects/test/plugin/androidx-cases/androidx-cases-app')
-    project(':test-plugin-androidx-cases').projectDir = file('projects/test/plugin/androidx-cases/test-plugin-androidx-cases')
-    project(':test-plugin-general-cases').projectDir = file('projects/test/plugin/general-cases/test-plugin-general-cases')
-    project(':general-cases-app').projectDir = file('projects/test/plugin/general-cases/general-cases-app')
-    project(':plugin-service-for-host').projectDir = file('projects/test/plugin/particular-cases/plugin-service-for-host')
-    project(':test-none-dynamic-host').projectDir = file('projects/test/none-dynamic/host/test-none-dynamic-host')
-}
 
 def includeSample() {
     include 'sample-constant',
@@ -73,16 +34,6 @@ def includeSample() {
     project(':sample-app').projectDir = file('projects/sample/source/sample-plugin/sample-app')
 }
 
-def includeSampleDynamicApk() {
-    include 'sample-hello-api',
-            'sample-hello-api-holder',
-            'sample-hello-apk',
-            'sample-hello-host'
-    project(':sample-hello-api').projectDir = file('projects/sample/dynamic-apk/sample-hello-api')
-    project(':sample-hello-api-holder').projectDir = file('projects/sample/dynamic-apk/sample-hello-api-holder')
-    project(':sample-hello-apk').projectDir = file('projects/sample/dynamic-apk/sample-hello-apk')
-    project(':sample-hello-host').projectDir = file('projects/sample/dynamic-apk/sample-hello-host')
-}
 
 /**
  * Android Studio当前不会为IncludeBuild创建包含sdk.dir的local.properties

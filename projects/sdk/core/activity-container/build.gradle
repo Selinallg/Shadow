@@ -29,4 +29,5 @@ compileJava.dependsOn(generateCode)
 
 dependencies {
     implementation 'com.tencent.shadow.coding:java-build-config'
+    //compileOnly 'androidx.appcompat:appcompat:1.1.0'
 }
