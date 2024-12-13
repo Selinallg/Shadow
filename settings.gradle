@@ -21,18 +21,18 @@ def includeSample() {
             'sample-base-lib',
             'sample-base',
             'sample-app'
-    project(':sample-constant').projectDir = file('projects/sample/source/sample-host/sample-constant')
-    project(':sample-host').projectDir = file('projects/sample/source/sample-host/sample-host')
-    project(':sample-host-lib').projectDir = file('projects/sample/source/sample-host/sample-host-lib')
-    project(':sample-manager').projectDir = file('projects/sample/source/sample-host/sample-manager')
+    project(':sample-constant').projectDir = file('sample/sample-host/sample-constant')
+    project(':sample-host').projectDir = file('sample/sample-host/sample-host')
+    project(':sample-host-lib').projectDir = file('sample/sample-host/sample-host-lib')
+    project(':sample-manager').projectDir = file('sample/sample-host/sample-manager')
 
-    project(':sample-loader').projectDir = file('projects/sample/source/sample-plugin/sample-loader')
-    project(':sample-runtime').projectDir = file('projects/sample/source/sample-plugin/sample-runtime')
-    project(':pinnedheaderexpandablelistview').projectDir = file('projects/sample/source/sample-plugin/third-party/pinnedheaderexpandablelistview')
-    project(':slidingmenu').projectDir = file('projects/sample/source/sample-plugin/third-party/slidingmenu')
-    project(':sample-base-lib').projectDir = file('projects/sample/source/sample-plugin/sample-base-lib')
-    project(':sample-base').projectDir = file('projects/sample/source/sample-plugin/sample-base')
-    project(':sample-app').projectDir = file('projects/sample/source/sample-plugin/sample-app')
+    project(':sample-loader').projectDir = file('sample/sample-plugin/sample-loader')
+    project(':sample-runtime').projectDir = file('sample/sample-plugin/sample-runtime')
+    project(':pinnedheaderexpandablelistview').projectDir = file('sample/sample-plugin/third-party/pinnedheaderexpandablelistview')
+    project(':slidingmenu').projectDir = file('sample/sample-plugin/third-party/slidingmenu')
+    project(':sample-base-lib').projectDir = file('sample/sample-plugin/sample-base-lib')
+    project(':sample-base').projectDir = file('sample/sample-plugin/sample-base')
+    project(':sample-app').projectDir = file('sample/sample-plugin/sample-app')
 }
 
 includeDev()
@@ -41,26 +41,26 @@ def includeDev() {
     include 'dev-constant',
             'dev-host',
             'dev-host-lib',
-            'dev-manager'
-//            'sample-loader',
-//            'sample-runtime',
+            'dev-manager',
+            'dev-loader',
+            'dev-runtime',
 //            'pinnedheaderexpandablelistview',
 //            'slidingmenu',
-//            'sample-base-lib',
-//            'sample-base',
-//            'sample-app'
+            'dev-base-lib',
+            'dev-base',
+            'dev-app'
     project(':dev-constant').projectDir = file('host/dev-constant')
     project(':dev-host').projectDir = file('host/dev-host')
     project(':dev-host-lib').projectDir = file('host/dev-host-lib')
     project(':dev-manager').projectDir = file('host/dev-manager')
 
-//    project(':sample-loader').projectDir = file('projects/sample/source/sample-plugin/sample-loader')
-//    project(':sample-runtime').projectDir = file('projects/sample/source/sample-plugin/sample-runtime')
-//    project(':pinnedheaderexpandablelistview').projectDir = file('projects/sample/source/sample-plugin/third-party/pinnedheaderexpandablelistview')
-//    project(':slidingmenu').projectDir = file('projects/sample/source/sample-plugin/third-party/slidingmenu')
-//    project(':sample-base-lib').projectDir = file('projects/sample/source/sample-plugin/sample-base-lib')
-//    project(':sample-base').projectDir = file('projects/sample/source/sample-plugin/sample-base')
-//    project(':sample-app').projectDir = file('projects/sample/source/sample-plugin/sample-app')
+    project(':dev-loader').projectDir = file('plugins/dev-loader')
+    project(':dev-runtime').projectDir = file('plugins/dev-runtime')
+//    project(':pinnedheaderexpandablelistview').projectDir = file('sample/sample-plugin/third-party/pinnedheaderexpandablelistview')
+//    project(':slidingmenu').projectDir = file('sample/sample-plugin/third-party/slidingmenu')
+    project(':dev-base-lib').projectDir = file('plugins/fun/dev-base-lib')
+    project(':dev-base').projectDir = file('plugins/fun/dev-base')
+    project(':dev-app').projectDir = file('plugins/fun/dev-app')
 }
 
 
