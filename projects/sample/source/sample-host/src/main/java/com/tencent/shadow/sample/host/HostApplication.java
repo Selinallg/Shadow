@@ -57,9 +57,11 @@ public class HostApplication extends Application {
         }
 
         if (isProcess(this, getPackageName())) {
+            // 很重要  preparePlugin
             PluginHelper.getInstance().init(this);
         }
 
+        // 测试插件中调用宿主类的方法
         HostUiLayerProvider.init(this);
     }
 

@@ -110,7 +110,7 @@ abstract class SubDirContextThemeWrapperTestActivity extends BaseActivity {
         );
 
         File externalPodcastsDir = testContext.getExternalFilesDir(DIRECTORY_PODCASTS);
-        makeItem("getExternalFilesDir(DIRECTORY_MUSIC)", "TAG_GET_EFD_PODCASTS",
+        makeItem("getExternalFilesDir(DIRECTORY_PODCASTS)", "TAG_GET_EFD_PODCASTS",
                 externalPodcastsDir == null ? "null" : externalPodcastsDir.getAbsolutePath()
         );
 
@@ -121,7 +121,7 @@ abstract class SubDirContextThemeWrapperTestActivity extends BaseActivity {
             );
 
             File[] externalPodcastsDirs = testContext.getExternalFilesDirs(DIRECTORY_PODCASTS);
-            makeItem("getExternalFilesDirs(DIRECTORY_MUSIC)", "TAG_GET_EFDS_PODCASTS",
+            makeItem("getExternalFilesDirs(DIRECTORY_PODCASTS)", "TAG_GET_EFDS_PODCASTS",
                     Arrays.toString(externalPodcastsDirs)
             );
         }

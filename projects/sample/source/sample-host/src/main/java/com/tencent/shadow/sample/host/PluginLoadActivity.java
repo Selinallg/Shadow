@@ -27,7 +27,9 @@ import android.view.ViewGroup;
 import com.tencent.shadow.dynamic.host.EnterCallback;
 import com.tencent.shadow.sample.constant.Constant;
 
-
+/**
+ * 加载插件
+ */
 public class PluginLoadActivity extends Activity {
 
     private ViewGroup mViewGroup;
@@ -51,6 +53,7 @@ public class PluginLoadActivity extends Activity {
         PluginHelper.getInstance().singlePool.execute(new Runnable() {
             @Override
             public void run() {
+                // 先加载 插件管理apk
                 HostApplication.getApp().loadPluginManager(PluginHelper.getInstance().pluginManagerFile);
 
                 Bundle bundle = new Bundle();

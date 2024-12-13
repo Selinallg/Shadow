@@ -17,6 +17,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!--   宿主添加插件view     -->
         <activity
             android:name=".plugin_view.HostAddPluginViewActivity"
             android:process=":plugin" />
@@ -34,6 +36,7 @@
             android:name="com.tencent.shadow.sample.host.Plugin2ProcessPPS"
             android:process=":plugin2" />
 
+        <!--   启动插件     -->
         <activity
             android:name="com.tencent.shadow.sample.host.PluginLoadActivity"
             android:launchMode="standard"

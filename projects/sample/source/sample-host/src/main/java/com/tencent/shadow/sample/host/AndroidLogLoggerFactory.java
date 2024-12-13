@@ -28,6 +28,10 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
+/**
+ * 日志
+ * Logger mLogger = LoggerFactory.getLogger(DynamicPluginManager.class);
+ */
 public class AndroidLogLoggerFactory implements ILoggerFactory {
 
     private static final int LOG_LEVEL_TRACE = 5;

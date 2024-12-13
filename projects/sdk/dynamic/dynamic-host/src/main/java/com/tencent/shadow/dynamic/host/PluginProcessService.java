@@ -36,7 +36,8 @@ import static com.tencent.shadow.dynamic.host.FailedException.ERROR_CODE_UUID_MA
 import static com.tencent.shadow.dynamic.host.FailedException.ERROR_CODE_UUID_MANAGER_NULL_EXCEPTION;
 
 
-public class PluginProcessService extends BasePluginProcessService {
+public class
+PluginProcessService extends BasePluginProcessService {
 
     private final PpsBinder mPpsControllerBinder = new PpsBinder(this);
 

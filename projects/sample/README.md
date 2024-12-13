@@ -1,9 +1,15 @@
 # Sample
 
 在Shadow框架下，应用由几部分构成。
+宿主应用
+插件管理器
+插件
+  loader和runtime。
+
 宿主应用打包了很简单的一些接口，并在Manifest中注册了壳子代理组件，
 还打包了插件管理器（manager）的动态升级逻辑。
 manager负责下载、安装插件，还带有一个动态的View表达Loading态。
+
 而"插件"则不光包含业务App，还包含Shadow的核心实现，即loader和runtime。
 "插件"中的业务App和loader、runtime是同一个版本的代码编译出的，
 因此loader可以包含一些业务逻辑，针对业务进行特殊处理。

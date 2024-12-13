@@ -19,6 +19,11 @@
 package com.tencent.shadow.sample.host;
 
 import android.content.Context;
+import android.util.Log;
+
+import com.tencent.shadow.core.common.Logger;
+import com.tencent.shadow.core.common.LoggerFactory;
+import com.tencent.shadow.dynamic.host.DynamicPluginManager;
 
 import org.apache.commons.io.FileUtils;
 
@@ -29,6 +34,8 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class PluginHelper {
+
+    private static final String TAG = "PluginHelper";
 
     /**
      * 动态加载的插件管理apk
@@ -72,13 +79,20 @@ public class PluginHelper {
 
     }
 
+    // pluginManagerFile=/data/user/0/com.tencent.shadow.sample.host/files/pluginmanager.apk
+    // pluginZipFile=/data/user/0/com.tencent.shadow.sample.host/files/plugin-debug.zip
     private void preparePlugin() {
         try {
             InputStream is = mContext.getAssets().open(sPluginManagerName);
             FileUtils.copyInputStreamToFile(is, pluginManagerFile);
-
+            Log.d(TAG, "preparePlugin: pluginManagerFile="+pluginManagerFile.getAbsolutePath());
+//            Logger mLogger = LoggerFactory.getLogger(DynamicPluginManager.class);
+//            AndroidLogLoggerFactory.getInstance().getLogger("xx").debug("xx");
+            // TODO: 2024-12-13 后期可以从网络上下载动态加载的插件包，然后解压到本地，然后再加载
             InputStream zip = mContext.getAssets().open(sPluginZip);
             FileUtils.copyInputStreamToFile(zip, pluginZipFile);
+
+            Log.d(TAG, "preparePlugin: pluginZipFile="+pluginZipFile.getAbsolutePath());
 
         } catch (IOException e) {
             throw new RuntimeException("从assets中复制apk出错", e);

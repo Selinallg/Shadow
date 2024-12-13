@@ -12,6 +12,9 @@ import android.widget.TextView;
 import com.tencent.shadow.sample.host.lib.HostAddPluginViewContainer;
 import com.tencent.shadow.sample.host.lib.HostAddPluginViewContainerHolder;
 
+/**
+ * 宿主添加插件view
+ */
 public class HostAddPluginViewActivity extends Activity implements HostAddPluginViewContainer {
     private ViewGroup mPluginViewContainer;
 

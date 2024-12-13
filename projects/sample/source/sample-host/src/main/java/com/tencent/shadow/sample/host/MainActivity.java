@@ -33,7 +33,9 @@ import android.widget.TextView;
 import com.tencent.shadow.sample.constant.Constant;
 import com.tencent.shadow.sample.host.plugin_view.HostAddPluginViewActivity;
 
-
+/**
+ * 宿主应用的入口
+ */
 public class MainActivity extends Activity {
 
     @Override
@@ -48,6 +50,8 @@ public class MainActivity extends Activity {
         infoTextView.setText(R.string.main_activity_info);
         rootView.addView(infoTextView);
 
+
+        // 两个测试 插件app
         final Spinner partKeySpinner = new Spinner(this);
         ArrayAdapter<String> partKeysAdapter = new ArrayAdapter<>(this, R.layout.part_key_adapter);
         partKeysAdapter.addAll(
@@ -55,7 +59,6 @@ public class MainActivity extends Activity {
                 Constant.PART_KEY_PLUGIN_ANOTHER_APP
         );
         partKeySpinner.setAdapter(partKeysAdapter);
-
         rootView.addView(partKeySpinner);
 
         Button startPluginButton = new Button(this);
@@ -72,7 +75,6 @@ public class MainActivity extends Activity {
                         break;
                     case Constant.PART_KEY_PLUGIN_ANOTHER_APP:
                         intent.putExtra(Constant.KEY_PLUGIN_PART_KEY, partKey);
-                        ;
                         break;
                 }
 
