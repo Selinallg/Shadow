@@ -28,8 +28,7 @@ import com.tencent.shadow.dynamic.apk.ImplLoader;
 import java.io.File;
 
 final class ManagerImplLoader extends ImplLoader {
-//    private static final String MANAGER_FACTORY_CLASS_NAME = "com.tencent.shadow.dynamic.impl.ManagerFactoryImpl";
-    private static final String MANAGER_FACTORY_CLASS_NAME = "com.nolovr.shadow.dynamic.impl.ManagerFactoryImpl";
+    private static final String MANAGER_FACTORY_CLASS_NAME = "com.tencent.shadow.dynamic.impl.ManagerFactoryImpl";
     private static final String[] REMOTE_PLUGIN_MANAGER_INTERFACES = new String[]
             {
                     "com.tencent.shadow.core.common",
