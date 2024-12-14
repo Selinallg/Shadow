@@ -4,6 +4,8 @@
 
     <uses-feature android:glEsVersion="0x00020000" />
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:name="com.nolovr.shadow.core.plugin.app.lib.UseCaseApplication"
         android:icon="@android:drawable/sym_def_app_icon"
@@ -62,6 +64,7 @@
         <activity android:name="com.nolovr.shadow.core.plugin.app.lib.usecases.context.ApplicationContextSubDirTestActivity" />
         <activity android:name="com.nolovr.shadow.core.plugin.app.lib.usecases.host_communication.PluginUseHostClassActivity" />
         <activity android:name="com.nolovr.shadow.core.plugin.app.lib.usecases.webview.WebViewActivity" />
+        <activity android:name="com.nolovr.shadow.core.plugin.app.lib.usecases.webview.WebView7Activity" />
         <activity android:name="com.nolovr.shadow.core.plugin.app.lib.usecases.fragment.TestDialogFragmentActivity" />
 
         <provider

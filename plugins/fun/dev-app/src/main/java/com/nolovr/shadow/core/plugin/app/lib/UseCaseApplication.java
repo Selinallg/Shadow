@@ -26,6 +26,7 @@ import com.nolovr.shadow.core.plugin.app.lib.usecases.provider.TestDBContentProv
 import com.nolovr.shadow.core.plugin.app.lib.usecases.provider.TestFileProviderActivity;
 import com.nolovr.shadow.core.plugin.app.lib.usecases.receiver.TestDynamicReceiverActivity;
 import com.nolovr.shadow.core.plugin.app.lib.usecases.receiver.TestReceiverActivity;
+import com.nolovr.shadow.core.plugin.app.lib.usecases.webview.WebView7Activity;
 import com.nolovr.shadow.core.plugin.app.lib.usecases.webview.WebViewActivity;
 
 public class UseCaseApplication extends Application {
@@ -99,7 +100,8 @@ public class UseCaseApplication extends Application {
         useCases.add(communicationCategory);
 
         UseCaseCategory webviewCategory = new UseCaseCategory("webview", new UseCase[]{
-                new WebViewActivity.Case(),
+                //new WebViewActivity.Case(),
+                new WebView7Activity.Case(),
         });
         useCases.add(webviewCategory);
     }
