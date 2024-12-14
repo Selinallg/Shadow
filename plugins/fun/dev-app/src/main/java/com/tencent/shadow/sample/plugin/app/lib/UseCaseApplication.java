@@ -1,12 +1,12 @@
 package com.tencent.shadow.sample.plugin.app.lib;
 
-import static com.tencent.shadow.sample.plugin.app.lib.gallery.cases.UseCaseManager.useCases;
+import static com.nolovr.shadow.core.plugin.app.lib.gallery.cases.UseCaseManager.useCases;
 
 import android.app.Application;
 
-import com.tencent.shadow.sample.plugin.app.lib.gallery.cases.UseCaseManager;
-import com.tencent.shadow.sample.plugin.app.lib.gallery.cases.entity.UseCase;
-import com.tencent.shadow.sample.plugin.app.lib.gallery.cases.entity.UseCaseCategory;
+import com.nolovr.shadow.core.plugin.app.lib.gallery.cases.UseCaseManager;
+import com.nolovr.shadow.core.plugin.app.lib.gallery.cases.entity.UseCase;
+import com.nolovr.shadow.core.plugin.app.lib.gallery.cases.entity.UseCaseCategory;
 import com.tencent.shadow.sample.plugin.app.lib.usecases.activity.TestActivityOnCreate;
 import com.tencent.shadow.sample.plugin.app.lib.usecases.activity.TestActivityOptionMenu;
 import com.tencent.shadow.sample.plugin.app.lib.usecases.activity.TestActivityOrientation;

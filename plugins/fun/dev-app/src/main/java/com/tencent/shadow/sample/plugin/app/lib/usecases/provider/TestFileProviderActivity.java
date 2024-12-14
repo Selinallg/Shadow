@@ -37,7 +37,7 @@ import android.widget.ImageView;
 
 import com.tencent.shadow.sample.plugin.app.lib.BuildConfig;
 import com.tencent.shadow.sample.plugin.app.lib.R;
-import com.tencent.shadow.sample.plugin.app.lib.gallery.cases.entity.UseCase;
+import com.nolovr.shadow.core.plugin.app.lib.gallery.cases.entity.UseCase;
 
 import java.io.File;
 

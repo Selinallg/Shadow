@@ -16,24 +16,16 @@
  *
  */
 
-package com.tencent.shadow.sample.plugin.app.lib.gallery;
+package com.nolovr.shadow.core.plugin.app.lib.gallery.cases.entity;
 
-import android.app.Application;
+public class UseCaseCategory {
 
-public class TestApplication extends Application {
+    public String title;
 
-    private static TestApplication sInstence;
+    public UseCase[] caseList;
 
-    public boolean isOnCreate;
-
-    @Override
-    public void onCreate() {
-        sInstence = this;
-        isOnCreate = true;
-        super.onCreate();
-    }
-
-    public static TestApplication getInstance() {
-        return sInstence;
+    public UseCaseCategory(String title, UseCase[] caseList) {
+        this.title = title;
+        this.caseList = caseList;
     }
 }

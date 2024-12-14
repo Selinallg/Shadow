@@ -16,7 +16,7 @@
  *
  */
 
-package com.tencent.shadow.sample.plugin.app.lib.gallery;
+package com.nolovr.shadow.core.plugin.app.lib.gallery;
 
 import android.app.Activity;
 import android.app.FragmentTransaction;
@@ -32,16 +32,16 @@ import android.widget.BaseExpandableListAdapter;
 import android.widget.ExpandableListView;
 import android.widget.TextView;
 
+import com.nolovr.shadow.core.plugin.app.lib.base.R;
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
+import com.nolovr.shadow.core.plugin.app.lib.gallery.cases.UseCaseManager;
+import com.nolovr.shadow.core.plugin.app.lib.gallery.cases.UseCaseSummaryFragment;
+import com.nolovr.shadow.core.plugin.app.lib.gallery.cases.entity.UseCase;
+import com.nolovr.shadow.core.plugin.app.lib.gallery.cases.entity.UseCaseCategory;
 import com.ryg.expandable.ui.PinnedHeaderExpandableListView;
 import com.ryg.expandable.ui.PinnedHeaderExpandableListView.OnHeaderUpdateListener;
 import com.ryg.expandable.ui.StickyLayout;
 import com.ryg.expandable.ui.StickyLayout.OnGiveUpTouchEventListener;
-import com.tencent.shadow.sample.plugin.app.lib.base.R;
-import com.tencent.shadow.sample.plugin.app.lib.gallery.cases.UseCaseManager;
-import com.tencent.shadow.sample.plugin.app.lib.gallery.cases.UseCaseSummaryFragment;
-import com.tencent.shadow.sample.plugin.app.lib.gallery.cases.entity.UseCase;
-import com.tencent.shadow.sample.plugin.app.lib.gallery.cases.entity.UseCaseCategory;
 
 import java.util.List;
 

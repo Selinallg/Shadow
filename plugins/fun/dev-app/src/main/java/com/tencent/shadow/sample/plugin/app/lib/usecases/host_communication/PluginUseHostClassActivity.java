@@ -24,8 +24,8 @@ import android.view.View;
 import android.widget.LinearLayout;
 
 import com.tencent.shadow.sample.host.lib.HostUiLayerProvider;
-import com.tencent.shadow.sample.plugin.app.lib.gallery.BaseActivity;
-import com.tencent.shadow.sample.plugin.app.lib.gallery.cases.entity.UseCase;
+import com.nolovr.shadow.core.plugin.app.lib.gallery.BaseActivity;
+import com.nolovr.shadow.core.plugin.app.lib.gallery.cases.entity.UseCase;
 
 public class PluginUseHostClassActivity extends BaseActivity {
     public static class Case extends UseCase {

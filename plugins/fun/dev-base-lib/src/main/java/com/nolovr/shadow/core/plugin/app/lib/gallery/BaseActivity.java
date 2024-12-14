@@ -16,7 +16,7 @@
  *
  */
 
-package com.tencent.shadow.sample.plugin.app.lib.gallery;
+package com.nolovr.shadow.core.plugin.app.lib.gallery;
 
 import android.app.Activity;
 import android.os.Bundle;

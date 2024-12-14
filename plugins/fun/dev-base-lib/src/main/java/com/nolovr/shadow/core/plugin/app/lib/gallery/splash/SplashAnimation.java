@@ -16,12 +16,12 @@
  *
  */
 
-package com.tencent.shadow.sample.plugin.app.lib.gallery.splash;
+package com.nolovr.shadow.core.plugin.app.lib.gallery.splash;
 
 import android.content.Context;
 import android.os.Handler;
 
-import com.tencent.shadow.sample.plugin.app.lib.gallery.util.ToastUtil;
+import com.nolovr.shadow.core.plugin.app.lib.gallery.util.ToastUtil;
 
 public class SplashAnimation implements ISplashAnimation {
 

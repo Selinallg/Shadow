@@ -29,8 +29,8 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.tencent.shadow.sample.plugin.app.lib.R;
-import com.tencent.shadow.sample.plugin.app.lib.gallery.BaseActivity;
-import com.tencent.shadow.sample.plugin.app.lib.gallery.cases.entity.UseCase;
+import com.nolovr.shadow.core.plugin.app.lib.gallery.BaseActivity;
+import com.nolovr.shadow.core.plugin.app.lib.gallery.cases.entity.UseCase;
 
 public class TestPackageManagerActivity extends BaseActivity {
 

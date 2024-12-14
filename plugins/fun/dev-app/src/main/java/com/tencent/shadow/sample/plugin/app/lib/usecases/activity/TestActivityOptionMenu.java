@@ -24,7 +24,7 @@ import android.support.annotation.Nullable;
 import android.view.Menu;
 
 import com.tencent.shadow.sample.plugin.app.lib.R;
-import com.tencent.shadow.sample.plugin.app.lib.gallery.cases.entity.UseCase;
+import com.nolovr.shadow.core.plugin.app.lib.gallery.cases.entity.UseCase;
 
 public class TestActivityOptionMenu extends Activity {
 

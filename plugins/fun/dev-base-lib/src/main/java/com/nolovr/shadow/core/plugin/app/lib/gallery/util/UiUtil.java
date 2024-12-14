@@ -16,7 +16,7 @@
  *
  */
 
-package com.tencent.shadow.sample.plugin.app.lib.gallery.util;
+package com.nolovr.shadow.core.plugin.app.lib.gallery.util;
 
 import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
 

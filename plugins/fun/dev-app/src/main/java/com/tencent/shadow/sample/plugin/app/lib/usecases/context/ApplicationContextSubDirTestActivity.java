@@ -21,7 +21,7 @@ package com.tencent.shadow.sample.plugin.app.lib.usecases.context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 
-import com.tencent.shadow.sample.plugin.app.lib.gallery.cases.entity.UseCase;
+import com.nolovr.shadow.core.plugin.app.lib.gallery.cases.entity.UseCase;
 
 public class ApplicationContextSubDirTestActivity extends SubDirContextThemeWrapperTestActivity {
     public static class Case extends UseCase {

@@ -8,7 +8,7 @@ import android.support.annotation.Nullable;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
-import com.tencent.shadow.sample.plugin.app.lib.gallery.cases.entity.UseCase;
+import com.nolovr.shadow.core.plugin.app.lib.gallery.cases.entity.UseCase;
 
 public class WebViewActivity extends Activity {
     public static class Case extends UseCase {

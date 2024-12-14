@@ -16,19 +16,14 @@
  *
  */
 
-package com.tencent.shadow.sample.plugin.app.lib.gallery.cases.entity;
+package com.nolovr.shadow.core.plugin.app.lib.gallery.util;
 
-import android.os.Bundle;
+import android.content.Context;
+import android.widget.Toast;
 
-public abstract class UseCase {
+public class ToastUtil {
 
-    public abstract String getName();
-
-    public abstract String getSummary();
-
-    public abstract Class getPageClass();
-
-    public Bundle getPageParams() {
-        return null;
+    public static void showToast(Context context, String message) {
+        Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
     }
 }

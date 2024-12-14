@@ -16,14 +16,16 @@
  *
  */
 
-package com.tencent.shadow.sample.plugin.app.lib.gallery.util;
+package com.nolovr.shadow.core.plugin.app.lib.gallery.cases;
 
-import android.content.Context;
-import android.widget.Toast;
+import com.nolovr.shadow.core.plugin.app.lib.gallery.cases.entity.UseCaseCategory;
 
-public class ToastUtil {
+import java.util.ArrayList;
+import java.util.List;
 
-    public static void showToast(Context context, String message) {
-        Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
-    }
+public class UseCaseManager {
+
+    public static List<UseCaseCategory> useCases = new ArrayList<>();
+
+    public static boolean sInit;
 }

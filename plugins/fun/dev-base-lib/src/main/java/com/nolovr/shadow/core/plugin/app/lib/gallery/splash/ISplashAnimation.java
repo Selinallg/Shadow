@@ -16,7 +16,7 @@
  *
  */
 
-package com.tencent.shadow.sample.plugin.app.lib.gallery.splash;
+package com.nolovr.shadow.core.plugin.app.lib.gallery.splash;
 
 public interface ISplashAnimation {
 

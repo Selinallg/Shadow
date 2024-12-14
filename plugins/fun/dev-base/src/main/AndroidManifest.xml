@@ -3,7 +3,7 @@
     package="com.tencent.shadow.sample.plugin.app.lib.base.plugin">
 
     <application
-        android:name="com.tencent.shadow.sample.plugin.app.lib.gallery.TestApplication"
+        android:name="com.nolovr.shadow.core.plugin.app.lib.gallery.TestApplication"
         android:theme="@style/CustomActivityTheme" />
 </manifest>
 
