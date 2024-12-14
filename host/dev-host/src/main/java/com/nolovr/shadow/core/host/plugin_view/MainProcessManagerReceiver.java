@@ -1,4 +1,4 @@
-package com.tencent.shadow.sample.host.plugin_view;
+package com.nolovr.shadow.core.host.plugin_view;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -6,9 +6,9 @@ import android.content.Intent;
 import android.util.Log;
 import android.view.View;
 
+import com.nolovr.shadow.core.host.HostApplication;
 import com.tencent.shadow.dynamic.host.EnterCallback;
 import com.tencent.shadow.sample.constant.Constant;
-import com.tencent.shadow.sample.host.HostApplication;
 
 public class MainProcessManagerReceiver extends BroadcastReceiver {
     private static final String TAG = "MainProcessManagerReceiver";

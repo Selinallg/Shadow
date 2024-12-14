@@ -16,14 +16,10 @@
  *
  */
 
-package com.tencent.shadow.sample.host;
+package com.nolovr.shadow.core.host;
 
 import android.content.Context;
 import android.util.Log;
-
-import com.tencent.shadow.core.common.Logger;
-import com.tencent.shadow.core.common.LoggerFactory;
-import com.tencent.shadow.dynamic.host.DynamicPluginManager;
 
 import org.apache.commons.io.FileUtils;
 

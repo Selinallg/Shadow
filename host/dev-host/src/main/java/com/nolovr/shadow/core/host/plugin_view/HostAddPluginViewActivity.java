@@ -1,4 +1,4 @@
-package com.tencent.shadow.sample.host.plugin_view;
+package com.nolovr.shadow.core.host.plugin_view;
 
 import android.app.Activity;
 import android.content.Intent;

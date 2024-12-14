@@ -16,22 +16,39 @@
  *
  */
 
-package com.tencent.shadow.sample.host.manager;
+package com.nolovr.shadow.core.host.manager;
 
-import com.tencent.shadow.dynamic.host.DynamicPluginManager;
-import com.tencent.shadow.dynamic.host.PluginManager;
+import com.tencent.shadow.dynamic.host.PluginManagerUpdater;
 
 import java.io.File;
+import java.util.concurrent.Future;
 
-public class Shadow {
+public class FixedPathPmUpdater implements PluginManagerUpdater {
 
-    public static PluginManager getPluginManager(File apk) {
-        final FixedPathPmUpdater fixedPathPmUpdater = new FixedPathPmUpdater(apk);
-        File tempPm = fixedPathPmUpdater.getLatest();
-        if (tempPm != null) {
-            return new DynamicPluginManager(fixedPathPmUpdater);
-        }
+    final private File apk;
+
+    FixedPathPmUpdater(File apk) {
+        this.apk = apk;
+    }
+
+
+    @Override
+    public boolean wasUpdating() {
+        return false;
+    }
+
+    @Override
+    public Future<File> update() {
         return null;
     }
 
+    @Override
+    public File getLatest() {
+        return apk;
+    }
+
+    @Override
+    public Future<Boolean> isAvailable(final File file) {
+        return null;
+    }
 }

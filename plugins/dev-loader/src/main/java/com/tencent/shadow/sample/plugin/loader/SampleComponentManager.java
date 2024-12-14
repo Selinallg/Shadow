@@ -30,8 +30,9 @@ public class SampleComponentManager extends ComponentManager {
      * dynamic-runtime-apk 模块中定义的壳子Activity，需要在宿主AndroidManifest.xml注册
      */
     private static final String DEFAULT_ACTIVITY = "com.tencent.shadow.sample.plugin.runtime.PluginDefaultProxyActivity";
-    private static final String SINGLE_INSTANCE_ACTIVITY = "com.tencent.shadow.sample.plugin.runtime.PluginSingleInstance1ProxyActivity";
-    private static final String SINGLE_TASK_ACTIVITY = "com.tencent.shadow.sample.plugin.runtime.PluginSingleTask1ProxyActivity";
+//    private static final String DEFAULT_ACTIVITY = "com.nolovr.shadow.core.plugin.runtime.PluginDefaultProxyActivity";
+    private static final String SINGLE_INSTANCE_ACTIVITY = "com.nolovr.shadow.core.plugin.runtime.PluginSingleInstance1ProxyActivity";
+    private static final String SINGLE_TASK_ACTIVITY = "com.nolovr.shadow.core.plugin.runtime.PluginSingleTask1ProxyActivity";
 
     private Context context;
 

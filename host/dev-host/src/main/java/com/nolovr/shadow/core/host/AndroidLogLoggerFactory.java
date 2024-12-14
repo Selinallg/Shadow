@@ -16,7 +16,7 @@
  *
  */
 
-package com.tencent.shadow.sample.host;
+package com.nolovr.shadow.core.host;
 
 import android.util.Log;
 

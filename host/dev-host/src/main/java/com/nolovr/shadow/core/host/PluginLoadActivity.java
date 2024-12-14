@@ -16,7 +16,7 @@
  *
  */
 
-package com.tencent.shadow.sample.host;
+package com.nolovr.shadow.core.host;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -26,6 +26,7 @@ import android.view.ViewGroup;
 
 import com.tencent.shadow.dynamic.host.EnterCallback;
 import com.tencent.shadow.sample.constant.Constant;
+import com.nolovr.shadow.core.host.R;
 
 /**
  * 加载插件

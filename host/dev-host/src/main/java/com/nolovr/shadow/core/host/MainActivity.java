@@ -16,7 +16,7 @@
  *
  */
 
-package com.tencent.shadow.sample.host;
+package com.nolovr.shadow.core.host;
 
 import static com.tencent.shadow.sample.constant.Constant.PART_KEY_PLUGIN_BASE;
 
@@ -31,7 +31,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.tencent.shadow.sample.constant.Constant;
-import com.tencent.shadow.sample.host.plugin_view.HostAddPluginViewActivity;
+import com.nolovr.shadow.core.host.plugin_view.HostAddPluginViewActivity;
 
 /**
  * 宿主应用的入口
