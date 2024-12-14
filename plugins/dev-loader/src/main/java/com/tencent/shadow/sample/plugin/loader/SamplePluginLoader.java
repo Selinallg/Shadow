@@ -16,7 +16,7 @@
  *
  */
 
-package com.nolovr.shadow.core.plugin.loader;
+package com.tencent.shadow.sample.plugin.loader;
 
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
