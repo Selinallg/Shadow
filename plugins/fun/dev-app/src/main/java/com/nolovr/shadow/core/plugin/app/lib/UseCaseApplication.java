@@ -97,5 +97,10 @@ public class UseCaseApplication extends Application {
                 new PluginUseHostClassActivity.Case(),
         });
         useCases.add(communicationCategory);
+
+        UseCaseCategory webviewCategory = new UseCaseCategory("webview", new UseCase[]{
+                new WebViewActivity.Case(),
+        });
+        useCases.add(webviewCategory);
     }
 }

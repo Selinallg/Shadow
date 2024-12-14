@@ -35,6 +35,8 @@ public class WebViewActivity extends Activity {
         WebView webView = new FooWebView(this);
         webView.getSettings().setJavaScriptEnabled(true);
         webView.loadUrl("file:///android_asset/web/test.html?t=" + Math.random());
+        //webView.loadUrl("https://www.iq.com");
+//        webView.loadUrl("https://www.baidu.com/");
 
         setContentView(webView);
     }
