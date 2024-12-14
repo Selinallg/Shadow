@@ -29,8 +29,8 @@ def includeDev() {
 
     project(':dev-loader').projectDir = file('plugins/dev-loader')
     project(':dev-runtime').projectDir = file('plugins/dev-runtime')
-    project(':pinnedheaderexpandablelistview').projectDir = file('sample/sample-plugin/third-party/pinnedheaderexpandablelistview')
-    project(':slidingmenu').projectDir = file('sample/sample-plugin/third-party/slidingmenu')
+    project(':pinnedheaderexpandablelistview').projectDir = file('warehouse/third-party/pinnedheaderexpandablelistview')
+    project(':slidingmenu').projectDir = file('warehouse/third-party/slidingmenu')
     project(':dev-base-lib').projectDir = file('plugins/fun/dev-base-lib')
     project(':dev-base').projectDir = file('plugins/fun/dev-base')
     project(':dev-app').projectDir = file('plugins/fun/dev-app')
