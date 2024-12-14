@@ -23,7 +23,7 @@ import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.LinearLayout;
 
-import com.nolovr.shadow.core.host.lib.HostUiLayerProvider;
+import com.tencent.shadow.sample.host.lib.HostUiLayerProvider;
 import com.tencent.shadow.sample.plugin.app.lib.gallery.BaseActivity;
 import com.tencent.shadow.sample.plugin.app.lib.gallery.cases.entity.UseCase;
 

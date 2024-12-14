@@ -1,4 +1,4 @@
-package com.nolovr.shadow.core.host.lib;
+package com.tencent.shadow.sample.host.lib;
 
 import android.content.pm.ApplicationInfo;
 import android.content.res.Resources;

@@ -1,4 +1,4 @@
-package com.nolovr.shadow.core.host.lib;
+package com.tencent.shadow.sample.host.lib;
 
 import java.util.HashMap;
 import java.util.Map;

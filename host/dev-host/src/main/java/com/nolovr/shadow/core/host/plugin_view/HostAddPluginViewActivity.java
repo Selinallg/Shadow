@@ -9,8 +9,8 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.nolovr.shadow.core.host.lib.HostAddPluginViewContainer;
-import com.nolovr.shadow.core.host.lib.HostAddPluginViewContainerHolder;
+import com.tencent.shadow.sample.host.lib.HostAddPluginViewContainer;
+import com.tencent.shadow.sample.host.lib.HostAddPluginViewContainerHolder;
 
 /**
  * 宿主添加插件view
