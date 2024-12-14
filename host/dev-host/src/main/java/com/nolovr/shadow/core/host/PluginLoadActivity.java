@@ -25,8 +25,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.tencent.shadow.dynamic.host.EnterCallback;
-import com.tencent.shadow.sample.constant.Constant;
-import com.nolovr.shadow.core.host.R;
+import com.nolovr.shadow.core.constant.Constant;
 
 /**
  * 加载插件

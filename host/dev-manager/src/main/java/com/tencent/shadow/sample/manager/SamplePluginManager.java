@@ -18,9 +18,9 @@
 
 package com.tencent.shadow.sample.manager;
 
-import static com.tencent.shadow.sample.constant.Constant.PART_KEY_PLUGIN_ANOTHER_APP;
-import static com.tencent.shadow.sample.constant.Constant.PART_KEY_PLUGIN_BASE;
-import static com.tencent.shadow.sample.constant.Constant.PART_KEY_PLUGIN_MAIN_APP;
+import static com.nolovr.shadow.core.constant.Constant.PART_KEY_PLUGIN_ANOTHER_APP;
+import static com.nolovr.shadow.core.constant.Constant.PART_KEY_PLUGIN_BASE;
+import static com.nolovr.shadow.core.constant.Constant.PART_KEY_PLUGIN_MAIN_APP;
 
 import android.content.Context;
 import android.content.Intent;
@@ -31,7 +31,7 @@ import android.view.View;
 
 import com.tencent.shadow.core.manager.installplugin.InstalledPlugin;
 import com.tencent.shadow.dynamic.host.EnterCallback;
-import com.tencent.shadow.sample.constant.Constant;
+import com.nolovr.shadow.core.constant.Constant;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;

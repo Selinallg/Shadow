@@ -18,7 +18,7 @@
 
 package com.nolovr.shadow.core.host;
 
-import static com.tencent.shadow.sample.constant.Constant.PART_KEY_PLUGIN_BASE;
+import static com.nolovr.shadow.core.constant.Constant.PART_KEY_PLUGIN_BASE;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -30,7 +30,7 @@ import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import com.tencent.shadow.sample.constant.Constant;
+import com.nolovr.shadow.core.constant.Constant;
 import com.nolovr.shadow.core.host.plugin_view.HostAddPluginViewActivity;
 
 /**
