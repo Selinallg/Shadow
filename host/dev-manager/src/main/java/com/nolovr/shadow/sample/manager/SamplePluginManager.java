@@ -16,7 +16,7 @@
  *
  */
 
-package com.tencent.shadow.sample.manager;
+package com.nolovr.shadow.sample.manager;
 
 import static com.nolovr.shadow.core.constant.Constant.PART_KEY_PLUGIN_ANOTHER_APP;
 import static com.nolovr.shadow.core.constant.Constant.PART_KEY_PLUGIN_BASE;
@@ -32,6 +32,7 @@ import android.view.View;
 import com.tencent.shadow.core.manager.installplugin.InstalledPlugin;
 import com.tencent.shadow.dynamic.host.EnterCallback;
 import com.nolovr.shadow.core.constant.Constant;
+import com.nolovr.shadow.core.manager.R;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;

@@ -16,7 +16,7 @@
  *
  */
 
-package com.tencent.shadow.dynamic.impl;
+package com.nolovr.shadow.dynamic.impl;
 
 /**
  * 此类包名及类名固定

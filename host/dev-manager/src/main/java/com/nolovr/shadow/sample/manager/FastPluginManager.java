@@ -16,7 +16,7 @@
  *
  */
 
-package com.tencent.shadow.sample.manager;
+package com.nolovr.shadow.sample.manager;
 
 import android.content.Context;
 import android.os.RemoteException;

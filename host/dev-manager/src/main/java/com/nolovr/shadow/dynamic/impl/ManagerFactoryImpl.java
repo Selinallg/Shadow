@@ -16,13 +16,13 @@
  *
  */
 
-package com.tencent.shadow.dynamic.impl;
+package com.nolovr.shadow.dynamic.impl;
 
 import android.content.Context;
 
 import com.tencent.shadow.dynamic.host.ManagerFactory;
 import com.tencent.shadow.dynamic.host.PluginManagerImpl;
-import com.tencent.shadow.sample.manager.SamplePluginManager;
+import com.nolovr.shadow.sample.manager.SamplePluginManager;
 
 /**
  * 此类包名及类名固定
