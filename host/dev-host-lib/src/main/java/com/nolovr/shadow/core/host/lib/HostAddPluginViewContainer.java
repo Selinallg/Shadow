@@ -1,4 +1,4 @@
-package com.tencent.shadow.sample.host.lib;
+package com.nolovr.shadow.core.host.lib;
 
 import android.view.View;
 

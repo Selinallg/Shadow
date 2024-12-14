@@ -30,7 +30,7 @@ import android.webkit.WebView;
 import com.tencent.shadow.core.common.LoggerFactory;
 import com.tencent.shadow.dynamic.host.DynamicRuntime;
 import com.tencent.shadow.dynamic.host.PluginManager;
-import com.tencent.shadow.sample.host.lib.HostUiLayerProvider;
+import com.nolovr.shadow.core.host.lib.HostUiLayerProvider;
 import com.nolovr.shadow.core.host.manager.Shadow;
 
 import java.io.File;
