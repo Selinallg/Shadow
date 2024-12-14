@@ -16,7 +16,7 @@
  *
  */
 
-package com.tencent.shadow.sample.plugin.runtime;
+package com.nolovr.shadow.core.plugin.runtime;
 
 import android.annotation.SuppressLint;
 
