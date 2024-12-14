@@ -23,7 +23,7 @@ import android.content.res.Resources;
 import android.util.Log;
 
 import com.tencent.shadow.dynamic.host.PluginProcessService;
-import com.tencent.shadow.sample.host.lib.LoadPluginCallback;
+import com.nolovr.shadow.core.host.lib.LoadPluginCallback;
 
 public class Plugin2ProcessPPS extends PluginProcessService {
     public Plugin2ProcessPPS() {

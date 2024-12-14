@@ -8,8 +8,8 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 
-import com.tencent.shadow.sample.host.lib.HostAddPluginViewContainer;
-import com.tencent.shadow.sample.host.lib.HostAddPluginViewContainerHolder;
+import com.nolovr.shadow.core.host.lib.HostAddPluginViewContainer;
+import com.nolovr.shadow.core.host.lib.HostAddPluginViewContainerHolder;
 import com.tencent.shadow.sample.plugin.app.lib.R;
 
 public class HostAddPluginViewService extends IntentService {

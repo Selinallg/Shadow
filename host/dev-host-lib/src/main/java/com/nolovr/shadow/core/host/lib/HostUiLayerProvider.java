@@ -16,11 +16,12 @@
  *
  */
 
-package com.tencent.shadow.sample.host.lib;
+package com.nolovr.shadow.core.host.lib;
 
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
+
 
 /**
  * 这是一个将要打包到宿主中的类。原本的目的是宿主依赖插件，宿主
