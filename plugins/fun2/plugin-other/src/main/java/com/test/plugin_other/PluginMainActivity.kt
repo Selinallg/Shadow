@@ -9,9 +9,9 @@ import android.os.Bundle
  * Date: 2021-06-22
  * UseDes:
  */
-class MainActivity : Activity() {
+class PluginMainActivity : Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_plugin_main)
     }
 }

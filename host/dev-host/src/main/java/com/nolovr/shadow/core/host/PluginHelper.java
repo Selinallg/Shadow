@@ -42,10 +42,12 @@ public class PluginHelper {
      * 动态加载的插件包，里面包含以下几个部分，插件apk，插件框架apk（loader apk和runtime apk）, apk信息配置关系json文件
      */
     public final static String sPluginZip = BuildConfig.DEBUG ? "plugin-debug.zip" : "plugin-release.zip";
+    public final static String s2PluginZip = BuildConfig.DEBUG ? "plugin2-debug.zip" : "plugin-release.zip";
 
     public File pluginManagerFile;
 
     public File pluginZipFile;
+    public File plugin2ZipFile;
 
     public ExecutorService singlePool = Executors.newSingleThreadExecutor();
 
@@ -61,8 +63,12 @@ public class PluginHelper {
     }
 
     public void init(Context context) {
+        // manager
         pluginManagerFile = new File(context.getFilesDir(), sPluginManagerName);
+        // 插件包 1
         pluginZipFile = new File(context.getFilesDir(), sPluginZip);
+        // 插件包 2
+        plugin2ZipFile = new File(context.getFilesDir(), s2PluginZip);
 
         mContext = context.getApplicationContext();
 
@@ -85,10 +91,15 @@ public class PluginHelper {
 //            Logger mLogger = LoggerFactory.getLogger(DynamicPluginManager.class);
 //            AndroidLogLoggerFactory.getInstance().getLogger("xx").debug("xx");
             // TODO: 2024-12-13 后期可以从网络上下载动态加载的插件包，然后解压到本地，然后再加载
+            //  动态加载的插件包 plugin-debug.zip
             InputStream zip = mContext.getAssets().open(sPluginZip);
             FileUtils.copyInputStreamToFile(zip, pluginZipFile);
-
             Log.d(TAG, "preparePlugin: pluginZipFile="+pluginZipFile.getAbsolutePath());
+
+            //  动态加载的插件包 plugin2-debug.zip
+            InputStream zip2 = mContext.getAssets().open(s2PluginZip);
+            FileUtils.copyInputStreamToFile(zip2, plugin2ZipFile);
+            Log.d(TAG, "preparePlugin: plugin2ZipFile="+plugin2ZipFile.getAbsolutePath());
 
         } catch (IOException e) {
             throw new RuntimeException("从assets中复制apk出错", e);

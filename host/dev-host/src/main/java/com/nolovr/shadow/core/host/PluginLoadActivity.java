@@ -19,8 +19,10 @@
 package com.nolovr.shadow.core.host;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -44,7 +46,14 @@ public class PluginLoadActivity extends Activity {
 
         mViewGroup = findViewById(R.id.container);
 
-        startPlugin();
+        Intent intent = getIntent();
+        String partKey = intent.getStringExtra(Constant.KEY_PLUGIN_PART_KEY);
+        if (Constant.PART_KEY_PLUGIN_GS3D.equals(partKey)) {
+            start_plugin2();
+        } else {
+            startPlugin();
+        }
+
     }
 
 
@@ -83,6 +92,52 @@ public class PluginLoadActivity extends Activity {
 
                             }
                         });
+            }
+        });
+    }
+
+
+    public void start_plugin2() {
+        PluginHelper.getInstance().singlePool.execute(new Runnable() {
+            @Override
+            public void run() {
+                HostApplication.getApp().loadPluginManager(PluginHelper.getInstance().pluginManagerFile);
+
+                /**
+                 * @param context context
+                 * @param formId  标识本次请求的来源位置，用于区分入口
+                 * @param bundle  参数列表, 建议在参数列表加入自己的验证
+                 * @param callback 用于从PluginManager实现中返回View
+                 */
+                Bundle bundle = new Bundle();//插件 zip，这几个参数也都可以不传，直接在 PluginManager 中硬编码
+                bundle.putString(Constant.KEY_PLUGIN_ZIP_PATH, PluginHelper.getInstance().plugin2ZipFile.getAbsolutePath());
+                bundle.putString(Constant.KEY_PLUGIN_PART_KEY, Constant.PART_KEY_PLUGIN_GS3D);// partKey 每个插件都有自己的 partKey 用来区分多个插件，如何配置在下面讲到
+                bundle.putString(Constant.KEY_ACTIVITY_CLASSNAME, getIntent().getStringExtra(Constant.KEY_ACTIVITY_CLASSNAME));//要启动的插件的Activity页面
+                bundle.putBundle(Constant.KEY_EXTRAS, new Bundle()); // 要传入到插件里的参数
+
+                HostApplication.getApp().getPluginManager().enter(PluginLoadActivity.this, Constant.FROM_ID_START_ACTIVITY, bundle, new EnterCallback() {
+                    @Override
+                    public void onShowLoadingView(View view) {
+                        Log.e("PluginLoad", "onShowLoadingView");
+                        mHandler.post(new Runnable() {
+                            @Override
+                            public void run() {
+                                mViewGroup.addView(view);
+                            }
+                        });
+                    }
+
+                    @Override
+                    public void onCloseLoadingView() {
+                        Log.e("PluginLoad", "onCloseLoadingView");
+                    }
+
+                    @Override
+                    public void onEnterComplete() {
+                        // 启动成功
+                        Log.e("PluginLoad", "onEnterComplete");
+                    }
+                });
             }
         });
     }

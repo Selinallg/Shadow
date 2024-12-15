@@ -23,6 +23,7 @@ import static com.nolovr.shadow.core.constant.Constant.PART_KEY_PLUGIN_BASE;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -32,6 +33,7 @@ import android.widget.TextView;
 
 import com.nolovr.shadow.core.constant.Constant;
 import com.nolovr.shadow.core.host.plugin_view.HostAddPluginViewActivity;
+import com.tencent.shadow.dynamic.host.EnterCallback;
 
 /**
  * 宿主应用的入口
@@ -56,7 +58,8 @@ public class MainActivity extends Activity {
         ArrayAdapter<String> partKeysAdapter = new ArrayAdapter<>(this, R.layout.part_key_adapter);
         partKeysAdapter.addAll(
                 Constant.PART_KEY_PLUGIN_MAIN_APP,
-                Constant.PART_KEY_PLUGIN_ANOTHER_APP
+                Constant.PART_KEY_PLUGIN_ANOTHER_APP,
+                Constant.PART_KEY_PLUGIN_GS3D
         );
         partKeySpinner.setAdapter(partKeysAdapter);
         rootView.addView(partKeySpinner);
@@ -74,22 +77,37 @@ public class MainActivity extends Activity {
                         intent.putExtra(Constant.KEY_PLUGIN_PART_KEY, PART_KEY_PLUGIN_BASE);
                         break;
                     case Constant.PART_KEY_PLUGIN_ANOTHER_APP:
+                    case Constant.PART_KEY_PLUGIN_GS3D:
                         intent.putExtra(Constant.KEY_PLUGIN_PART_KEY, partKey);
                         break;
                 }
 
                 switch (partKey) {
                     //为了演示多进程多插件，其实两个插件内容完全一样，除了所在进程
+                    case Constant.PART_KEY_PLUGIN_GS3D:{
+                        //intent.putExtra(Constant.KEY_ACTIVITY_CLASSNAME, "com.test.plugin_app.SplashActivity");
+                        intent.putExtra(Constant.KEY_ACTIVITY_CLASSNAME, "com.test.plugin_other.PluginMainActivity");
+                        break;
+                    }
                     case Constant.PART_KEY_PLUGIN_MAIN_APP:
-                    case Constant.PART_KEY_PLUGIN_ANOTHER_APP:
+                    case Constant.PART_KEY_PLUGIN_ANOTHER_APP:{
                         intent.putExtra(Constant.KEY_ACTIVITY_CLASSNAME, "com.nolovr.shadow.core.plugin.app.lib.gallery.splash.SplashActivity");
                         break;
+                    }
 
                 }
                 startActivity(intent);
             }
         });
         rootView.addView(startPluginButton);
+
+//        Button plugin2Button = new Button(this);
+//        plugin2Button.setText("启动插件包2");
+//        plugin2Button.setOnClickListener(v -> {
+//            start_plugin2();
+//        });
+//        rootView.addView(plugin2Button);
+
 
         Button startHostAddPluginViewActivityButton = new Button(this);
         startHostAddPluginViewActivityButton.setText("宿主添加插件View");
@@ -102,5 +120,9 @@ public class MainActivity extends Activity {
         setContentView(rootView);
 
     }
+
+
+
+
 
 }

@@ -26,6 +26,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.RemoteException;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 
@@ -61,7 +62,7 @@ public class SamplePluginManager extends FastPluginManager {
      */
     @Override
     protected String getPluginProcessServiceName(String partKey) {
-        if (PART_KEY_PLUGIN_MAIN_APP.equals(partKey)) {
+        if (PART_KEY_PLUGIN_MAIN_APP.equals(partKey)||Constant.PART_KEY_PLUGIN_GS3D.equals(partKey)) {
             return "com.nolovr.shadow.core.host.PluginProcessPPS";
         } else if (PART_KEY_PLUGIN_BASE.equals(partKey)) {
             return "com.nolovr.shadow.core.host.PluginProcessPPS";
@@ -106,6 +107,7 @@ public class SamplePluginManager extends FastPluginManager {
         final String pluginZipPath = bundle.getString(Constant.KEY_PLUGIN_ZIP_PATH);
         final String partKey = bundle.getString(Constant.KEY_PLUGIN_PART_KEY);
         final String className = bundle.getString(Constant.KEY_ACTIVITY_CLASSNAME);
+        Log.d("SamplePluginManager", "onStartActivity: pluginZipPath=" + pluginZipPath + ", partKey=" + partKey + ", className=" + className);
         if (className == null) {
             throw new NullPointerException("className == null");
         }
@@ -121,11 +123,18 @@ public class SamplePluginManager extends FastPluginManager {
             public void run() {
                 try {
                     InstalledPlugin installedPlugin = installPlugin(pluginZipPath, null, true);
+                    Log.d("SamplePluginManager", "run: "+installedPlugin.plugins.size() + " "+ installedPlugin.UUID + " "+ installedPlugin.UUID_NickName);
 
-                    loadPlugin(installedPlugin.UUID, PART_KEY_PLUGIN_BASE);
-                    loadPlugin(installedPlugin.UUID, PART_KEY_PLUGIN_MAIN_APP);
-                    callApplicationOnCreate(PART_KEY_PLUGIN_BASE);
-                    callApplicationOnCreate(PART_KEY_PLUGIN_MAIN_APP);
+                    if (!partKey.equals(Constant.PART_KEY_PLUGIN_GS3D)) {
+                        loadPlugin(installedPlugin.UUID, PART_KEY_PLUGIN_BASE);
+                        loadPlugin(installedPlugin.UUID, PART_KEY_PLUGIN_MAIN_APP);
+                        callApplicationOnCreate(PART_KEY_PLUGIN_BASE);
+                        callApplicationOnCreate(PART_KEY_PLUGIN_MAIN_APP);
+                    }else {
+                        loadPlugin(installedPlugin.UUID, Constant.PART_KEY_PLUGIN_GS3D);
+                        callApplicationOnCreate(Constant.PART_KEY_PLUGIN_GS3D);
+                        Log.d("SamplePluginManager", "run: loadPlugin gs3d");
+                    }
 
                     Intent pluginIntent = new Intent();
                     pluginIntent.setClassName(
@@ -136,6 +145,7 @@ public class SamplePluginManager extends FastPluginManager {
                         pluginIntent.replaceExtras(extras);
                     }
                     Intent intent = mPluginLoader.convertActivityIntent(pluginIntent);
+                    Log.d("SamplePluginManager", "run: intent="+intent);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     mPluginLoader.startActivityInPluginProcess(intent);
                 } catch (Exception e) {
