@@ -16,34 +16,29 @@
  *
  */
 
-package com.nolovr.shadow.core.plugin.app.lib.gallery.splash;
+package com.test.plugin_other;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
+import android.os.Handler;
 
-import com.nolovr.shadow.core.plugin.app.lib.gallery.MainActivity;
-import com.nolovr.shadow.core.plugin.app.lib.base.R;
+import androidx.annotation.Nullable;
 
 public class SplashActivity extends Activity {
-
-    private SplashAnimation mSplashAnimation;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_splash);
 
-        mSplashAnimation = new SplashAnimation(this);
-        mSplashAnimation.start();
-
-        mSplashAnimation.setAnimationListener(new ISplashAnimation.AnimationListener() {
+        new Handler().postDelayed(new Runnable() {
             @Override
-            public void onAnimationEnd() {
+            public void run() {
                 finish();
-                startActivity(new Intent(SplashActivity.this, MainActivity.class));
+                startActivity(new Intent(SplashActivity.this, PluginMainActivity.class));
             }
-        });
+
+        }, 2000);
     }
 }

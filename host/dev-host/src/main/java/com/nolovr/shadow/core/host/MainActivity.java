@@ -83,12 +83,12 @@ public class MainActivity extends Activity {
                 }
 
                 switch (partKey) {
-                    //为了演示多进程多插件，其实两个插件内容完全一样，除了所在进程
                     case Constant.PART_KEY_PLUGIN_GS3D:{
                         //intent.putExtra(Constant.KEY_ACTIVITY_CLASSNAME, "com.test.plugin_app.SplashActivity");
-                        intent.putExtra(Constant.KEY_ACTIVITY_CLASSNAME, "com.test.plugin_other.PluginMainActivity");
+                        intent.putExtra(Constant.KEY_ACTIVITY_CLASSNAME, "com.test.plugin_other.SplashActivity");
                         break;
                     }
+                    //为了演示多进程多插件，其实两个插件内容完全一样，除了所在进程
                     case Constant.PART_KEY_PLUGIN_MAIN_APP:
                     case Constant.PART_KEY_PLUGIN_ANOTHER_APP:{
                         intent.putExtra(Constant.KEY_ACTIVITY_CLASSNAME, "com.nolovr.shadow.core.plugin.app.lib.gallery.splash.SplashActivity");
