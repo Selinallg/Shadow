@@ -81,6 +81,32 @@ dependencies {
 }
 
 
+def createDuplicateApkTask(buildType) {
+    def apkDir = file("${getBuildDir()}/outputs/apk/plugin/$buildType")
+
+    return tasks.create("duplicatePlugin${buildType.capitalize()}ApkTask", Copy) {
+        group = 'build'
+        description = "复制一个plugin-other-plugin-${buildType}.apk用于测试目的"
+        from(apkDir) {
+            include("plugin-other-plugin-${buildType}.apk")
+            rename { "plugin-other-plugin-${buildType}2.apk" }
+        }
+        into(apkDir)
+
+    }.dependsOn(":plugin-other:assemblePlugin${buildType.capitalize()}")
+}
+
+tasks.whenTaskAdded { task ->
+    if (task.name == "assemblePluginDebug") {
+        def createTask = createDuplicateApkTask('debug')
+        task.finalizedBy(createTask)
+    }
+    if (task.name == "assemblePluginRelease") {
+        def createTask = createDuplicateApkTask('release')
+        task.finalizedBy(createTask)
+    }
+}
+
 
 
 shadow {
@@ -97,26 +123,11 @@ shadow {
                     pluginApk1 {
                         businessName = 'dev-plugin-xx'
                         partKey = 'dev-plugin-xx'
-                        buildTask = ':dev-app:assemblePluginDebug'
-                        apkPath = 'plugins/fun2/dev-app/build/outputs/apk/plugin/debug/plugin-other-plugin-debug.apk'
+                        buildTask = ':plugin-other:assemblePluginDebug'
+                        apkPath = 'plugins/fun2/plugin-other/build/outputs/apk/plugin/debug/plugin-other-plugin-debug.apk'
                         hostWhiteList = ["com.tencent.shadow.sample.host.lib"]
 //                        dependsOn = ['dev-base']
                     }
-//                    pluginApk2 {
-//                        businessName = 'dev-plugin-app2'
-//                        partKey = 'dev-plugin-app2'
-//                        buildTask = ':dev-app:assemblePluginDebug'
-//                        apkPath = 'plugins/fun/dev-app/build/outputs/apk/plugin/debug/dev-app-plugin-debug2.apk'
-//                        hostWhiteList = ["com.tencent.shadow.sample.host.lib"]
-//                        dependsOn = ['dev-base']
-//                    }
-//                    sampleBase {
-//                        businessName = 'dev-plugin-app'
-//                        partKey = 'dev-base'
-//                        buildTask = ':dev-base:assemblePluginDebug'
-//                        apkPath = 'plugins/fun/dev-base/build/outputs/apk/plugin/debug/dev-base-plugin-debug.apk'
-//                        hostWhiteList = ["com.tencent.shadow.sample.host.lib"]
-//                    }
                 }
             }
 
@@ -127,26 +138,11 @@ shadow {
                     pluginApk1 {
                         businessName = 'dev-plugin-xx'
                         partKey = 'dev-plugin-xx'
-                        buildTask = ':dev-app:assemblePluginRelease'
-                        apkPath = 'plugins/fun2/dev-app/build/outputs/apk/plugin/debug/plugin-other-plugin-debug.apk'
+                        buildTask = ':plugin-other:assemblePluginRelease'
+                        apkPath = 'plugins/fun2/plugin-other/build/outputs/apk/plugin/debug/plugin-other-plugin-debug.apk'
                         hostWhiteList = ["com.tencent.shadow.sample.host.lib"]
 //                        dependsOn = ['dev-base']
                     }
-//                    pluginApk2 {
-//                        businessName = 'dev-plugin-app2'
-//                        partKey = 'dev-plugin-app2'
-//                        buildTask = ':dev-app:assemblePluginRelease'
-//                        apkPath = 'plugins/fun/dev-app/build/outputs/apk/plugin/release/dev-app-plugin-release2.apk'
-//                        hostWhiteList = ["com.tencent.shadow.sample.host.lib"]
-//                        dependsOn = ['dev-base']
-//                    }
-//                    sampleBase {
-//                        businessName = 'dev-plugin-app'
-//                        partKey = 'dev-base'
-//                        buildTask = ':dev-base:assemblePluginRelease'
-//                        apkPath = 'plugins/fun/dev-base/build/outputs/apk/plugin/release/dev-base-plugin-release.apk'
-//                        hostWhiteList = ["com.tencent.shadow.sample.host.lib"]
-//                    }
                 }
             }
         }
@@ -155,8 +151,10 @@ shadow {
         runtimeApkProjectPath = 'plugins/dev-runtime'
 
         archiveSuffix = System.getenv("PluginSuffix") ?: ""
-        archivePrefix = 'plugin'
+        archivePrefix = 'plugin2'
         destinationDir = "${getRootProject().getBuildDir()}"
+
+        println("====destinationDir ${destinationDir}")
 
         version = 4
         compactVersion = [1, 2, 3]

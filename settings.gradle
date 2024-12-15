@@ -54,3 +54,8 @@ def copyLocalPropertiesForIncludeBuilds() {
         }
     }
 }
+
+//include ':plugins:fun2:plugin-other'
+//includeBuild ':plugins:fun2:plugin-other'
+include 'plugin-other'
+project(':plugin-other').projectDir = file('plugins/fun2/plugin-other')

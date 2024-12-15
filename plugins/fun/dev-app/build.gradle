@@ -175,6 +175,8 @@ shadow {
         archivePrefix = 'plugin'
         destinationDir = "${getRootProject().getBuildDir()}"
 
+        println("====destinationDir ${destinationDir}")
+
         version = 4
         compactVersion = [1, 2, 3]
         uuidNickName = "1.1.5"

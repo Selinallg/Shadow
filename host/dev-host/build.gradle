@@ -28,10 +28,12 @@ android {
         debug {
             assets.srcDir('build/generated/assets/dev-manager/debug/')
             assets.srcDir('build/generated/assets/plugin-zip/debug/')
+            assets.srcDir('build/generated/assets/plugin2-zip/debug/')
         }
         release {
             assets.srcDir('build/generated/assets/dev-manager/release/')
             assets.srcDir('build/generated/assets/plugin-zip/release/')
+            assets.srcDir('build/generated/assets/plugin2-zip/release/')
         }
     }
     lintOptions {
@@ -52,6 +54,8 @@ dependencies {
 
 def createCopyTask(projectName, buildType, name, apkName, inputFile, taskName) {
     def outputFile = file("${getBuildDir()}/generated/assets/${name}/${buildType}/${apkName}")
+    println("==== createCopyTask inputFile:${inputFile} --> ${inputFile.exists()}")
+    println("==== createCopyTask outputFile:${outputFile}")
     outputFile.getParentFile().mkdirs()
     return tasks.create("copy${buildType.capitalize()}${name.capitalize()}Task", Copy) {
         group = 'build'
@@ -83,6 +87,7 @@ def generateAssets(generateAssetsTask, buildType) {
     )
 
     def pluginZip = file("${getRootProject().getBuildDir()}/plugin-${buildType}.zip")
+    println("pluginZip:${pluginZip}")
     generateAssetsTask.dependsOn createCopyTask(
             ':dev-app',
             buildType,
@@ -92,7 +97,17 @@ def generateAssets(generateAssetsTask, buildType) {
             "package${buildType.capitalize()}Plugin"
     )
 
-
+    // :plugins:fun2:plugin-other
+    def plugin2Zip = file("${getRootProject().getBuildDir()}/plugin2-${buildType}.zip")
+    println("plugin2Zip:${plugin2Zip}")
+    generateAssetsTask.dependsOn createCopyTask(
+            ':plugin-other',
+            buildType,
+            'plugin2-zip',
+            "plugin2-${buildType}.zip",
+            plugin2Zip,
+            "package${buildType.capitalize()}Plugin"
+    )
 }
 
 tasks.whenTaskAdded { task ->
