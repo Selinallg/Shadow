@@ -74,6 +74,7 @@ public class PluginLoadActivity extends Activity {
                         .enter(PluginLoadActivity.this, Constant.FROM_ID_START_ACTIVITY, bundle, new EnterCallback() {
                             @Override
                             public void onShowLoadingView(final View view) {
+                                Log.d("PluginLoad", "onShowLoadingView: ");
                                 mHandler.post(new Runnable() {
                                     @Override
                                     public void run() {
@@ -84,11 +85,13 @@ public class PluginLoadActivity extends Activity {
 
                             @Override
                             public void onCloseLoadingView() {
+                                Log.d("PluginLoad", "onCloseLoadingView: ");
                                 finish();
                             }
 
                             @Override
                             public void onEnterComplete() {
+                                Log.d("PluginLoad", "onEnterComplete: ");
 
                             }
                         });
@@ -130,6 +133,7 @@ public class PluginLoadActivity extends Activity {
                     @Override
                     public void onCloseLoadingView() {
                         Log.e("PluginLoad", "onCloseLoadingView");
+                        finish();
                     }
 
                     @Override
