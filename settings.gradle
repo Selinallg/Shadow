@@ -21,6 +21,7 @@ def includeDev() {
             'slidingmenu',
             'dev-base-lib',
             'dev-base',
+            'dev-demo',
             'dev-app'
     project(':dev-constant').projectDir = file('host/dev-constant')
     project(':dev-host').projectDir = file('host/dev-host')
@@ -34,6 +35,7 @@ def includeDev() {
     project(':dev-base-lib').projectDir = file('plugins/fun/dev-base-lib')
     project(':dev-base').projectDir = file('plugins/fun/dev-base')
     project(':dev-app').projectDir = file('plugins/fun/dev-app')
+    project(':dev-demo').projectDir = file('plugins/fun/dev-demo')
 }
 
 

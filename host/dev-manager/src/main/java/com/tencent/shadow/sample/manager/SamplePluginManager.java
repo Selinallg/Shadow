@@ -34,6 +34,7 @@ import com.tencent.shadow.core.manager.installplugin.InstalledPlugin;
 import com.tencent.shadow.dynamic.host.EnterCallback;
 import com.nolovr.shadow.core.constant.Constant;
 
+import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -64,7 +65,8 @@ public class SamplePluginManager extends FastPluginManager {
     protected String getPluginProcessServiceName(String partKey) {
         if (PART_KEY_PLUGIN_MAIN_APP.equals(partKey)) {
             return "com.nolovr.shadow.core.host.PluginProcessPPS";
-        }if (Constant.PART_KEY_PLUGIN_GS3D.equals(partKey)) {
+        }if (Constant.PART_KEY_PLUGIN_GS3D.equals(partKey)||
+                Constant.PART_KEY_PLUGIN_DEMO.equals(partKey)) {
             return "com.nolovr.shadow.core.host.Plugin3ProcessPPS";
         } else if (PART_KEY_PLUGIN_BASE.equals(partKey)) {
             return "com.nolovr.shadow.core.host.PluginProcessPPS";
@@ -124,14 +126,28 @@ public class SamplePluginManager extends FastPluginManager {
             @Override
             public void run() {
                 try {
+
+//                    List<InstalledPlugin> installedPlugins = getInstalledPlugins(1);
+//                    for (InstalledPlugin plugin :installedPlugins) {
+//                        Log.d("SamplePluginManager", "for run: "+plugin.plugins.size() + " "+ plugin.UUID + " "+ plugin.UUID_NickName);
+//                        boolean ret = deleteInstalledPlugin(plugin.UUID);
+//                        Log.d("SamplePluginManager", "for run: ret="+ret);
+//                    }
+
                     InstalledPlugin installedPlugin = installPlugin(pluginZipPath, null, true);
+
                     Log.d("SamplePluginManager", "run: "+installedPlugin.plugins.size() + " "+ installedPlugin.UUID + " "+ installedPlugin.UUID_NickName);
 
                     if (!partKey.equals(Constant.PART_KEY_PLUGIN_GS3D)) {
                         loadPlugin(installedPlugin.UUID, PART_KEY_PLUGIN_BASE);
                         loadPlugin(installedPlugin.UUID, PART_KEY_PLUGIN_MAIN_APP);
+
                         callApplicationOnCreate(PART_KEY_PLUGIN_BASE);
                         callApplicationOnCreate(PART_KEY_PLUGIN_MAIN_APP);
+
+                        loadPlugin(installedPlugin.UUID, Constant.PART_KEY_PLUGIN_DEMO);
+                        callApplicationOnCreate(Constant.PART_KEY_PLUGIN_DEMO);
+
                     }else {
                         loadPlugin(installedPlugin.UUID, Constant.PART_KEY_PLUGIN_GS3D);
                         callApplicationOnCreate(Constant.PART_KEY_PLUGIN_GS3D);

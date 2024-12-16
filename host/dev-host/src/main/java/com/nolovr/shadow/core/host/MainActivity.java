@@ -59,6 +59,7 @@ public class MainActivity extends Activity {
         partKeysAdapter.addAll(
                 Constant.PART_KEY_PLUGIN_MAIN_APP,
                 Constant.PART_KEY_PLUGIN_ANOTHER_APP,
+                Constant.PART_KEY_PLUGIN_DEMO,
                 Constant.PART_KEY_PLUGIN_GS3D
         );
         partKeySpinner.setAdapter(partKeysAdapter);
@@ -77,12 +78,14 @@ public class MainActivity extends Activity {
                         intent.putExtra(Constant.KEY_PLUGIN_PART_KEY, PART_KEY_PLUGIN_BASE);
                         break;
                     case Constant.PART_KEY_PLUGIN_ANOTHER_APP:
+                    case Constant.PART_KEY_PLUGIN_DEMO:
                     case Constant.PART_KEY_PLUGIN_GS3D:
                         intent.putExtra(Constant.KEY_PLUGIN_PART_KEY, partKey);
                         break;
                 }
 
                 switch (partKey) {
+                    case Constant.PART_KEY_PLUGIN_DEMO:
                     case Constant.PART_KEY_PLUGIN_GS3D:{
                         //intent.putExtra(Constant.KEY_ACTIVITY_CLASSNAME, "com.test.plugin_app.SplashActivity");
                         intent.putExtra(Constant.KEY_ACTIVITY_CLASSNAME, "com.test.plugin_other.SplashActivity");

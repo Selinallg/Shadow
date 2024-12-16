@@ -26,6 +26,7 @@ final public class Constant {
     public static final String PART_KEY_PLUGIN_MAIN_APP = "dev-plugin-app";
     public static final String PART_KEY_PLUGIN_ANOTHER_APP = "dev-plugin-app2";
     public static final String PART_KEY_PLUGIN_GS3D = "dev-plugin-xx"; // 与 zip压缩包json 文件里的配置一定要对应上
+    public static final String PART_KEY_PLUGIN_DEMO = "dev-plugin-demo"; // demo 用，一条龙添加
     public static final String PART_KEY_PLUGIN_BASE = "dev-base";
 
     public static final int FROM_ID_NOOP = 1000;

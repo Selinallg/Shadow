@@ -111,6 +111,13 @@ shadow {
                 loaderApkConfig = new Tuple2('dev-loader-debug.apk', ':dev-loader:assembleDebug')
                 runtimeApkConfig = new Tuple2('dev-runtime-debug.apk', ':dev-runtime:assembleDebug')
                 pluginApks {
+                    pluginApk0 {
+                        businessName = 'dev-demo'
+                        partKey = 'dev-plugin-demo' //很关键必须一致
+                        buildTask = ':dev-demo:assemblePluginDebug'
+                        apkPath = 'plugins/fun/dev-demo/build/outputs/apk/plugin/debug/dev-demo-plugin-debug.apk'
+                        hostWhiteList = ["com.tencent.shadow.sample.host.lib"]
+                    }
                     pluginApk1 {
                         businessName = 'dev-plugin-app'
                         partKey = 'dev-plugin-app'
@@ -141,6 +148,13 @@ shadow {
                 loaderApkConfig = new Tuple2('dev-loader-release.apk', ':dev-loader:assembleRelease')
                 runtimeApkConfig = new Tuple2('dev-runtime-release.apk', ':dev-runtime:assembleRelease')
                 pluginApks {
+                    pluginApk0 {
+                        businessName = 'dev-demo'
+                        partKey = 'dev-plugin-demo' //很关键必须一致
+                        buildTask = ':dev-demo:assemblePluginRelease'
+                        apkPath = 'plugins/fun/dev-demo/build/outputs/apk/plugin/release/dev-demo-plugin-release.apk'
+                        hostWhiteList = ["com.tencent.shadow.sample.host.lib"]
+                    }
                     pluginApk1 {
                         businessName = 'dev-plugin-app'
                         partKey = 'dev-plugin-app'

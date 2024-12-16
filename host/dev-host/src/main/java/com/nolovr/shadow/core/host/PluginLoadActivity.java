@@ -109,7 +109,7 @@ public class PluginLoadActivity extends Activity {
         PluginHelper.getInstance().singlePool.execute(new Runnable() {
             @Override
             public void run() {
-                HostApplication.getApp().loadPluginManager(PluginHelper.getInstance().pluginManagerFile);
+               HostApplication.getApp().loadPluginManager(PluginHelper.getInstance().pluginManagerFile);
 
                 /**
                  * @param context context
