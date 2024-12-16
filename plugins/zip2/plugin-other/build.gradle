@@ -124,7 +124,7 @@ shadow {
                         businessName = 'dev-plugin-xx'
                         partKey = 'dev-plugin-xx'
                         buildTask = ':plugin-other:assemblePluginDebug'
-                        apkPath = 'plugins/fun2/plugin-other/build/outputs/apk/plugin/debug/plugin-other-plugin-debug.apk'
+                        apkPath = 'plugins/zip2/plugin-other/build/outputs/apk/plugin/debug/plugin-other-plugin-debug.apk'
                         hostWhiteList = ["com.tencent.shadow.sample.host.lib"]
 //                        dependsOn = ['dev-base']
                     }
@@ -139,7 +139,7 @@ shadow {
                         businessName = 'dev-plugin-xx'
                         partKey = 'dev-plugin-xx'
                         buildTask = ':plugin-other:assemblePluginRelease'
-                        apkPath = 'plugins/fun2/plugin-other/build/outputs/apk/plugin/debug/plugin-other-plugin-debug.apk'
+                        apkPath = 'plugins/zip2/plugin-other/build/outputs/apk/plugin/debug/plugin-other-plugin-debug.apk'
                         hostWhiteList = ["com.tencent.shadow.sample.host.lib"]
 //                        dependsOn = ['dev-base']
                     }

@@ -32,10 +32,10 @@ def includeDev() {
     project(':dev-runtime').projectDir = file('plugins/dev-runtime')
     project(':pinnedheaderexpandablelistview').projectDir = file('warehouse/third-party/pinnedheaderexpandablelistview')
     project(':slidingmenu').projectDir = file('warehouse/third-party/slidingmenu')
-    project(':dev-base-lib').projectDir = file('plugins/fun/dev-base-lib')
-    project(':dev-base').projectDir = file('plugins/fun/dev-base')
-    project(':dev-app').projectDir = file('plugins/fun/dev-app')
-    project(':dev-demo').projectDir = file('plugins/fun/dev-demo')
+    project(':dev-base-lib').projectDir = file('plugins/zip/dev-base-lib')
+    project(':dev-base').projectDir = file('plugins/zip/dev-base')
+    project(':dev-app').projectDir = file('plugins/zip/dev-app')
+    project(':dev-demo').projectDir = file('plugins/zip/dev-demo')
 }
 
 
@@ -57,7 +57,7 @@ def copyLocalPropertiesForIncludeBuilds() {
     }
 }
 
-//include ':plugins:fun2:plugin-other'
-//includeBuild ':plugins:fun2:plugin-other'
+//include ':plugins:zip2:plugin-other'
+//includeBuild ':plugins:zip2:plugin-other'
 include 'plugin-other'
-project(':plugin-other').projectDir = file('plugins/fun2/plugin-other')
+project(':plugin-other').projectDir = file('plugins/zip2/plugin-other')
