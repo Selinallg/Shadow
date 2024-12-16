@@ -20,6 +20,7 @@ package com.tencent.shadow.sample.manager;
 
 import android.content.Context;
 import android.os.RemoteException;
+import android.util.Log;
 import android.util.Pair;
 
 import com.tencent.shadow.core.common.Logger;
@@ -58,7 +59,9 @@ public abstract class FastPluginManager extends PluginManagerThatUseDynamicLoade
 
 
     public InstalledPlugin installPlugin(String zip, String hash, boolean odex) throws IOException, JSONException, InterruptedException, ExecutionException {
+        mLogger.debug("installPlugin: zip=" + zip + ", hash=" + hash);
         final PluginConfig pluginConfig = installPluginFromZip(new File(zip), hash);
+        mLogger.debug("installPlugin: " + pluginConfig);
         final String uuid = pluginConfig.UUID;
         List<Future> futures = new LinkedList<>();
         List<Future<Pair<String, String>>> extractSoFutures = new LinkedList<>();

@@ -21,6 +21,7 @@ package com.tencent.shadow.sample.plugin.loader;
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
 import android.content.res.Resources;
+import android.util.Log;
 
 import com.tencent.shadow.core.common.InstalledApk;
 import com.tencent.shadow.core.load_parameters.LoadParameters;
@@ -37,7 +38,7 @@ import static android.content.pm.PackageManager.GET_META_DATA;
 
 public class SamplePluginLoader extends ShadowPluginLoader {
 
-    private final static String TAG = "shadow";
+    private final static String TAG = "SamplePluginLoader";
 
     private ComponentManager componentManager;
 
@@ -83,6 +84,7 @@ public class SamplePluginLoader extends ShadowPluginLoader {
 
     @Override
     public String getDelegateProviderKey() {
+        Log.d(TAG, "getDelegateProviderKey: ");
         return "SAMPLE";
     }
 }

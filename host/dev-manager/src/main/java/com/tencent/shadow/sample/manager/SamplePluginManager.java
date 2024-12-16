@@ -62,8 +62,10 @@ public class SamplePluginManager extends FastPluginManager {
      */
     @Override
     protected String getPluginProcessServiceName(String partKey) {
-        if (PART_KEY_PLUGIN_MAIN_APP.equals(partKey)||Constant.PART_KEY_PLUGIN_GS3D.equals(partKey)) {
+        if (PART_KEY_PLUGIN_MAIN_APP.equals(partKey)) {
             return "com.nolovr.shadow.core.host.PluginProcessPPS";
+        }if (Constant.PART_KEY_PLUGIN_GS3D.equals(partKey)) {
+            return "com.nolovr.shadow.core.host.Plugin3ProcessPPS";
         } else if (PART_KEY_PLUGIN_BASE.equals(partKey)) {
             return "com.nolovr.shadow.core.host.PluginProcessPPS";
         } else if (PART_KEY_PLUGIN_ANOTHER_APP.equals(partKey)) {

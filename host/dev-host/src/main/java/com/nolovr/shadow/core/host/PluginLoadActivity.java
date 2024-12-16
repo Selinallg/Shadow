@@ -34,6 +34,8 @@ import com.nolovr.shadow.core.constant.Constant;
  */
 public class PluginLoadActivity extends Activity {
 
+    private static final String TAG = "_PluginLoadActivity";
+
     private ViewGroup mViewGroup;
 
     private Handler mHandler = new Handler();
@@ -43,6 +45,7 @@ public class PluginLoadActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_load);
+        Log.d(TAG, "onCreate: ");
 
         mViewGroup = findViewById(R.id.container);
 
@@ -58,7 +61,7 @@ public class PluginLoadActivity extends Activity {
 
 
     public void startPlugin() {
-
+        Log.d(TAG, "startPlugin: ");
         PluginHelper.getInstance().singlePool.execute(new Runnable() {
             @Override
             public void run() {
@@ -101,6 +104,8 @@ public class PluginLoadActivity extends Activity {
 
 
     public void start_plugin2() {
+
+        Log.d(TAG, "start_plugin2: ");
         PluginHelper.getInstance().singlePool.execute(new Runnable() {
             @Override
             public void run() {
@@ -149,6 +154,7 @@ public class PluginLoadActivity extends Activity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        Log.d(TAG, "onDestroy: ");
         HostApplication.getApp().getPluginManager().enter(this, Constant.FROM_ID_CLOSE, null, null);
         mViewGroup.removeAllViews();
     }
