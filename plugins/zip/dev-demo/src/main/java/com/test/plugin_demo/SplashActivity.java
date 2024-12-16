@@ -25,8 +25,6 @@ import android.os.Handler;
 
 import androidx.annotation.Nullable;
 
-import com.test.plugin_demo.PluginMainActivity;
-import com.test.plugin_demo.R;
 
 public class SplashActivity extends Activity {
 
