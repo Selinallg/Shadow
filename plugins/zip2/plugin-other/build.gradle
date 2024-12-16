@@ -147,6 +147,8 @@ shadow {
             }
         }
 
+        uuid = '1234567890'
+
         loaderApkProjectPath = 'plugins/dev-loader'
         runtimeApkProjectPath = 'plugins/dev-runtime'
 

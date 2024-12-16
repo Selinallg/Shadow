@@ -41,6 +41,7 @@ import java.util.concurrent.Executors;
 
 public class SamplePluginManager extends FastPluginManager {
 
+    private static final String TAG = "SamplePluginManager";
     private ExecutorService executorService = Executors.newSingleThreadExecutor();
 
     private Context mCurrentContext;
@@ -55,7 +56,7 @@ public class SamplePluginManager extends FastPluginManager {
      */
     @Override
     protected String getName() {
-        return "test-dynamic-manager";
+        return "nolo-dynamic-manager";
     }
 
     /**
@@ -111,7 +112,7 @@ public class SamplePluginManager extends FastPluginManager {
         final String pluginZipPath = bundle.getString(Constant.KEY_PLUGIN_ZIP_PATH);
         final String partKey = bundle.getString(Constant.KEY_PLUGIN_PART_KEY);
         final String className = bundle.getString(Constant.KEY_ACTIVITY_CLASSNAME);
-        Log.d("SamplePluginManager", "onStartActivity: pluginZipPath=" + pluginZipPath + ", partKey=" + partKey + ", className=" + className);
+        Log.d(TAG, "onStartActivity: pluginZipPath=" + pluginZipPath + ", partKey=" + partKey + ", className=" + className);
         if (className == null) {
             throw new NullPointerException("className == null");
         }
@@ -127,16 +128,17 @@ public class SamplePluginManager extends FastPluginManager {
             public void run() {
                 try {
 
-//                    List<InstalledPlugin> installedPlugins = getInstalledPlugins(1);
-//                    for (InstalledPlugin plugin :installedPlugins) {
-//                        Log.d("SamplePluginManager", "for run: "+plugin.plugins.size() + " "+ plugin.UUID + " "+ plugin.UUID_NickName);
+                    List<InstalledPlugin> installedPlugins = getInstalledPlugins(100);
+                    Log.i(TAG, "run: size:"+installedPlugins.size());
+                    for (InstalledPlugin plugin :installedPlugins) {
+                        Log.d(TAG, "for run: "+plugin.plugins.size() + " "+ plugin.UUID + " "+ plugin.UUID_NickName);
 //                        boolean ret = deleteInstalledPlugin(plugin.UUID);
-//                        Log.d("SamplePluginManager", "for run: ret="+ret);
-//                    }
+//                        Log.d(TAG, "for run: ret="+ret);
+                    }
 
                     InstalledPlugin installedPlugin = installPlugin(pluginZipPath, null, true);
 
-                    Log.d("SamplePluginManager", "run: "+installedPlugin.plugins.size() + " "+ installedPlugin.UUID + " "+ installedPlugin.UUID_NickName);
+                    Log.d(TAG, "run: "+installedPlugin.plugins.size() + " "+ installedPlugin.UUID + " "+ installedPlugin.UUID_NickName);
 
                     if (!partKey.equals(Constant.PART_KEY_PLUGIN_GS3D)) {
                         loadPlugin(installedPlugin.UUID, PART_KEY_PLUGIN_BASE);
@@ -151,7 +153,7 @@ public class SamplePluginManager extends FastPluginManager {
                     }else {
                         loadPlugin(installedPlugin.UUID, Constant.PART_KEY_PLUGIN_GS3D);
                         callApplicationOnCreate(Constant.PART_KEY_PLUGIN_GS3D);
-                        Log.d("SamplePluginManager", "run: loadPlugin gs3d");
+                        Log.d(TAG, "run: loadPlugin gs3d");
                     }
 
                     Intent pluginIntent = new Intent();
@@ -163,7 +165,7 @@ public class SamplePluginManager extends FastPluginManager {
                         pluginIntent.replaceExtras(extras);
                     }
                     Intent intent = mPluginLoader.convertActivityIntent(pluginIntent);
-                    Log.d("SamplePluginManager", "run: intent="+intent);
+                    Log.d(TAG, "run: intent="+intent);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     mPluginLoader.startActivityInPluginProcess(intent);
                 } catch (Exception e) {

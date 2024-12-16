@@ -16,7 +16,7 @@
  *
  */
 
-package com.test.plugin_other;
+package com.test.plugin_demo;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -24,6 +24,9 @@ import android.os.Bundle;
 import android.os.Handler;
 
 import androidx.annotation.Nullable;
+
+import com.test.plugin_demo.PluginMainActivity;
+import com.test.plugin_demo.R;
 
 public class SplashActivity extends Activity {
 

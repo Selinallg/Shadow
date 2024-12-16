@@ -1,7 +1,9 @@
-package com.test.plugin_other
+package com.test.plugin_demo
 
 import android.app.Activity
 import android.os.Bundle
+
+import com.test.plugin_demo.R
 
 /**
  * SimpleDes:

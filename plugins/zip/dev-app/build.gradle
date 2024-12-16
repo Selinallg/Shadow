@@ -149,7 +149,7 @@ shadow {
                 runtimeApkConfig = new Tuple2('dev-runtime-release.apk', ':dev-runtime:assembleRelease')
                 pluginApks {
                     pluginApk0 {
-                        businessName = 'dev-demo'
+                        businessName = 'dev-demo'//businessName相同的插件，context获取的Dir是相同的。businessName留空，表示和宿主相同业务，直接使用宿主的Dir。
                         partKey = 'dev-plugin-demo' //很关键必须一致
                         buildTask = ':dev-demo:assemblePluginRelease'
                         apkPath = 'plugins/zip/dev-demo/build/outputs/apk/plugin/release/dev-demo-plugin-release.apk'
@@ -181,6 +181,8 @@ shadow {
                 }
             }
         }
+
+        uuid = '1234567890'
 
         loaderApkProjectPath = 'plugins/dev-loader'
         runtimeApkProjectPath = 'plugins/dev-runtime'
