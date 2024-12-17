@@ -11,6 +11,7 @@ import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.nolovr.shadow.core.plugin.IMyAidlInterface;
 
 
 public class ServiceMainActivity extends AppCompatActivity {

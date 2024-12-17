@@ -1,5 +1,5 @@
 // IMyAidlInterface.aidl
-package com.nolovr.shadow.sample.plugin;
+package com.nolovr.shadow.core.plugin;
 
 // Declare any non-default types here with import statements
 

@@ -25,6 +25,8 @@ compactVersion = [1, 2, 3]
 uuidNickName = "1.1.5"
 标识一次插件发布的id，可以使用自定义格式描述版本信息
 
+hostWhiteList 怎么用？
+
 设计理念:
 1.runtime和loader在common里
 2.pluginA.zip和pluginB.zip只有config.json和业务apk

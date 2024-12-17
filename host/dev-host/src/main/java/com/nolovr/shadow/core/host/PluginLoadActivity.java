@@ -29,8 +29,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.nolovr.shadow.core.cb.ServiceBindCallback;
-import com.nolovr.shadow.sample.plugin.IMyAidlInterface;
+import com.nolovr.shadow.core.plugin.IMyAidlInterface;
 import com.tencent.shadow.dynamic.host.EnterCallback;
 import com.nolovr.shadow.core.constant.Constant;
 

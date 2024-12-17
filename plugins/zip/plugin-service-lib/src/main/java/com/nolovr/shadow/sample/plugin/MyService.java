@@ -6,6 +6,8 @@ import android.os.IBinder;
 import android.os.RemoteException;
 import android.util.Log;
 
+import com.nolovr.shadow.core.plugin.IMyAidlInterface;
+
 public class MyService extends Service {
     private static final String TAG = "_MyService";
     public MyService() {

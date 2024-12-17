@@ -21,12 +21,8 @@ package com.nolovr.shadow.core.host;
 import static com.nolovr.shadow.core.constant.Constant.PART_KEY_PLUGIN_BASE;
 
 import android.app.Activity;
-import android.content.ComponentName;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.IBinder;
-import android.os.RemoteException;
-import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -34,10 +30,8 @@ import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import com.nolovr.shadow.core.cb.ServiceBindCallback;
 import com.nolovr.shadow.core.constant.Constant;
 import com.nolovr.shadow.core.host.plugin_view.HostAddPluginViewActivity;
-import com.nolovr.shadow.sample.plugin.IMyAidlInterface;
 
 /**
  * 宿主应用的入口
