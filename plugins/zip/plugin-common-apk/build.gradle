@@ -19,8 +19,6 @@ buildscript {
 apply plugin: 'com.android.application'
 apply plugin: 'com.tencent.shadow.plugin'
 
-
-
 android {
     compileSdkVersion project.COMPILE_SDK_VERSION
 
@@ -60,53 +58,60 @@ android {
 }
 
 dependencies {
-    implementation project(':plugin-common-lib')
+    pluginCompileOnly project(":plugin-common-lib")
+    normalImplementation project(":plugin-common-lib")
     //Shadow Transform后业务代码会有一部分实际引用runtime中的类
     //如果不以compileOnly方式依赖，会导致其他Transform或者Proguard找不到这些类
     pluginCompileOnly 'com.tencent.shadow.core:runtime'
 }
 
+//preBuild.dependsOn(":plugin-common-lib:jarDebugPackage")
 
-//shadow {
-//    packagePlugin {
-//        pluginTypes {
-//            debug {
-//                loaderApkConfig = new Tuple2('sample-loader-debug.apk', ':sample-loader:assembleDebug')
-//                runtimeApkConfig = new Tuple2('sample-runtime-debug.apk', ':sample-runtime:assembleDebug')
-//                pluginApks {
-//                    pluginApk1 {
-//                        businessName = 'sample-common'//businessName相同的插件，context获取的Dir是相同的。businessName留空，表示和宿主相同业务，直接使用宿主的Dir。
-//                        partKey = 'sample-common'
-//                        buildTask = 'assembleDebug'
-//                        apkName = 'plugin-shadow-common-apk-debug.apk'
-//                        apkPath = 'plugin-shadow-common-apk/build/outputs/apk/debug/plugin-shadow-common-apk-debug.apk'
-//                    }
-//                }
-//            }
-//
-//            release {
-//                loaderApkConfig = new Tuple2('sample-loader-release.apk', ':sample-loader:assembleRelease')
-//                runtimeApkConfig = new Tuple2('sample-runtime-release.apk', ':sample-runtime:assembleRelease')
-//                pluginApks {
-//                    pluginApk1 {
-//                        businessName = 'sample-common'
-//                        partKey = 'sample-common'
-//                        buildTask = 'assembleRelease'
-//                        apkName = 'plugin-shadow-common-apk-release.apk'
-//                        apkPath = 'plugin-shadow-common-apk/build/outputs/apk/release/plugin-shadow-common-apk-release.apk'
-//                    }
-//                }
-//            }
-//        }
-//
-//        uuid = '1234567890'
-//        loaderApkProjectPath = 'sample-loader'
-//        runtimeApkProjectPath = 'sample-runtime'
-//
-//        archivePrefix = 'pluginCommon'
-//
-//        version = 4
-//        compactVersion = [1, 2, 3]
-//        uuidNickName = "1.1.5"
-//    }
-//}
+shadow {
+    transform {
+//        useHostContext = ['abc']
+    }
+
+    packagePlugin {
+        pluginTypes {
+            debug {
+                loaderApkConfig = new Tuple2('dev-loader-debug.apk', ':dev-loader:assembleDebug')
+                runtimeApkConfig = new Tuple2('dev-runtime-debug.apk', ':dev-runtime:assembleDebug')
+                pluginApks {
+                    pluginApk1 {
+                        businessName = 'plugin-common'//businessName相同的插件，context获取的Dir是相同的。businessName留空，表示和宿主相同业务，直接使用宿主的Dir。
+                        partKey = 'plugin-common'
+                        buildTask = ':plugin-common-apk:assemblePluginDebug'
+                        apkPath = 'plugins/zip/plugin-common-apk/build/outputs/apk/plugin/debug/plugin-common-apk-plugin-debug.apk'
+                        hostWhiteList = ["com.tencent.shadow.sample.host.lib"]
+                    }
+                }
+            }
+
+            release {
+                loaderApkConfig = new Tuple2('dev-loader-release.apk', ':dev-loader:assembleRelease')
+                runtimeApkConfig = new Tuple2('dev-runtime-release.apk', ':dev-runtime:assembleRelease')
+                pluginApks {
+                    pluginApk1 {
+                        businessName = 'plugin-common'
+                        partKey = 'plugin-common'
+                        buildTask = ':plugin-common-apk:assemblePlugin'
+                        apkPath = 'plugins/zip/plugin-common-apk/build/outputs/apk/plugin/release/plugin-common-apk-plugin-release.apk'
+                    }
+                }
+            }
+        }
+
+        uuid = '1234567890'
+        loaderApkProjectPath = 'plugins/dev-loader'
+        runtimeApkProjectPath = 'plugins/dev-runtime'
+
+        archiveSuffix = System.getenv("PluginSuffix") ?: ""
+        archivePrefix = 'pluginCommon'
+        destinationDir = "${getRootProject().getBuildDir()}"
+
+        version = 4
+        compactVersion = [1, 2, 3]
+        uuidNickName = "1.1.5"
+    }
+}

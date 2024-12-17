@@ -24,16 +24,20 @@ android {
             signingConfig.initWith(buildTypes.debug.signingConfig)
         }
     }
+
+    // 打包进 host 中的 assets
     sourceSets {
         debug {
             assets.srcDir('build/generated/assets/dev-manager/debug/')
             assets.srcDir('build/generated/assets/plugin-zip/debug/')
             assets.srcDir('build/generated/assets/plugin2-zip/debug/')
+            assets.srcDir('build/generated/assets/pluginCommon-zip/debug/')
         }
         release {
             assets.srcDir('build/generated/assets/dev-manager/release/')
             assets.srcDir('build/generated/assets/plugin-zip/release/')
             assets.srcDir('build/generated/assets/plugin2-zip/release/')
+            assets.srcDir('build/generated/assets/pluginCommon-zip/release/')
         }
     }
     lintOptions {
@@ -97,7 +101,7 @@ def generateAssets(generateAssetsTask, buildType) {
             "package${buildType.capitalize()}Plugin"
     )
 
-    // :plugins:fun2:plugin-other
+    // :plugins:zip2:plugin-other
     def plugin2Zip = file("${getRootProject().getBuildDir()}/plugin2-${buildType}.zip")
     println("plugin2Zip:${plugin2Zip}")
     generateAssetsTask.dependsOn createCopyTask(
@@ -106,6 +110,18 @@ def generateAssets(generateAssetsTask, buildType) {
             'plugin2-zip',
             "plugin2-${buildType}.zip",
             plugin2Zip,
+            "package${buildType.capitalize()}Plugin"
+    )
+
+    // :plugins:zip:plugin-common-apk  必须与： archivePrefix = 'pluginCommon' 一致
+    def pluginCommonZip = file("${getRootProject().getBuildDir()}/pluginCommon-${buildType}.zip")
+//    println("plugin2Zip:${plugin2Zip}")
+    generateAssetsTask.dependsOn createCopyTask(
+            ':plugin-common-apk',
+            buildType,
+            'pluginCommon-zip',
+            "pluginCommon-${buildType}.zip",
+            pluginCommonZip,
             "package${buildType.capitalize()}Plugin"
     )
 }
