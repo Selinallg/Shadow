@@ -23,6 +23,8 @@ def includeDev() {
             'dev-base',
             'dev-demo',
             'plugin-service-lib',// 插件serive demo
+            'plugin-common-lib',// 插件通用库
+            'plugin-common-apk',// 插件通用库插件包
             'dev-app'
     project(':dev-constant').projectDir = file('host/dev-constant')
     project(':dev-host').projectDir = file('host/dev-host')
@@ -38,6 +40,8 @@ def includeDev() {
     project(':dev-app').projectDir = file('plugins/zip/dev-app')
     project(':dev-demo').projectDir = file('plugins/zip/dev-demo')
     project(':plugin-service-lib').projectDir = file('plugins/zip/plugin-service-lib')
+    project(':plugin-common-lib').projectDir = file('plugins/zip/plugin-common-lib')
+    project(':plugin-common-apk').projectDir = file('plugins/zip/plugin-common-apk')
 }
 
 
