@@ -53,6 +53,7 @@ dependencies {
     implementation 'com.tencent.shadow.core:common'
     implementation 'com.tencent.shadow.dynamic:dynamic-host'
     implementation project(':dev-constant')
+    implementation project(':dev-interface')
     implementation project(':dev-host-lib')
 }
 

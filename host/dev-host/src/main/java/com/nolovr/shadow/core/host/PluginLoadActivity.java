@@ -19,13 +19,18 @@
 package com.nolovr.shadow.core.host;
 
 import android.app.Activity;
+import android.content.ComponentName;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.IBinder;
+import android.os.RemoteException;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.nolovr.shadow.core.cb.ServiceBindCallback;
+import com.nolovr.shadow.sample.plugin.IMyAidlInterface;
 import com.tencent.shadow.dynamic.host.EnterCallback;
 import com.nolovr.shadow.core.constant.Constant;
 
@@ -39,6 +44,26 @@ public class PluginLoadActivity extends Activity {
     private ViewGroup mViewGroup;
 
     private Handler mHandler = new Handler();
+
+    ServiceBindCallback.Callback mCallback = new ServiceBindCallback.Callback() {
+        @Override
+        public void onServiceConnected(ComponentName name, IBinder service) {
+            Log.d(TAG, "onBindSuccess: ");
+            IMyAidlInterface iMyAidlInterface = IMyAidlInterface.Stub.asInterface(service);
+            try {
+                String s = iMyAidlInterface.basicTypes(1, 2, true, 4.0f, 5.0, "6");
+                Log.i("SamplePluginManager", "iMyAidlInterface.basicTypes : " + s);
+            } catch (RemoteException e) {
+                throw new RuntimeException(e);
+            }
+
+        }
+
+        @Override
+        public void onServiceDisconnected(ComponentName name) {
+            Log.d(TAG, "onBindFailed: ");
+        }
+    };
 
 
     @Override
@@ -54,6 +79,7 @@ public class PluginLoadActivity extends Activity {
         if (Constant.PART_KEY_PLUGIN_GS3D.equals(partKey)) {
             start_plugin2();
         } else if (Constant.PART_KEY_PLUGIN_SERVICE.equals(partKey)) {
+            ServiceBindCallback.setCallback(mCallback);
             startPlugin(Constant.FROM_ID_START_SERVICE);
         } else {
             startPlugin(Constant.FROM_ID_START_ACTIVITY);
@@ -79,7 +105,7 @@ public class PluginLoadActivity extends Activity {
                 bundle.putString(Constant.KEY_COMPONENT_CLASSNAME, getIntent().getStringExtra(Constant.KEY_COMPONENT_CLASSNAME));
 
                 HostApplication.getApp().getPluginManager()
-                        .enter(PluginLoadActivity.this,fromid, bundle, new EnterCallback() {
+                        .enter(PluginLoadActivity.this, fromid, bundle, new EnterCallback() {
                             @Override
                             public void onShowLoadingView(final View view) {
                                 Log.d("PluginLoad", "onShowLoadingView: ");

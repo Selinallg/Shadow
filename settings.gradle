@@ -12,6 +12,7 @@ includeDev()
 
 def includeDev() {
     include 'dev-constant',
+            'dev-interface',
             'dev-host',
             'dev-host-lib',
             'dev-manager',
@@ -27,6 +28,7 @@ def includeDev() {
             'plugin-common-apk',// 插件通用库插件包
             'dev-app'
     project(':dev-constant').projectDir = file('host/dev-constant')
+    project(':dev-interface').projectDir = file('host/dev-interface')
     project(':dev-host').projectDir = file('host/dev-host')
     project(':dev-host-lib').projectDir = file('host/dev-host-lib')
     project(':dev-manager').projectDir = file('host/dev-manager')
