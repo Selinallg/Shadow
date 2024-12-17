@@ -22,6 +22,7 @@ def includeDev() {
             'dev-base-lib',
             'dev-base',
             'dev-demo',
+            'plugin-service-lib',// 插件serive demo
             'dev-app'
     project(':dev-constant').projectDir = file('host/dev-constant')
     project(':dev-host').projectDir = file('host/dev-host')
@@ -36,6 +37,7 @@ def includeDev() {
     project(':dev-base').projectDir = file('plugins/zip/dev-base')
     project(':dev-app').projectDir = file('plugins/zip/dev-app')
     project(':dev-demo').projectDir = file('plugins/zip/dev-demo')
+    project(':plugin-service-lib').projectDir = file('plugins/zip/plugin-service-lib')
 }
 
 
