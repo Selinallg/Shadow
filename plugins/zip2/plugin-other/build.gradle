@@ -117,8 +117,8 @@ shadow {
     packagePlugin {
         pluginTypes {
             debug {
-                loaderApkConfig = new Tuple2('dev-loader-debug.apk', ':dev-loader:assembleDebug')
-                runtimeApkConfig = new Tuple2('dev-runtime-debug.apk', ':dev-runtime:assembleDebug')
+//                loaderApkConfig = new Tuple2('dev-loader-debug.apk', ':dev-loader:assembleDebug')
+//                runtimeApkConfig = new Tuple2('dev-runtime-debug.apk', ':dev-runtime:assembleDebug')
                 pluginApks {
                     pluginApk1 {
                         businessName = 'dev-plugin-xx'
@@ -149,8 +149,8 @@ shadow {
 
         uuid = '1234567890'
 
-        loaderApkProjectPath = 'plugins/dev-loader'
-        runtimeApkProjectPath = 'plugins/dev-runtime'
+//        loaderApkProjectPath = 'plugins/dev-loader'
+//        runtimeApkProjectPath = 'plugins/dev-runtime'
 
         archiveSuffix = System.getenv("PluginSuffix") ?: ""
         archivePrefix = 'plugin2'
