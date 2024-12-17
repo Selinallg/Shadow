@@ -19,18 +19,24 @@
 package com.nolovr.shadow.core.constant;
 
 final public class Constant {
+    public static final String KEY_COMMON_ZIP_PATH = "commonZipPath";
     public static final String KEY_PLUGIN_ZIP_PATH = "pluginZipPath";
     public static final String KEY_ACTIVITY_CLASSNAME = "KEY_ACTIVITY_CLASSNAME";
     public static final String KEY_EXTRAS = "KEY_EXTRAS";
     public static final String KEY_PLUGIN_PART_KEY = "KEY_PLUGIN_PART_KEY";
+
+
+    // partKey
     public static final String PART_KEY_PLUGIN_MAIN_APP = "dev-plugin-app";
     public static final String PART_KEY_PLUGIN_ANOTHER_APP = "dev-plugin-app2";
     public static final String PART_KEY_PLUGIN_GS3D = "dev-plugin-xx"; // 与 zip压缩包json 文件里的配置一定要对应上
     public static final String PART_KEY_PLUGIN_DEMO = "dev-plugin-demo"; // demo 用，一条龙添加
     public static final String PART_KEY_PLUGIN_BASE = "dev-base";
+    public static final String PART_KEY_PLUGIN_COMMON = "plugin-common";
 
     public static final int FROM_ID_NOOP = 1000;
-    public static final int FROM_ID_START_ACTIVITY = 1002;
+    public static final int FROM_ID_START_ACTIVITY = 1001;
+    public static final int FROM_ID_START_SERVICE = 1002;
     public static final int FROM_ID_CLOSE = 1003;
     public static final int FROM_ID_LOAD_VIEW_TO_HOST = 1004;
 }

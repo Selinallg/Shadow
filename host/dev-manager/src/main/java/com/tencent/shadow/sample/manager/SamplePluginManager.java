@@ -36,12 +36,18 @@ import android.view.View;
 import com.tencent.shadow.core.manager.installplugin.InstalledPlugin;
 import com.tencent.shadow.dynamic.host.EnterCallback;
 import com.nolovr.shadow.core.constant.Constant;
+import com.tencent.shadow.dynamic.host.FailedException;
 import com.tencent.shadow.dynamic.loader.PluginServiceConnection;
 import com.tencent.shadow.sample.plugin.IMyAidlInterface;
 
+import org.json.JSONException;
+
+import java.io.IOException;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.TimeoutException;
 
 
 public class SamplePluginManager extends FastPluginManager {
@@ -69,10 +75,12 @@ public class SamplePluginManager extends FastPluginManager {
      */
     @Override
     protected String getPluginProcessServiceName(String partKey) {
-        if (PART_KEY_PLUGIN_MAIN_APP.equals(partKey)) {
-            return "com.nolovr.shadow.core.host.PluginProcessPPS";
-        }if (Constant.PART_KEY_PLUGIN_GS3D.equals(partKey)||
+        if (PART_KEY_PLUGIN_MAIN_APP.equals(partKey)||
+                Constant.PART_KEY_PLUGIN_COMMON.equals(partKey)||
                 Constant.PART_KEY_PLUGIN_DEMO.equals(partKey)) {
+            return "com.nolovr.shadow.core.host.PluginProcessPPS";
+        }
+        if (Constant.PART_KEY_PLUGIN_GS3D.equals(partKey)) {
             return "com.nolovr.shadow.core.host.Plugin3ProcessPPS";
         } else if (PART_KEY_PLUGIN_BASE.equals(partKey)) {
             return "com.nolovr.shadow.core.host.PluginProcessPPS";
@@ -114,9 +122,12 @@ public class SamplePluginManager extends FastPluginManager {
     }
 
     private void onStartActivity(final Context context, Bundle bundle, final EnterCallback callback) {
+
         final String pluginZipPath = bundle.getString(Constant.KEY_PLUGIN_ZIP_PATH);
         final String partKey = bundle.getString(Constant.KEY_PLUGIN_PART_KEY);
         final String className = bundle.getString(Constant.KEY_ACTIVITY_CLASSNAME);
+        final String commonZipPath = bundle.getString(Constant.KEY_COMMON_ZIP_PATH);
+        Log.i(TAG, "onStartActivity: commonZipPath="+commonZipPath);
         Log.d(TAG, "onStartActivity: pluginZipPath=" + pluginZipPath + ", partKey=" + partKey + ", className=" + className);
         if (className == null) {
             throw new NullPointerException("className == null");
@@ -133,17 +144,21 @@ public class SamplePluginManager extends FastPluginManager {
             public void run() {
                 try {
 
+
+
                     List<InstalledPlugin> installedPlugins = getInstalledPlugins(100);
-                    Log.i(TAG, "run: size:"+installedPlugins.size());
-                    for (InstalledPlugin plugin :installedPlugins) {
-                        Log.d(TAG, "for run: "+plugin.plugins.size() + " "+ plugin.UUID + " "+ plugin.UUID_NickName);
+                    Log.i(TAG, "run: size:" + installedPlugins.size());
+                    for (InstalledPlugin plugin : installedPlugins) {
+                        Log.d(TAG, "for run: " + plugin.plugins.size() + " " + plugin.UUID + " " + plugin.UUID_NickName);
 //                        boolean ret = deleteInstalledPlugin(plugin.UUID);
 //                        Log.d(TAG, "for run: ret="+ret);
                     }
 
+                    installCommon(commonZipPath);
+
                     InstalledPlugin installedPlugin = installPlugin(pluginZipPath, null, true);
 
-                    Log.d(TAG, "run: "+installedPlugin.plugins.size() + " "+ installedPlugin.UUID + " "+ installedPlugin.UUID_NickName);
+                    Log.d(TAG, "run: " + installedPlugin.plugins.size() + " " + installedPlugin.UUID + " " + installedPlugin.UUID_NickName);
 
                     if (!partKey.equals(Constant.PART_KEY_PLUGIN_GS3D)) {
                         loadPlugin(installedPlugin.UUID, PART_KEY_PLUGIN_BASE);
@@ -155,7 +170,7 @@ public class SamplePluginManager extends FastPluginManager {
                         loadPlugin(installedPlugin.UUID, Constant.PART_KEY_PLUGIN_DEMO);
                         callApplicationOnCreate(Constant.PART_KEY_PLUGIN_DEMO);
 
-                    }else {
+                    } else {
                         loadPlugin(installedPlugin.UUID, Constant.PART_KEY_PLUGIN_GS3D);
                         callApplicationOnCreate(Constant.PART_KEY_PLUGIN_GS3D);
                         Log.d(TAG, "run: loadPlugin gs3d");
@@ -170,7 +185,7 @@ public class SamplePluginManager extends FastPluginManager {
                         pluginIntent.replaceExtras(extras);
                     }
                     Intent intent = mPluginLoader.convertActivityIntent(pluginIntent);
-                    Log.d(TAG, "run: intent="+intent);
+                    Log.d(TAG, "run: intent=" + intent);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     mPluginLoader.startActivityInPluginProcess(intent);
                 } catch (Exception e) {
@@ -182,7 +197,6 @@ public class SamplePluginManager extends FastPluginManager {
             }
         });
     }
-
 
 
     private void callPluginService(final Context context, Bundle bundle, final EnterCallback callback) {
@@ -235,5 +249,13 @@ public class SamplePluginManager extends FastPluginManager {
                 }
             }
         });
+    }
+
+
+
+    // 加载通用模块
+    private void installCommon(String commonZipPath) throws JSONException, IOException, ExecutionException, InterruptedException, FailedException, RemoteException, TimeoutException {
+        InstalledPlugin installedPlugin = installPlugin(commonZipPath, null, true);//这个调用是阻塞的
+        loadPlugin(installedPlugin.UUID, Constant.PART_KEY_PLUGIN_COMMON);
     }
 }

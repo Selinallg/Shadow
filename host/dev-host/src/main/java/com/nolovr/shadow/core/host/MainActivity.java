@@ -86,11 +86,11 @@ public class MainActivity extends Activity {
 
                 switch (partKey) {
                     case Constant.PART_KEY_PLUGIN_DEMO:{
-                        intent.putExtra(Constant.KEY_ACTIVITY_CLASSNAME, "com.test.plugin_other.SplashActivity");
+                        intent.putExtra(Constant.KEY_ACTIVITY_CLASSNAME, "com.test.plugin_demo.SplashActivity");
                         break;
                     }
                     case Constant.PART_KEY_PLUGIN_GS3D:{
-                        intent.putExtra(Constant.KEY_ACTIVITY_CLASSNAME, "com.test.plugin_demo.SplashActivity");
+                        intent.putExtra(Constant.KEY_ACTIVITY_CLASSNAME, "com.test.plugin_other.SplashActivity");
                         break;
                     }
                     //为了演示多进程多插件，其实两个插件内容完全一样，除了所在进程

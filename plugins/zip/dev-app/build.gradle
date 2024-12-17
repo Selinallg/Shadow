@@ -117,6 +117,7 @@ shadow {
                         buildTask = ':dev-demo:assemblePluginDebug'
                         apkPath = 'plugins/zip/dev-demo/build/outputs/apk/plugin/debug/dev-demo-plugin-debug.apk'
                         hostWhiteList = ["com.tencent.shadow.sample.host.lib"]
+                        dependsOn = ['plugin-common']
                     }
                     pluginApk1 {
                         businessName = 'dev-plugin-app'
@@ -124,7 +125,7 @@ shadow {
                         buildTask = ':dev-app:assemblePluginDebug'
                         apkPath = 'plugins/zip/dev-app/build/outputs/apk/plugin/debug/dev-app-plugin-debug.apk'
                         hostWhiteList = ["com.tencent.shadow.sample.host.lib"]
-                        dependsOn = ['dev-base']
+                        dependsOn = ['dev-base','plugin-common']
                     }
                     pluginApk2 {
                         businessName = 'dev-plugin-app2'
@@ -132,7 +133,7 @@ shadow {
                         buildTask = ':dev-app:assemblePluginDebug'
                         apkPath = 'plugins/zip/dev-app/build/outputs/apk/plugin/debug/dev-app-plugin-debug2.apk'
                         hostWhiteList = ["com.tencent.shadow.sample.host.lib"]
-                        dependsOn = ['dev-base']
+                        dependsOn = ['dev-base','plugin-common']
                     }
                     sampleBase {
                         businessName = 'dev-plugin-app'
@@ -140,6 +141,7 @@ shadow {
                         buildTask = ':dev-base:assemblePluginDebug'
                         apkPath = 'plugins/zip/dev-base/build/outputs/apk/plugin/debug/dev-base-plugin-debug.apk'
                         hostWhiteList = ["com.tencent.shadow.sample.host.lib"]
+                        dependsOn = ['plugin-common']
                     }
                 }
             }
