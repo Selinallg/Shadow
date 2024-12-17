@@ -33,3 +33,7 @@ https://github.com/listen2code/Shadow
 参考的是maven的Sample来做
 提供参考，runtime和loader在common里，pluginA.zip和pluginB.zip只有config.json和业务apk，满足你的需求
 
+
+//            Logger mLogger = LoggerFactory.getLogger(DynamicPluginManager.class);
+//            AndroidLogLoggerFactory.getInstance().getLogger("xx").debug("xx");
+
