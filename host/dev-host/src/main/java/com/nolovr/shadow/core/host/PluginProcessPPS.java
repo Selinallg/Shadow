@@ -26,17 +26,18 @@ import com.tencent.shadow.sample.host.lib.LoadPluginCallback;
 import com.tencent.shadow.dynamic.host.PluginProcessService;
 
 public class PluginProcessPPS extends PluginProcessService {
+    private static final String TAG = "PluginProcessPPS";
     public PluginProcessPPS() {
         LoadPluginCallback.setCallback(new LoadPluginCallback.Callback() {
 
             @Override
             public void beforeLoadPlugin(String partKey) {
-                Log.d("PluginProcessPPS", "beforeLoadPlugin(" + partKey + ")");
+                Log.d(TAG, "beforeLoadPlugin(" + partKey + ")");
             }
 
             @Override
             public void afterLoadPlugin(String partKey, ApplicationInfo applicationInfo, ClassLoader pluginClassLoader, Resources pluginResources) {
-                Log.d("PluginProcessPPS", "afterLoadPlugin(" + partKey + "," + applicationInfo.className + "{metaData=" + applicationInfo.metaData + "}" + "," + pluginClassLoader + ")");
+                Log.d(TAG, "afterLoadPlugin(" + partKey + "," + applicationInfo.className + "{metaData=" + applicationInfo.metaData + "}" + "," + pluginClassLoader + ")");
             }
         });
     }

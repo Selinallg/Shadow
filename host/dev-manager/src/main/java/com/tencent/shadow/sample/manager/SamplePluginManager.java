@@ -33,6 +33,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 
+import com.tencent.shadow.core.common.Logger;
+import com.tencent.shadow.core.common.LoggerFactory;
 import com.tencent.shadow.core.manager.installplugin.InstalledPlugin;
 import com.tencent.shadow.dynamic.host.EnterCallback;
 import com.nolovr.shadow.core.constant.Constant;
@@ -51,6 +53,8 @@ import java.util.concurrent.TimeoutException;
 
 
 public class SamplePluginManager extends FastPluginManager {
+
+    Logger mLogger = LoggerFactory.getLogger(SamplePluginManager.class);
 
     private static final String TAG = "SamplePluginManager";
     private ExecutorService executorService = Executors.newSingleThreadExecutor();
@@ -75,6 +79,7 @@ public class SamplePluginManager extends FastPluginManager {
      */
     @Override
     protected String getPluginProcessServiceName(String partKey) {
+        mLogger.info("getPluginProcessServiceName partKey=" + partKey + "");
         if (PART_KEY_PLUGIN_MAIN_APP.equals(partKey)||
                 Constant.PART_KEY_PLUGIN_COMMON.equals(partKey)||
                 Constant.PART_KEY_PLUGIN_DEMO.equals(partKey)) {

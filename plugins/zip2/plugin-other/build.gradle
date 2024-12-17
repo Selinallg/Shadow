@@ -126,14 +126,14 @@ shadow {
                         buildTask = ':plugin-other:assemblePluginDebug'
                         apkPath = 'plugins/zip2/plugin-other/build/outputs/apk/plugin/debug/plugin-other-plugin-debug.apk'
                         hostWhiteList = ["com.tencent.shadow.sample.host.lib"]
-//                        dependsOn = ['dev-base']
+                        dependsOn = ['plugin-common']
                     }
                 }
             }
 
             release {
-                loaderApkConfig = new Tuple2('dev-loader-release.apk', ':dev-loader:assembleRelease')
-                runtimeApkConfig = new Tuple2('dev-runtime-release.apk', ':dev-runtime:assembleRelease')
+//                loaderApkConfig = new Tuple2('dev-loader-release.apk', ':dev-loader:assembleRelease')
+//                runtimeApkConfig = new Tuple2('dev-runtime-release.apk', ':dev-runtime:assembleRelease')
                 pluginApks {
                     pluginApk1 {
                         businessName = 'dev-plugin-xx'
@@ -141,7 +141,7 @@ shadow {
                         buildTask = ':plugin-other:assemblePluginRelease'
                         apkPath = 'plugins/zip2/plugin-other/build/outputs/apk/plugin/debug/plugin-other-plugin-debug.apk'
                         hostWhiteList = ["com.tencent.shadow.sample.host.lib"]
-//                        dependsOn = ['dev-base']
+                        dependsOn = ['plugin-common']
                     }
                 }
             }
