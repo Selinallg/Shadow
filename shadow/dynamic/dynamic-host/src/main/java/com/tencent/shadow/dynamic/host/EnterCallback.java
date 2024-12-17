@@ -19,6 +19,8 @@
 package com.tencent.shadow.dynamic.host;
 
 import android.view.View;
+import android.content.ComponentName;
+import android.os.IBinder;
 
 public interface EnterCallback {
 
@@ -27,4 +29,8 @@ public interface EnterCallback {
     void onCloseLoadingView();
 
     void onEnterComplete();
+
+    void onServiceConnected(ComponentName name, IBinder service);
+
+    void onServiceDisconnected(ComponentName name);
 }

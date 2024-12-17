@@ -1,8 +1,10 @@
 package com.nolovr.shadow.core.host.plugin_view;
 
 import android.content.BroadcastReceiver;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.os.IBinder;
 import android.util.Log;
 import android.view.View;
 
@@ -30,6 +32,16 @@ public class MainProcessManagerReceiver extends BroadcastReceiver {
                     @Override
                     public void onEnterComplete() {
                         Log.d(TAG, "onEnterComplete: ");
+                    }
+
+                    @Override
+                    public void onServiceConnected(ComponentName name, IBinder service) {
+
+                    }
+
+                    @Override
+                    public void onServiceDisconnected(ComponentName name) {
+
                     }
                 });
     }

@@ -45,33 +45,12 @@ public class PluginLoadActivity extends Activity {
 
     private Handler mHandler = new Handler();
 
-    ServiceBindCallback.Callback mCallback = new ServiceBindCallback.Callback() {
-        @Override
-        public void onServiceConnected(ComponentName name, IBinder service) {
-            Log.d(TAG, "onBindSuccess: ");
-            IMyAidlInterface iMyAidlInterface = IMyAidlInterface.Stub.asInterface(service);
-            try {
-                String s = iMyAidlInterface.basicTypes(1, 2, true, 4.0f, 5.0, "6");
-                Log.i("SamplePluginManager", "iMyAidlInterface.basicTypes : " + s);
-            } catch (RemoteException e) {
-                throw new RuntimeException(e);
-            }
-
-        }
-
-        @Override
-        public void onServiceDisconnected(ComponentName name) {
-            Log.d(TAG, "onBindFailed: ");
-        }
-    };
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_load);
         Log.d(TAG, "onCreate: ");
-
         mViewGroup = findViewById(R.id.container);
 
         Intent intent = getIntent();
@@ -79,7 +58,7 @@ public class PluginLoadActivity extends Activity {
         if (Constant.PART_KEY_PLUGIN_GS3D.equals(partKey)) {
             start_plugin2();
         } else if (Constant.PART_KEY_PLUGIN_SERVICE.equals(partKey)) {
-            ServiceBindCallback.setCallback(mCallback);
+
             startPlugin(Constant.FROM_ID_START_SERVICE);
         } else {
             startPlugin(Constant.FROM_ID_START_ACTIVITY);
@@ -127,6 +106,24 @@ public class PluginLoadActivity extends Activity {
                             public void onEnterComplete() {
                                 Log.d("PluginLoad", "onEnterComplete: ");
 
+                            }
+
+                            @Override
+                            public void onServiceDisconnected(ComponentName name) {
+
+                                Log.i(TAG, "onServiceDisconnected: ");
+
+                            }
+
+                            @Override
+                            public void onServiceConnected(ComponentName name, IBinder service) {
+                                IMyAidlInterface iMyAidlInterface = IMyAidlInterface.Stub.asInterface(service);
+                                try {
+                                    String s = iMyAidlInterface.basicTypes(1, 2, true, 4.0f, 5.0, "6");
+                                    Log.i(TAG, "iMyAidlInterface.basicTypes : " + s);
+                                } catch (RemoteException e) {
+                                    throw new RuntimeException(e);
+                                }
                             }
                         });
             }
@@ -177,6 +174,16 @@ public class PluginLoadActivity extends Activity {
                     public void onEnterComplete() {
                         // 启动成功
                         Log.e("PluginLoad", "onEnterComplete");
+                    }
+
+                    @Override
+                    public void onServiceDisconnected(ComponentName name) {
+
+                    }
+
+                    @Override
+                    public void onServiceConnected(ComponentName name, IBinder service) {
+
                     }
                 });
             }

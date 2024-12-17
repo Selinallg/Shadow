@@ -34,7 +34,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 
 import com.nolovr.shadow.core.cb.ServiceBindCallback;
-import com.nolovr.shadow.sample.plugin.IMyAidlInterface;
 import com.tencent.shadow.core.common.Logger;
 import com.tencent.shadow.core.common.LoggerFactory;
 import com.tencent.shadow.core.manager.installplugin.InstalledPlugin;
@@ -106,7 +105,7 @@ public class SamplePluginManager extends FastPluginManager {
         } else if (fromId == Constant.FROM_ID_START_ACTIVITY) {
             onStartActivity(context, bundle, callback);
         } else if (fromId == Constant.FROM_ID_START_SERVICE) {
-            callPluginService(context, bundle);
+            callPluginService(context, bundle, callback);
         } else if (fromId == Constant.FROM_ID_CLOSE) {
             close();
         } else if (fromId == Constant.FROM_ID_LOAD_VIEW_TO_HOST) {
@@ -207,7 +206,7 @@ public class SamplePluginManager extends FastPluginManager {
     }
 
 
-    private void callPluginService(final Context context, Bundle bundle) {
+    private void callPluginService(final Context context, Bundle bundle,final EnterCallback callback) {
 //        final String pluginZipPath = "/data/local/tmp/plugin-debug.zip";
 //        final String partKey = "sample-plugin";
 //        final String className = "com.tencent.shadow.sample.plugin.MyService";
@@ -242,14 +241,16 @@ public class SamplePluginManager extends FastPluginManager {
                     boolean callSuccess = mPluginLoader.bindPluginService(pluginIntent, new PluginServiceConnection() {
                         @Override
                         public void onServiceConnected(ComponentName componentName, IBinder iBinder) {
+                            Log.d(TAG, "onServiceConnected: ");
                             //  回调到业务层，解耦
-                            //ServiceBindCallback.getCallback().onServiceConnected(componentName, iBinder);
+                            callback.onServiceConnected(componentName, iBinder);
 
                         }
 
                         @Override
                         public void onServiceDisconnected(ComponentName componentName) {
-                            //ServiceBindCallback.getCallback().onServiceDisconnected(componentName);
+                            Log.d(TAG, "onServiceDisconnected: ");
+                            callback.onServiceDisconnected(componentName);
                             throw new RuntimeException("onServiceDisconnected");
                         }
                     }, Service.BIND_AUTO_CREATE);
