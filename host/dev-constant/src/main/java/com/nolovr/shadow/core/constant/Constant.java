@@ -21,7 +21,8 @@ package com.nolovr.shadow.core.constant;
 final public class Constant {
     public static final String KEY_COMMON_ZIP_PATH = "commonZipPath";
     public static final String KEY_PLUGIN_ZIP_PATH = "pluginZipPath";
-    public static final String KEY_ACTIVITY_CLASSNAME = "KEY_ACTIVITY_CLASSNAME";
+    public static final String KEY_COMPONENT_CLASSNAME = "KEY_COMPONENT_CLASSNAME";
+//    public static final String KEY_SERVICE_CLASSNAME = "KEY_SERVICE_CLASSNAME";
     public static final String KEY_EXTRAS = "KEY_EXTRAS";
     public static final String KEY_PLUGIN_PART_KEY = "KEY_PLUGIN_PART_KEY";
 
@@ -33,6 +34,7 @@ final public class Constant {
     public static final String PART_KEY_PLUGIN_DEMO = "dev-plugin-demo"; // demo 用，一条龙添加
     public static final String PART_KEY_PLUGIN_BASE = "dev-base";
     public static final String PART_KEY_PLUGIN_COMMON = "plugin-common";
+    public static final String PART_KEY_PLUGIN_SERVICE = "plugin-service-lib";
 
     public static final int FROM_ID_NOOP = 1000;
     public static final int FROM_ID_START_ACTIVITY = 1001;

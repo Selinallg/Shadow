@@ -40,7 +40,7 @@
             android:process=":plugin2" />
          <service
             android:name="com.nolovr.shadow.core.host.Plugin3ProcessPPS"
-            android:process=":plugin" />
+            android:process=":plugin3" />
 
         <!--   启动插件     -->
         <activity

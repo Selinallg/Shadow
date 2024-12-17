@@ -11,7 +11,6 @@ import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.tencent.shadow.sample.plugin.R;
 
 
 public class ServiceMainActivity extends AppCompatActivity {

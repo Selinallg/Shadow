@@ -33,6 +33,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 
+import com.nolovr.shadow.sample.plugin.IMyAidlInterface;
 import com.tencent.shadow.core.common.Logger;
 import com.tencent.shadow.core.common.LoggerFactory;
 import com.tencent.shadow.core.manager.installplugin.InstalledPlugin;
@@ -40,7 +41,6 @@ import com.tencent.shadow.dynamic.host.EnterCallback;
 import com.nolovr.shadow.core.constant.Constant;
 import com.tencent.shadow.dynamic.host.FailedException;
 import com.tencent.shadow.dynamic.loader.PluginServiceConnection;
-import com.tencent.shadow.sample.plugin.IMyAidlInterface;
 
 import org.json.JSONException;
 
@@ -82,6 +82,7 @@ public class SamplePluginManager extends FastPluginManager {
         mLogger.info("getPluginProcessServiceName partKey=" + partKey + "");
         if (PART_KEY_PLUGIN_MAIN_APP.equals(partKey)||
                 Constant.PART_KEY_PLUGIN_COMMON.equals(partKey)||
+                Constant.PART_KEY_PLUGIN_SERVICE.equals(partKey)||
                 Constant.PART_KEY_PLUGIN_DEMO.equals(partKey)) {
             return "com.nolovr.shadow.core.host.PluginProcessPPS";
         }
@@ -103,6 +104,8 @@ public class SamplePluginManager extends FastPluginManager {
             //do nothing.
         } else if (fromId == Constant.FROM_ID_START_ACTIVITY) {
             onStartActivity(context, bundle, callback);
+        } else if (fromId == Constant.FROM_ID_START_SERVICE) {
+            callPluginService(context, bundle, callback);
         } else if (fromId == Constant.FROM_ID_CLOSE) {
             close();
         } else if (fromId == Constant.FROM_ID_LOAD_VIEW_TO_HOST) {
@@ -130,7 +133,7 @@ public class SamplePluginManager extends FastPluginManager {
 
         final String pluginZipPath = bundle.getString(Constant.KEY_PLUGIN_ZIP_PATH);
         final String partKey = bundle.getString(Constant.KEY_PLUGIN_PART_KEY);
-        final String className = bundle.getString(Constant.KEY_ACTIVITY_CLASSNAME);
+        final String className = bundle.getString(Constant.KEY_COMPONENT_CLASSNAME);
         final String commonZipPath = bundle.getString(Constant.KEY_COMMON_ZIP_PATH);
         Log.i(TAG, "onStartActivity: commonZipPath="+commonZipPath);
         Log.d(TAG, "onStartActivity: pluginZipPath=" + pluginZipPath + ", partKey=" + partKey + ", className=" + className);
@@ -211,15 +214,25 @@ public class SamplePluginManager extends FastPluginManager {
 
         final String pluginZipPath = bundle.getString(Constant.KEY_PLUGIN_ZIP_PATH);
         final String partKey = bundle.getString(Constant.KEY_PLUGIN_PART_KEY);
-        final String className = bundle.getString(Constant.KEY_ACTIVITY_CLASSNAME);
+        final String className = bundle.getString(Constant.KEY_COMPONENT_CLASSNAME);
+        final String commonZipPath = bundle.getString(Constant.KEY_COMMON_ZIP_PATH);
+        Log.i(TAG, "callPluginService: commonZipPath="+commonZipPath);
+        Log.d(TAG, "callPluginService: pluginZipPath=" + pluginZipPath + ", partKey=" + partKey + ", className=" + className);
 
-        Intent pluginIntent = new Intent();
-        pluginIntent.setClassName(context.getPackageName(), className);
+
+//        Intent pluginIntent = new Intent();
+//        pluginIntent.setClassName(context.getPackageName(), className);
 
         executorService.execute(new Runnable() {
             @Override
             public void run() {
                 try {
+
+
+
+                    installCommon(commonZipPath);
+
+
                     InstalledPlugin installedPlugin
                             = installPlugin(pluginZipPath, null, true);//这个调用是阻塞的
 
@@ -228,13 +241,17 @@ public class SamplePluginManager extends FastPluginManager {
                     Intent pluginIntent = new Intent();
                     pluginIntent.setClassName(context.getPackageName(), className);
 
+                    ComponentName componentName = (ComponentName) mPluginLoader.startPluginService(pluginIntent);
+                    Log.i(TAG, "run: startPluginService componentName=" + componentName);
+
                     boolean callSuccess = mPluginLoader.bindPluginService(pluginIntent, new PluginServiceConnection() {
                         @Override
                         public void onServiceConnected(ComponentName componentName, IBinder iBinder) {
+                            // TODO: 2024-12-17 回调到业务层，解耦
                             IMyAidlInterface iMyAidlInterface = IMyAidlInterface.Stub.asInterface(iBinder);
                             try {
                                 String s = iMyAidlInterface.basicTypes(1, 2, true, 4.0f, 5.0, "6");
-                                Log.i("SamplePluginManager", "iMyAidlInterface.basicTypes : " + s);
+                                Log.i(TAG, "iMyAidlInterface.basicTypes : " + s);
                             } catch (RemoteException e) {
                                 throw new RuntimeException(e);
                             }
@@ -245,6 +262,8 @@ public class SamplePluginManager extends FastPluginManager {
                             throw new RuntimeException("onServiceDisconnected");
                         }
                     }, Service.BIND_AUTO_CREATE);
+
+                    Log.e(TAG, "run: bindPluginService "+callSuccess);
 
                     if (!callSuccess) {
                         throw new RuntimeException("bind service失败 className==" + className);

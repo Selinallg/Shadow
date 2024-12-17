@@ -23,7 +23,6 @@ import static com.nolovr.shadow.core.constant.Constant.PART_KEY_PLUGIN_BASE;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -33,7 +32,6 @@ import android.widget.TextView;
 
 import com.nolovr.shadow.core.constant.Constant;
 import com.nolovr.shadow.core.host.plugin_view.HostAddPluginViewActivity;
-import com.tencent.shadow.dynamic.host.EnterCallback;
 
 /**
  * 宿主应用的入口
@@ -60,6 +58,7 @@ public class MainActivity extends Activity {
                 Constant.PART_KEY_PLUGIN_MAIN_APP,
                 Constant.PART_KEY_PLUGIN_ANOTHER_APP,
                 Constant.PART_KEY_PLUGIN_DEMO,
+                Constant.PART_KEY_PLUGIN_SERVICE,
                 Constant.PART_KEY_PLUGIN_GS3D
         );
         partKeySpinner.setAdapter(partKeysAdapter);
@@ -79,24 +78,29 @@ public class MainActivity extends Activity {
                         break;
                     case Constant.PART_KEY_PLUGIN_ANOTHER_APP:
                     case Constant.PART_KEY_PLUGIN_DEMO:
+                    case Constant.PART_KEY_PLUGIN_SERVICE:
                     case Constant.PART_KEY_PLUGIN_GS3D:
                         intent.putExtra(Constant.KEY_PLUGIN_PART_KEY, partKey);
                         break;
                 }
 
                 switch (partKey) {
+                    case Constant.PART_KEY_PLUGIN_SERVICE:{
+                        intent.putExtra(Constant.KEY_COMPONENT_CLASSNAME, "com.nolovr.shadow.sample.plugin.MyService");
+                        break;
+                    }
                     case Constant.PART_KEY_PLUGIN_DEMO:{
-                        intent.putExtra(Constant.KEY_ACTIVITY_CLASSNAME, "com.test.plugin_demo.SplashActivity");
+                        intent.putExtra(Constant.KEY_COMPONENT_CLASSNAME, "com.test.plugin_demo.SplashActivity");
                         break;
                     }
                     case Constant.PART_KEY_PLUGIN_GS3D:{
-                        intent.putExtra(Constant.KEY_ACTIVITY_CLASSNAME, "com.test.plugin_other.SplashActivity");
+                        intent.putExtra(Constant.KEY_COMPONENT_CLASSNAME, "com.test.plugin_other.SplashActivity");
                         break;
                     }
                     //为了演示多进程多插件，其实两个插件内容完全一样，除了所在进程
                     case Constant.PART_KEY_PLUGIN_MAIN_APP:
                     case Constant.PART_KEY_PLUGIN_ANOTHER_APP:{
-                        intent.putExtra(Constant.KEY_ACTIVITY_CLASSNAME, "com.nolovr.shadow.core.plugin.app.lib.gallery.splash.SplashActivity");
+                        intent.putExtra(Constant.KEY_COMPONENT_CLASSNAME, "com.nolovr.shadow.core.plugin.app.lib.gallery.splash.SplashActivity");
                         break;
                     }
 

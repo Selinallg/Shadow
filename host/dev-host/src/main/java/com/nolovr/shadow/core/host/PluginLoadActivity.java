@@ -53,14 +53,16 @@ public class PluginLoadActivity extends Activity {
         String partKey = intent.getStringExtra(Constant.KEY_PLUGIN_PART_KEY);
         if (Constant.PART_KEY_PLUGIN_GS3D.equals(partKey)) {
             start_plugin2();
+        } else if (Constant.PART_KEY_PLUGIN_SERVICE.equals(partKey)) {
+            startPlugin(Constant.FROM_ID_START_SERVICE);
         } else {
-            startPlugin();
+            startPlugin(Constant.FROM_ID_START_ACTIVITY);
         }
 
     }
 
 
-    public void startPlugin() {
+    public void startPlugin(int fromid) {
         Log.d(TAG, "startPlugin: ");
         PluginHelper.getInstance().singlePool.execute(new Runnable() {
             @Override
@@ -69,13 +71,15 @@ public class PluginLoadActivity extends Activity {
                 HostApplication.getApp().loadPluginManager(PluginHelper.getInstance().pluginManagerFile);
 
                 Bundle bundle = new Bundle();
+                // 通用的插件包
                 bundle.putString(Constant.KEY_COMMON_ZIP_PATH, PluginHelper.getInstance().pluginCommonZipFile.getAbsolutePath());
+
                 bundle.putString(Constant.KEY_PLUGIN_ZIP_PATH, PluginHelper.getInstance().pluginZipFile.getAbsolutePath());
                 bundle.putString(Constant.KEY_PLUGIN_PART_KEY, getIntent().getStringExtra(Constant.KEY_PLUGIN_PART_KEY));
-                bundle.putString(Constant.KEY_ACTIVITY_CLASSNAME, getIntent().getStringExtra(Constant.KEY_ACTIVITY_CLASSNAME));
+                bundle.putString(Constant.KEY_COMPONENT_CLASSNAME, getIntent().getStringExtra(Constant.KEY_COMPONENT_CLASSNAME));
 
                 HostApplication.getApp().getPluginManager()
-                        .enter(PluginLoadActivity.this, Constant.FROM_ID_START_ACTIVITY, bundle, new EnterCallback() {
+                        .enter(PluginLoadActivity.this,fromid, bundle, new EnterCallback() {
                             @Override
                             public void onShowLoadingView(final View view) {
                                 Log.d("PluginLoad", "onShowLoadingView: ");
@@ -110,7 +114,7 @@ public class PluginLoadActivity extends Activity {
         PluginHelper.getInstance().singlePool.execute(new Runnable() {
             @Override
             public void run() {
-               HostApplication.getApp().loadPluginManager(PluginHelper.getInstance().pluginManagerFile);
+                HostApplication.getApp().loadPluginManager(PluginHelper.getInstance().pluginManagerFile);
 
                 /**
                  * @param context context
@@ -122,7 +126,7 @@ public class PluginLoadActivity extends Activity {
                 bundle.putString(Constant.KEY_COMMON_ZIP_PATH, PluginHelper.getInstance().pluginCommonZipFile.getAbsolutePath());
                 bundle.putString(Constant.KEY_PLUGIN_ZIP_PATH, PluginHelper.getInstance().plugin2ZipFile.getAbsolutePath());
                 bundle.putString(Constant.KEY_PLUGIN_PART_KEY, Constant.PART_KEY_PLUGIN_GS3D);// partKey 每个插件都有自己的 partKey 用来区分多个插件，如何配置在下面讲到
-                bundle.putString(Constant.KEY_ACTIVITY_CLASSNAME, getIntent().getStringExtra(Constant.KEY_ACTIVITY_CLASSNAME));//要启动的插件的Activity页面
+                bundle.putString(Constant.KEY_COMPONENT_CLASSNAME, getIntent().getStringExtra(Constant.KEY_COMPONENT_CLASSNAME));//要启动的插件的Activity页面
                 bundle.putBundle(Constant.KEY_EXTRAS, new Bundle()); // 要传入到插件里的参数
 
                 HostApplication.getApp().getPluginManager().enter(PluginLoadActivity.this, Constant.FROM_ID_START_ACTIVITY, bundle, new EnterCallback() {
