@@ -18,14 +18,12 @@ def includeDev() {
             'dev-manager',
             'dev-loader',
             'dev-runtime',
-//            'pinnedheaderexpandablelistview',
-//            'slidingmenu',
             'dev-base-lib',
             'dev-base',
             'dev-demo',
-            'plugin-service-lib',// 插件serive demo
-            'plugin-common-lib',// 插件通用库
-            'plugin-common-apk',// 插件通用库插件包
+//            'plugin-service-lib',// 插件serive demo
+            ':plugins:plugin-common-lib',// 插件通用库
+            ':plugins:plugin-common-apk',// 插件通用库插件包
             'dev-app'
     project(':dev-constant').projectDir = file('host/dev-constant')
     project(':dev-interface').projectDir = file('host/dev-interface')
@@ -35,17 +33,19 @@ def includeDev() {
 
     project(':dev-loader').projectDir = file('plugins/dev-loader')
     project(':dev-runtime').projectDir = file('plugins/dev-runtime')
-//    project(':pinnedheaderexpandablelistview').projectDir = file('warehouse/third-party/pinnedheaderexpandablelistview')
-//    project(':slidingmenu').projectDir = file('warehouse/third-party/slidingmenu')
     project(':dev-base-lib').projectDir = file('plugins/zip/dev-base-lib')
     project(':dev-base').projectDir = file('plugins/zip/dev-base')
     project(':dev-app').projectDir = file('plugins/zip/dev-app')
     project(':dev-demo').projectDir = file('plugins/zip/dev-demo')
-    project(':plugin-service-lib').projectDir = file('plugins/zip/plugin-service-lib')
-    project(':plugin-common-lib').projectDir = file('plugins/zip/plugin-common-lib')
-    project(':plugin-common-apk').projectDir = file('plugins/zip/plugin-common-apk')
+//    project(':plugin-service-lib').projectDir = file('plugins/zip/plugin-service-lib')
+    project(':plugins:plugin-common-lib').projectDir = file('plugins/zip/plugin-common-lib')
+    project(':plugins:plugin-common-apk').projectDir = file('plugins/zip/plugin-common-apk')
 }
 
+
+//include ':warehouse:third-party:slidingmenu'
+include ':plugins:plugin-service-lib'
+project(':plugins:plugin-service-lib').projectDir = file('plugins/zip/plugin-service-lib')
 
 /**
  * Android Studio当前不会为IncludeBuild创建包含sdk.dir的local.properties

@@ -58,8 +58,8 @@ android {
 }
 
 dependencies {
-    pluginCompileOnly project(":plugin-common-lib")
-    normalImplementation project(":plugin-common-lib")
+    pluginCompileOnly project(":plugins:plugin-common-lib")
+    normalImplementation project(":plugins:plugin-common-lib")
     //Shadow Transform后业务代码会有一部分实际引用runtime中的类
     //如果不以compileOnly方式依赖，会导致其他Transform或者Proguard找不到这些类
     pluginCompileOnly 'com.tencent.shadow.core:runtime'
@@ -81,7 +81,7 @@ shadow {
                     pluginApk1 {
                         businessName = 'plugin-common'//businessName相同的插件，context获取的Dir是相同的。businessName留空，表示和宿主相同业务，直接使用宿主的Dir。
                         partKey = 'plugin-common'
-                        buildTask = ':plugin-common-apk:assemblePluginDebug'
+                        buildTask = ':plugins:plugin-common-apk:assemblePluginDebug'
                         apkPath = 'plugins/zip/plugin-common-apk/build/outputs/apk/plugin/debug/plugin-common-apk-plugin-debug.apk'
                         hostWhiteList = ["com.tencent.shadow.sample.host.lib"]
                     }
@@ -95,7 +95,7 @@ shadow {
                     pluginApk1 {
                         businessName = 'plugin-common'
                         partKey = 'plugin-common'
-                        buildTask = ':plugin-common-apk:assemblePlugin'
+                        buildTask = ':plugins:plugin-common-apk:assemblePlugin'
                         apkPath = 'plugins/zip/plugin-common-apk/build/outputs/apk/plugin/release/plugin-common-apk-plugin-release.apk'
                     }
                 }

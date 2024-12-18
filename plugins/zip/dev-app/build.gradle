@@ -138,7 +138,7 @@ shadow {
                     pluginApk3 {
                         businessName = 'plugin-service-lib'
                         partKey = 'plugin-service-lib'
-                        buildTask = ':plugin-service-lib:assemblePluginDebug'
+                        buildTask = ':plugins:plugin-service-lib:assemblePluginDebug'
                         apkPath = 'plugins/zip/plugin-service-lib/build/outputs/apk/plugin/debug/plugin-service-lib-plugin-debug.apk'
                         hostWhiteList = ["com.tencent.shadow.sample.host.lib"]
                         dependsOn = ['plugin-common']
@@ -184,7 +184,7 @@ shadow {
                     pluginApk3 {
                         businessName = 'plugin-service-lib'
                         partKey = 'plugin-service-lib'
-                        buildTask = ':plugin-service-lib:assemblePluginRelease'
+                        buildTask = ':plugins:plugin-service-lib:assemblePluginRelease'
                         apkPath = 'plugins/zip/plugin-service-lib/build/outputs/apk/plugin/release/plugin-service-lib-plugin-release.apk'
                         hostWhiteList = ["com.tencent.shadow.sample.host.lib"]
                         dependsOn = ['plugin-common']
