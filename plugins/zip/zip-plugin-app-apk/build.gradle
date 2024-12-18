@@ -80,12 +80,14 @@ def createDuplicateApkTask(buildType) {
         group = 'build'
         description = "复制一个dev-app-plugin-${buildType}.apk用于测试目的"
         from(apkDir) {
-            include("dev-app-plugin-${buildType}.apk")
-            rename { "dev-app-plugin-${buildType}2.apk" }
+            include("zip-plugin-app-apk-plugin-${buildType}.apk")
+            rename { "zip-plugin-app-apk-plugin-${buildType}2.apk" }
+//            include(":plugins:zips:zip-plugin-app-apk-plugin-${buildType}.apk")
+//            rename { ":plugins:zips:zip-plugin-app-apk-plugin-${buildType}2.apk" }
         }
         into(apkDir)
 
-    }.dependsOn(":dev-app:assemblePlugin${buildType.capitalize()}")
+    }.dependsOn(":plugins:zips:zip-plugin-app-apk:assemblePlugin${buildType.capitalize()}")
 }
 
 tasks.whenTaskAdded { task ->
@@ -122,16 +124,16 @@ shadow {
                     pluginApk1 {
                         businessName = 'dev-plugin-app'
                         partKey = 'dev-plugin-app'
-                        buildTask = ':dev-app:assemblePluginDebug'
-                        apkPath = 'plugins/zip/dev-app/build/outputs/apk/plugin/debug/dev-app-plugin-debug.apk'
+                        buildTask = ':plugins:zips:zip-plugin-app-apk:assemblePluginDebug'
+                        apkPath = 'plugins/zip/zip-plugin-app-apk/build/outputs/apk/plugin/debug/zip-plugin-app-apk-plugin-debug.apk'
                         hostWhiteList = ["com.tencent.shadow.sample.host.lib"]
                         dependsOn = ['plugin-base-apk','plugin-common']
                     }
                     pluginApk2 {
                         businessName = 'dev-plugin-app2'
                         partKey = 'dev-plugin-app2'
-                        buildTask = ':dev-app:assemblePluginDebug'
-                        apkPath = 'plugins/zip/dev-app/build/outputs/apk/plugin/debug/dev-app-plugin-debug2.apk'
+                        buildTask = ':plugins:zips:zip-plugin-app-apk:assemblePluginDebug'
+                        apkPath = 'plugins/zip/zip-plugin-app-apk/build/outputs/apk/plugin/debug/zip-plugin-app-apk-plugin-debug2.apk'
                         hostWhiteList = ["com.tencent.shadow.sample.host.lib"]
                         dependsOn = ['plugin-base-apk','plugin-common']
                     }
@@ -168,16 +170,16 @@ shadow {
                     pluginApk1 {
                         businessName = 'dev-plugin-app'
                         partKey = 'dev-plugin-app'
-                        buildTask = ':dev-app:assemblePluginRelease'
-                        apkPath = 'plugins/zip/dev-app/build/outputs/apk/plugin/release/dev-app-plugin-release.apk'
+                        buildTask = ':plugins:zips:zip-plugin-app-apk:assemblePluginRelease'
+                        apkPath = 'plugins/zip/zip-plugin-app-apk/build/outputs/apk/plugin/release/zip-plugin-app-apk-plugin-release.apk'
                         hostWhiteList = ["com.tencent.shadow.sample.host.lib"]
-                        dependsOn = ['plugin-base-apk']
+                        dependsOn = ['plugin-base-apk','plugin-common']
                     }
                     pluginApk2 {
                         businessName = 'dev-plugin-app2'
                         partKey = 'dev-plugin-app2'
-                        buildTask = ':dev-app:assemblePluginRelease'
-                        apkPath = 'plugins/zip/dev-app/build/outputs/apk/plugin/release/dev-app-plugin-release2.apk'
+                        buildTask = ':plugins:zips:zip-plugin-app-apk:assemblePluginRelease'
+                        apkPath = 'plugins/zip/zip-plugin-app-apk/build/outputs/apk/plugin/release/zip-plugin-app-apk-plugin-debug2.apk'
                         hostWhiteList = ["com.tencent.shadow.sample.host.lib"]
                         dependsOn = ['plugin-base-apk']
                     }
