@@ -8,8 +8,8 @@ Androidx 支持
 
 在又一个zip下如何增加一个 plugin.apk      ok
 如何打包一个zip，（内置Loader、runtime）  ok
-如何同时，加载两个 zip  ？
-如何单独加载一个 plugin.apk
+如何同时，加载两个 zip  ok  把loader+runtime 抽取出来，作为一个单独的zip，业务zip 依赖这个 zip
+如何单独加载一个 plugin.apk ok loader+runtime,先加载，再加载 plugin.apk.zip
 如何启动plugin的service
 
 插件与宿主通信

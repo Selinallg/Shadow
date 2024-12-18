@@ -11,6 +11,7 @@ buildscript {
         versions.forEach { key, stringValue ->
             def value = stringValue?.isInteger() ? stringValue as Integer : stringValue
             ext.set(key, value)
+            println( "-------ext.$key = $value")
         }
     }
     repositories {
