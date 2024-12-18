@@ -18,10 +18,9 @@ def includeDev() {
             'dev-manager',
             'dev-loader',
             'dev-runtime',
-            'dev-base-lib',
+            ':plugins:plugin-base-lib',
             'dev-base',
             ':plugins:plugin-demo-apk',
-//            'plugin-service-lib',// 插件serive demo
             ':plugins:plugin-common-lib',// 插件通用库
             ':plugins:plugin-common-apk',// 插件通用库插件包
             'dev-app'
@@ -33,7 +32,7 @@ def includeDev() {
 
     project(':dev-loader').projectDir = file('plugins/dev-loader')
     project(':dev-runtime').projectDir = file('plugins/dev-runtime')
-    project(':dev-base-lib').projectDir = file('plugins/zip/dev-base-lib')
+    project(':plugins:plugin-base-lib').projectDir = file('plugins/zip/plugin-base-lib')
     project(':dev-base').projectDir = file('plugins/zip/dev-base')
     project(':dev-app').projectDir = file('plugins/zip/dev-app')
     project(':plugins:plugin-demo-apk').projectDir = file('plugins/zip/plugin-demo-apk')

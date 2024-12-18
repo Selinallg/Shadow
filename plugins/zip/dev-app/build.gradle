@@ -62,8 +62,8 @@ dependencies {
     pluginCompileOnly project(":dev-host-lib")
     normalImplementation project(":dev-host-lib")
 
-    pluginCompileOnly project(":dev-base-lib")
-    normalImplementation project(":dev-base-lib")
+    pluginCompileOnly project(":plugins:plugin-base-lib")
+    normalImplementation project(":plugins:plugin-base-lib")
 
     //Shadow Transform后业务代码会有一部分实际引用runtime中的类
     //如果不以compileOnly方式依赖，会导致其他Transform或者Proguard找不到这些类
