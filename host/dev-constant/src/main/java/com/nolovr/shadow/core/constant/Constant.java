@@ -34,7 +34,7 @@ final public class Constant {
     public static final String PART_KEY_PLUGIN_DEMO = "dev-plugin-demo"; // demo 用，一条龙添加
     public static final String PART_KEY_PLUGIN_BASE = "dev-base";
     public static final String PART_KEY_PLUGIN_COMMON = "plugin-common";
-    public static final String PART_KEY_PLUGIN_SERVICE = "plugin-service-lib";
+    public static final String PART_KEY_PLUGIN_SERVICE = "plugin-service-apk";
 
     public static final int FROM_ID_NOOP = 1000;
     public static final int FROM_ID_START_ACTIVITY = 1001;

@@ -44,8 +44,8 @@ def includeDev() {
 
 
 //include ':warehouse:third-party:slidingmenu'
-include ':plugins:plugin-service-lib'
-project(':plugins:plugin-service-lib').projectDir = file('plugins/zip/plugin-service-lib')
+include ':plugins:plugin-service-apk'
+project(':plugins:plugin-service-apk').projectDir = file('plugins/zip/plugin-service-apk')
 
 /**
  * Android Studio当前不会为IncludeBuild创建包含sdk.dir的local.properties
