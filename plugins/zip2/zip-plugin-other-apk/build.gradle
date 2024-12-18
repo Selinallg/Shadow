@@ -96,8 +96,8 @@ shadow {
                     pluginApk1 {
                         businessName = 'dev-plugin-xx'
                         partKey = 'dev-plugin-xx'
-                        buildTask = ':plugins:plugin-other-apk:assemblePluginDebug'
-                        apkPath = 'plugins/zip2/plugin-other-apk/build/outputs/apk/plugin/debug/plugin-other-apk-plugin-debug.apk'
+                        buildTask = ':plugins:zips:zip-plugin-other-apk:assemblePluginDebug'
+                        apkPath = 'plugins/zip2/zip-plugin-other-apk/build/outputs/apk/plugin/debug/zip-plugin-other-apk-plugin-debug.apk'
                         hostWhiteList = ["com.tencent.shadow.sample.host.lib"]
                         dependsOn = ['plugin-common']
                     }
@@ -111,8 +111,8 @@ shadow {
                     pluginApk1 {
                         businessName = 'dev-plugin-xx'
                         partKey = 'dev-plugin-xx'
-                        buildTask = ':plugins:plugin-other-apk:assemblePluginRelease'
-                        apkPath = 'plugins/zip2/plugin-other-apk/build/outputs/apk/plugin/debug/plugin-other-apk-plugin-debug.apk'
+                        buildTask = ':plugins:zips:zip-plugin-other-apk:assemblePluginRelease'
+                        apkPath = 'plugins/zip2/zip-plugin-other-apk/build/outputs/apk/plugin/debug/zip-plugin-other-apk-plugin-debug.apk'
                         hostWhiteList = ["com.tencent.shadow.sample.host.lib"]
                         dependsOn = ['plugin-common']
                     }
