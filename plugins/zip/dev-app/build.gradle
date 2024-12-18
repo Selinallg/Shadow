@@ -112,10 +112,10 @@ shadow {
 //                runtimeApkConfig = new Tuple2('dev-runtime-debug.apk', ':dev-runtime:assembleDebug')
                 pluginApks {
                     pluginApk0 {
-                        businessName = 'dev-demo'
-                        partKey = 'dev-plugin-demo' //很关键必须一致
-                        buildTask = ':dev-demo:assemblePluginDebug'
-                        apkPath = 'plugins/zip/dev-demo/build/outputs/apk/plugin/debug/dev-demo-plugin-debug.apk'
+                        businessName = 'plugin-demo-apk'
+                        partKey = 'plugin-demo-apk' //很关键必须一致
+                        buildTask = ':plugins:plugin-demo-apk:assemblePluginDebug'
+                        apkPath = 'plugins/zip/plugin-demo-apk/build/outputs/apk/plugin/debug/plugin-demo-apk-plugin-debug.apk'
                         hostWhiteList = ["com.tencent.shadow.sample.host.lib"]
                         dependsOn = ['plugin-common']
                     }
@@ -159,10 +159,10 @@ shadow {
 //                runtimeApkConfig = new Tuple2('dev-runtime-release.apk', ':dev-runtime:assembleRelease')
                 pluginApks {
                     pluginApk0 {
-                        businessName = 'dev-demo'//businessName相同的插件，context获取的Dir是相同的。businessName留空，表示和宿主相同业务，直接使用宿主的Dir。
-                        partKey = 'dev-plugin-demo' //很关键必须一致
-                        buildTask = ':dev-demo:assemblePluginRelease'
-                        apkPath = 'plugins/zip/dev-demo/build/outputs/apk/plugin/release/dev-demo-plugin-release.apk'
+                        businessName = 'plugin-demo-apk'//businessName相同的插件，context获取的Dir是相同的。businessName留空，表示和宿主相同业务，直接使用宿主的Dir。
+                        partKey = 'plugin-demo-apk' //很关键必须一致
+                        buildTask = ':plugins:plugin-demo-apk:assemblePluginRelease'
+                        apkPath = 'plugins/zip/plugin-demo-apk/build/outputs/apk/plugin/release/plugin-demo-apk-plugin-release.apk'
                         hostWhiteList = ["com.tencent.shadow.sample.host.lib"]
                     }
                     pluginApk1 {
