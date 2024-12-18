@@ -26,6 +26,7 @@ uuidNickName = "1.1.5"
 标识一次插件发布的id，可以使用自定义格式描述版本信息
 
 hostWhiteList 怎么用？
+加载一个带so 的插件 功能验证
 
 设计理念:
 1.runtime和loader在common里

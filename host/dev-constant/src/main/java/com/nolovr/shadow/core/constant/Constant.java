@@ -32,7 +32,7 @@ final public class Constant {
     public static final String PART_KEY_PLUGIN_ANOTHER_APP = "dev-plugin-app2";
     public static final String PART_KEY_PLUGIN_GS3D = "dev-plugin-xx"; // 与 zip压缩包json 文件里的配置一定要对应上
     public static final String PART_KEY_PLUGIN_DEMO = "plugin-demo-apk"; // demo 用，一条龙添加
-    public static final String PART_KEY_PLUGIN_BASE = "dev-base";
+    public static final String PART_KEY_PLUGIN_BASE = "plugin-base-apk";
     public static final String PART_KEY_PLUGIN_COMMON = "plugin-common";
     public static final String PART_KEY_PLUGIN_SERVICE = "plugin-service-apk";
 
