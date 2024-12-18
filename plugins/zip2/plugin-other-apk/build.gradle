@@ -81,33 +81,6 @@ dependencies {
 }
 
 
-def createDuplicateApkTask(buildType) {
-    def apkDir = file("${getBuildDir()}/outputs/apk/plugin/$buildType")
-
-    return tasks.create("duplicatePlugin${buildType.capitalize()}ApkTask", Copy) {
-        group = 'build'
-        description = "复制一个plugin-other-plugin-${buildType}.apk用于测试目的"
-        from(apkDir) {
-            include("plugin-other-plugin-${buildType}.apk")
-            rename { "plugin-other-plugin-${buildType}2.apk" }
-        }
-        into(apkDir)
-
-    }.dependsOn(":plugin-other:assemblePlugin${buildType.capitalize()}")
-}
-
-tasks.whenTaskAdded { task ->
-    if (task.name == "assemblePluginDebug") {
-        def createTask = createDuplicateApkTask('debug')
-        task.finalizedBy(createTask)
-    }
-    if (task.name == "assemblePluginRelease") {
-        def createTask = createDuplicateApkTask('release')
-        task.finalizedBy(createTask)
-    }
-}
-
-
 
 shadow {
     transform {
@@ -123,8 +96,8 @@ shadow {
                     pluginApk1 {
                         businessName = 'dev-plugin-xx'
                         partKey = 'dev-plugin-xx'
-                        buildTask = ':plugin-other:assemblePluginDebug'
-                        apkPath = 'plugins/zip2/plugin-other/build/outputs/apk/plugin/debug/plugin-other-plugin-debug.apk'
+                        buildTask = ':plugins:plugin-other-apk:assemblePluginDebug'
+                        apkPath = 'plugins/zip2/plugin-other-apk/build/outputs/apk/plugin/debug/plugin-other-apk-plugin-debug.apk'
                         hostWhiteList = ["com.tencent.shadow.sample.host.lib"]
                         dependsOn = ['plugin-common']
                     }
@@ -138,8 +111,8 @@ shadow {
                     pluginApk1 {
                         businessName = 'dev-plugin-xx'
                         partKey = 'dev-plugin-xx'
-                        buildTask = ':plugin-other:assemblePluginRelease'
-                        apkPath = 'plugins/zip2/plugin-other/build/outputs/apk/plugin/debug/plugin-other-plugin-debug.apk'
+                        buildTask = ':plugins:plugin-other-apk:assemblePluginRelease'
+                        apkPath = 'plugins/zip2/plugin-other-apk/build/outputs/apk/plugin/debug/plugin-other-apk-plugin-debug.apk'
                         hostWhiteList = ["com.tencent.shadow.sample.host.lib"]
                         dependsOn = ['plugin-common']
                     }

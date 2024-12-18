@@ -65,8 +65,8 @@ def copyLocalPropertiesForIncludeBuilds() {
 
 //include ':plugins:zip2:plugin-other'
 //includeBuild ':plugins:zip2:plugin-other'
-include 'plugin-other'
-project(':plugin-other').projectDir = file('plugins/zip2/plugin-other')
+include ':plugins:plugin-other-apk'
+project(':plugins:plugin-other-apk').projectDir = file('plugins/zip2/plugin-other-apk')
 
 include ':warehouse:third-party:slidingmenu'
 include ':warehouse:third-party:pinnedheaderexpandablelistview'
