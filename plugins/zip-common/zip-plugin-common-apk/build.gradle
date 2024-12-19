@@ -83,7 +83,7 @@ shadow {
                         partKey = 'plugin-common'
                         buildTask = ':plugins:zips:zip-plugin-common-apk:assemblePluginDebug'
                         apkPath = 'plugins/zip-common/zip-plugin-common-apk/build/outputs/apk/plugin/debug/zip-plugin-common-apk-plugin-debug.apk'
-                        hostWhiteList = ["com.tencent.shadow.sample.host.lib"]
+                        hostWhiteList = ["com.nolovr.shadow.core.host.lib","com.tencent.shadow.sample.host.lib"]
                     }
                 }
             }
@@ -97,6 +97,7 @@ shadow {
                         partKey = 'plugin-common'
                         buildTask = ':plugins:zips:zip-plugin-common-apk:assemblePlugin'
                         apkPath = 'plugins/zip-common/zip-plugin-common-apk/build/outputs/apk/plugin/release/zip-plugin-common-apk-plugin-release.apk'
+                        hostWhiteList = ["com.nolovr.shadow.core.host.lib","com.tencent.shadow.sample.host.lib"]
                     }
                 }
             }

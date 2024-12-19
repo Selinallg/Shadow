@@ -26,6 +26,6 @@ package com.tencent.shadow.dynamic.impl;
 public interface WhiteList {
     String[] sWhiteList = new String[]
             {
-                    "com.tencent.shadow.sample.host.lib",
+                    "com.nolovr.shadow.core.host.lib","com.tencent.shadow.sample.host.lib"
             };
 }

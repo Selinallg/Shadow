@@ -118,7 +118,8 @@ public class SamplePluginManager extends FastPluginManager {
         Intent pluginIntent = new Intent();
         pluginIntent.setClassName(
                 context.getPackageName(),
-                "com.tencent.shadow.sample.plugin.app.lib.usecases.service.HostAddPluginViewService"
+                //"com.tencent.shadow.sample.plugin.app.lib.usecases.service.HostAddPluginViewService"
+                "com.nolovr.shadow.core.plugin.app.lib.usecases.service.HostAddPluginViewService"
         );
         pluginIntent.putExtras(bundle);
         try {
