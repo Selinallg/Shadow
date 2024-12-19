@@ -125,7 +125,7 @@ shadow {
 //        runtimeApkProjectPath = 'plugins/dev-runtime'
 
         archiveSuffix = System.getenv("PluginSuffix") ?: ""
-        archivePrefix = 'plugin2'
+        archivePrefix = project.DEV_ARCHIVE_PREFIX_ZIP_BS2
         destinationDir = "${getRootProject().getBuildDir()}"
 
         println("====destinationDir ${destinationDir}")

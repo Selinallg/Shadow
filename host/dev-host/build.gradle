@@ -97,7 +97,7 @@ def generateAssets(generateAssetsTask, buildType) {
             ':plugins:zips:zip-plugin-app-apk',
             buildType,
             'plugin-zip',
-            "plugin-${buildType}.zip",
+            "${project.DEV_ARCHIVE_PREFIX_ZIP_BS1}-${buildType}.zip",
             pluginZip,
             "package${buildType.capitalize()}Plugin"
     )
@@ -109,7 +109,7 @@ def generateAssets(generateAssetsTask, buildType) {
             ':plugins:zips:zip-plugin-other-apk',// ok
             buildType,
             'plugin2-zip',
-            "plugin2-${buildType}.zip",
+            "${project.DEV_ARCHIVE_PREFIX_ZIP_BS2}-${buildType}.zip",
             plugin2Zip,
             "package${buildType.capitalize()}Plugin"
     )
@@ -121,7 +121,7 @@ def generateAssets(generateAssetsTask, buildType) {
             ':plugins:zips:zip-plugin-common-apk',
             buildType,
             'pluginCommon-zip',
-            "pluginCommon-${buildType}.zip",
+            "${project.DEV_ARCHIVE_PREFIX_COMMON}-${buildType}.zip",
             pluginCommonZip,
             "package${buildType.capitalize()}Plugin"
     )

@@ -107,7 +107,7 @@ shadow {
         runtimeApkProjectPath = 'plugins/dev-runtime'
 
         archiveSuffix = System.getenv("PluginSuffix") ?: ""
-        archivePrefix = 'pluginCommon'
+        archivePrefix = project.DEV_ARCHIVE_PREFIX_COMMON
         destinationDir = "${getRootProject().getBuildDir()}"
 
         version = 4

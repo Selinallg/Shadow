@@ -26,7 +26,11 @@ allprojects {
     ext.TEST_HOST_APP_APPLICATION_ID = 'com.tencent.shadow.test.hostapp'
     ext.SAMPLE_HOST_APP_APPLICATION_ID = 'com.tencent.shadow.sample.host'
     ext.DEV_HOST_APP_APPLICATION_ID = 'com.nolovr.shadow.dev.host'
+
     ext.DEV_UUID_BUSINESS_SAMPLE = '1234567890'
+    ext.DEV_ARCHIVE_PREFIX_COMMON = 'pluginCommon'
+    ext.DEV_ARCHIVE_PREFIX_ZIP_BS1 = 'plugin'
+    ext.DEV_ARCHIVE_PREFIX_ZIP_BS2 = 'plugin2'
 
 
 
