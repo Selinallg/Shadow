@@ -11,12 +11,7 @@ includeBuild 'shadow/dynamic'
 includeDev()
 
 def includeDev() {
-    include 'dev-constant',
-            'dev-interface',
-            'dev-host',
-            'dev-host-lib',
-            'dev-manager',
-            'dev-loader',
+    include 'dev-loader',
             'dev-runtime',
             ':plugins:plugin-base-lib',
             ':plugins:plugin-base-apk',
@@ -24,11 +19,6 @@ def includeDev() {
             ':plugins:plugin-common-lib',// 插件通用库
             ':plugins:zips:zip-plugin-common-apk',// 插件通用库插件包
             ':plugins:zips:zip-plugin-app-apk'
-    project(':dev-constant').projectDir = file('host/dev-constant')
-    project(':dev-interface').projectDir = file('host/dev-interface')
-    project(':dev-host').projectDir = file('host/dev-host')
-    project(':dev-host-lib').projectDir = file('host/dev-host-lib')
-    project(':dev-manager').projectDir = file('host/dev-manager')
 
     project(':dev-loader').projectDir = file('plugins/dev-loader')
     project(':dev-runtime').projectDir = file('plugins/dev-runtime')
@@ -39,6 +29,25 @@ def includeDev() {
 
     project(':plugins:plugin-common-lib').projectDir = file('plugins/zip-common/plugin-common-lib')
     project(':plugins:zips:zip-plugin-common-apk').projectDir = file('plugins/zip-common/zip-plugin-common-apk')
+}
+
+
+includeDevHost()
+def includeDevHost() {
+    include 'dev-constant',
+            'dev-interface',
+            'dev-host-lib',
+            'dev-host',
+            'dev-manager'
+
+
+    project(':dev-constant').projectDir = file('host/depend/dev-constant')
+    project(':dev-interface').projectDir = file('host/depend/dev-interface')
+    project(':dev-host-lib').projectDir = file('host/depend/dev-host-lib')
+    project(':dev-host').projectDir = file('host/dev-host')
+    project(':dev-manager').projectDir = file('host/dev-manager')
+
+
 }
 
 
