@@ -34,17 +34,17 @@ def includeDev() {
 
 includeDevHost()
 def includeDevHost() {
-    include 'dev-constant',
-            'dev-interface',
-            'dev-host-lib',
-            'dev-host',
+    include ':host:depend:dev-constant',
+            ':host:depend:dev-interface',
+            ':host:depend:dev-host-lib',
+            ':host:dev-host',
             'dev-manager'
 
 
-    project(':dev-constant').projectDir = file('host/depend/dev-constant')
-    project(':dev-interface').projectDir = file('host/depend/dev-interface')
-    project(':dev-host-lib').projectDir = file('host/depend/dev-host-lib')
-    project(':dev-host').projectDir = file('host/dev-host')
+    project(':host:depend:dev-constant').projectDir = file('host/depend/dev-constant')
+    project(':host:depend:dev-interface').projectDir = file('host/depend/dev-interface')
+    project(':host:depend:dev-host-lib').projectDir = file('host/depend/dev-host-lib')
+    project(':host:dev-host').projectDir = file('host/dev-host')
     project(':dev-manager').projectDir = file('host/dev-manager')
 
 

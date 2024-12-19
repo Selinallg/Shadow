@@ -59,8 +59,8 @@ android {
 
 dependencies {
     //注意dev-host-lib要用compileOnly编译而不打包在插件中。在packagePlugin任务中配置hostWhiteList允许插件访问宿主的类。
-    pluginCompileOnly project(":dev-host-lib")
-    normalImplementation project(":dev-host-lib")
+    pluginCompileOnly project(":host:depend:dev-host-lib")
+    normalImplementation project(":host:depend:dev-host-lib")
 
     pluginCompileOnly project(":plugins:plugin-base-lib")
     normalImplementation project(":plugins:plugin-base-lib")
@@ -70,7 +70,7 @@ dependencies {
     pluginCompileOnly 'com.tencent.shadow.core:runtime'
 }
 
-preBuild.dependsOn(":dev-host-lib:jarDebugPackage")
+preBuild.dependsOn(":host:depend:dev-host-lib:jarDebugPackage")
 
 
 def createDuplicateApkTask(buildType) {

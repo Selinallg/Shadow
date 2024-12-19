@@ -29,7 +29,7 @@ dependencies {
     implementation 'com.tencent.shadow.core:loader'
     implementation 'com.tencent.shadow.dynamic:dynamic-loader'
     implementation 'com.tencent.shadow.dynamic:dynamic-loader-impl'
-    implementation project(':dev-constant')
+    implementation project(':host:depend:dev-constant')
 
     compileOnly 'com.tencent.shadow.core:runtime'
     compileOnly 'com.tencent.shadow.core:activity-container'
@@ -37,7 +37,7 @@ dependencies {
     //下面这行依赖是为了防止在proguard的时候找不到LoaderFactory接口
     compileOnly 'com.tencent.shadow.dynamic:dynamic-host'
 
-    compileOnly files("${project(":dev-host-lib").getBuildDir()}/outputs/jar/dev-host-lib-debug.jar")
+    compileOnly files("${project(":host:depend:dev-host-lib").getBuildDir()}/outputs/jar/dev-host-lib-debug.jar")
 }
 
-preBuild.dependsOn(":dev-host-lib:jarDebugPackage")
+preBuild.dependsOn(":host:depend:dev-host-lib:jarDebugPackage")
