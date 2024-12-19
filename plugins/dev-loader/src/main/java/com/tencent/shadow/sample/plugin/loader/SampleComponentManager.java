@@ -29,6 +29,7 @@ public class SampleComponentManager extends ComponentManager {
     /**
      * dynamic-runtime-apk 模块中定义的壳子Activity，需要在宿主AndroidManifest.xml注册
      */
+    private static final String DEFAULT_PROVIDER = "com.tencent.shadow.core.runtime.container.PluginContainerContentProvider";
     private static final String DEFAULT_ACTIVITY = "com.nolovr.shadow.core.plugin.runtime.PluginDefaultProxyActivity";
     private static final String SINGLE_INSTANCE_ACTIVITY = "com.nolovr.shadow.core.plugin.runtime.PluginSingleInstance1ProxyActivity";
     private static final String SINGLE_TASK_ACTIVITY = "com.nolovr.shadow.core.plugin.runtime.PluginSingleTask1ProxyActivity";
@@ -49,6 +50,10 @@ public class SampleComponentManager extends ComponentManager {
     @Override
     public ComponentName onBindContainerActivity(ComponentName pluginActivity) {
         switch (pluginActivity.getClassName()) {
+
+
+            // TODO: 2024-12-19
+
             /**
              * 这里配置对应的对应关系
              */
@@ -61,8 +66,11 @@ public class SampleComponentManager extends ComponentManager {
      */
     @Override
     public ContainerProviderInfo onBindContainerContentProvider(ComponentName pluginContentProvider) {
+        // TODO: 2024-12-19
+
+
         return new ContainerProviderInfo(
-                "com.tencent.shadow.core.runtime.container.PluginContainerContentProvider",
+                DEFAULT_PROVIDER,
                 context.getPackageName() + ".contentprovider.authority.dynamic");
     }
 

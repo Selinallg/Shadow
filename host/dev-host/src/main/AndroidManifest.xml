@@ -26,6 +26,7 @@
             android:name="com.nolovr.shadow.core.host.plugin_view.HostAddPluginViewActivity"
             android:process=":plugin" />
 
+        <!--很重要 SampleComponentManager 映射 name 不能改-->
         <provider
             android:authorities="${applicationId}.contentprovider.authority.dynamic"
             android:name="com.tencent.shadow.core.runtime.container.PluginContainerContentProvider"
