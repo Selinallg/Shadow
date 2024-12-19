@@ -40,3 +40,6 @@ https://github.com/listen2code/Shadow
 //            Logger mLogger = LoggerFactory.getLogger(DynamicPluginManager.class);
 //            AndroidLogLoggerFactory.getInstance().getLogger("xx").debug("xx");
 
+
+不同uuid的插件包如何切换？
+
