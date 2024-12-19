@@ -85,6 +85,6 @@ public class SamplePluginLoader extends ShadowPluginLoader {
     @Override
     public String getDelegateProviderKey() {
         Log.d(TAG, "getDelegateProviderKey: ");
-        return "SAMPLE";
+        return "NOLO";
     }
 }

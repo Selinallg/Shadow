@@ -20,6 +20,7 @@ package com.nolovr.shadow.core.plugin.runtime;
 
 
 import android.annotation.SuppressLint;
+import android.util.Log;
 
 import com.tencent.shadow.core.runtime.container.PluginContainerActivity;
 
@@ -28,6 +29,7 @@ public class PluginDefaultProxyActivity extends PluginContainerActivity {
 
     @Override
     protected String getDelegateProviderKey() {
-        return "SAMPLE";
+        Log.d("PluginDefaultProxyActivity", "getDelegateProviderKey: ");
+        return "NOLO";
     }
 }
