@@ -20,11 +20,14 @@ package com.tencent.shadow.sample.plugin.loader;
 
 import android.content.ComponentName;
 import android.content.Context;
+import android.util.Log;
 
 import com.tencent.shadow.core.loader.infos.ContainerProviderInfo;
 import com.tencent.shadow.core.loader.managers.ComponentManager;
 
 public class SampleComponentManager extends ComponentManager {
+
+    private static final String TAG = "SampleComponentManager";
 
     /**
      * dynamic-runtime-apk 模块中定义的壳子Activity，需要在宿主AndroidManifest.xml注册
@@ -49,6 +52,7 @@ public class SampleComponentManager extends ComponentManager {
      */
     @Override
     public ComponentName onBindContainerActivity(ComponentName pluginActivity) {
+        Log.e(TAG, "onBindContainerActivity: "+pluginActivity.getClassName());
         switch (pluginActivity.getClassName()) {
 
 
@@ -67,7 +71,7 @@ public class SampleComponentManager extends ComponentManager {
     @Override
     public ContainerProviderInfo onBindContainerContentProvider(ComponentName pluginContentProvider) {
         // TODO: 2024-12-19
-
+        Log.e(TAG, "onBindContainerContentProvider: "+pluginContentProvider.getClassName());
 
         return new ContainerProviderInfo(
                 DEFAULT_PROVIDER,

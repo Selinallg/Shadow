@@ -43,6 +43,7 @@ buildscript {
 
 apply plugin: 'com.android.application'
 apply plugin: 'com.tencent.shadow.plugin'
+apply plugin: 'org.jetbrains.kotlin.android'
 
 android {
     compileSdk project.COMPILE_SDK_VERSION
