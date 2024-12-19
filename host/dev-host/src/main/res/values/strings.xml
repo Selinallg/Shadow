@@ -26,4 +26,7 @@
     <string name="start_plugin">
         启动插件
     </string>
+    <string name="app_name">
+        宿主App
+    </string>
 </resources>

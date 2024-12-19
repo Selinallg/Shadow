@@ -28,8 +28,7 @@ plugins {
 
 
 android {
-    compileSdkVersion 30
-    buildToolsVersion "30.0.3"
+    compileSdk project.COMPILE_SDK_VERSION
 
     defaultConfig {
         applicationId 'com.nolovr.shadow.core.plugin.app2'

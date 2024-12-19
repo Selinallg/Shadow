@@ -25,7 +25,7 @@ allprojects {
     ext.ARTIFACT_VERSION = versionName + versionSuffix
     ext.TEST_HOST_APP_APPLICATION_ID = 'com.tencent.shadow.test.hostapp'
     ext.SAMPLE_HOST_APP_APPLICATION_ID = 'com.tencent.shadow.sample.host'
-    ext.DEV_HOST_APP_APPLICATION_ID = 'com.tencent.shadow.dev.host'
+    ext.DEV_HOST_APP_APPLICATION_ID = 'com.nolovr.shadow.dev.host'
     ext.DEV_UUID_BUSINESS_SAMPLE = '1234567890'
 
 
