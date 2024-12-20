@@ -1,4 +1,4 @@
-package scut.carson_ho.contentprovider;
+package com.nolovr.shadow.core.contentprovider;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;

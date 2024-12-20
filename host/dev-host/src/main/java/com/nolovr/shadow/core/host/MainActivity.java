@@ -99,7 +99,7 @@ public class MainActivity extends Activity {
                         break;
                     }
                     case Constant.PART_KEY_PLUGIN_CONTENT_PROVIDER:{
-                        intent.putExtra(Constant.KEY_COMPONENT_CLASSNAME, "scut.carson_ho.contentprovider.MainActivity");
+                        intent.putExtra(Constant.KEY_COMPONENT_CLASSNAME, "com.nolovr.shadow.core.contentprovider.MainActivity");
                         break;
                     }
                     case Constant.PART_KEY_PLUGIN_GS3D:{

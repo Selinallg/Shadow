@@ -1,4 +1,4 @@
-package scut.carson_ho.contentprovider;
+package com.nolovr.shadow.core.contentprovider;
 
 import android.content.ContentResolver;
 import android.content.ContentValues;
@@ -7,6 +7,7 @@ import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
+
 
 public class MainActivity extends AppCompatActivity {
 

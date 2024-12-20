@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="scut.carson_ho.contentprovider">
+    package="com.nolovr.shadow.core.contentprovider">
 
 
     <queries>
@@ -34,7 +34,7 @@
         </activity>
 
         <provider
-            android:name=".MyProvider"
+            android:name="com.nolovr.shadow.core.contentprovider.MyProvider"
             android:authorities="cn.scu.myprovider"
             android:enabled="true"
             android:exported="true" />
