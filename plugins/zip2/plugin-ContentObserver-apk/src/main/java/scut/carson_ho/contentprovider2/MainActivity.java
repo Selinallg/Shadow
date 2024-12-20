@@ -85,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
             resolver2.insert(uri_job, values2);
         } catch (Exception e) {
             //throw new RuntimeException(e);
-            Log.e(TAG, "onResume: insert"+ e.getMessage() );
+            Log.e(TAG, "onResume: insert 2 --》"+ e.getMessage() );
         }
 
         // 通过ContentResolver 向ContentProvider中查询数据

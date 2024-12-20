@@ -47,6 +47,12 @@ host 调用 插件 contentProvider
 升级插件包
 
 插件中contentprovider 应用外无法访问的。！！！！！！！！
+        cp
+三方访问 插件   fail
+宿主访问 插件   fail
+插件访问 宿主    OK
+插件访问 插件    OK
+插件访问 三方    OK
 
 SamplePluginManager 对应关系 很重要
 
