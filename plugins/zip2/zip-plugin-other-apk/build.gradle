@@ -114,7 +114,7 @@ shadow {
                         buildTask = ':plugins:plugin-ContentObserver-apk:assemblePluginDebug'
                         apkPath = 'plugins/zip2/plugin-ContentObserver-apk/build/outputs/apk/plugin/debug/plugin-ContentObserver-apk-plugin-debug.apk'
                         hostWhiteList = ["com.nolovr.shadow.core.host.lib","com.tencent.shadow.sample.host.lib","scut.carson_ho.contentprovider"]
-                        dependsOn = ['plugin-common']
+                        dependsOn = ['plugin-common','plugin-ContentProvider-demo']
                     }
                 }
             }

@@ -12,7 +12,8 @@ import androidx.appcompat.app.AppCompatActivity;
 public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "_MainActivity";
-    private static final String uriPath = "content://cn.scu.myprovider/user";
+    private static final String uriPathUser = "content://cn.scu.myprovider/user";
+    private static final String uriPathJob = "content://cn.scu.myprovider/job";
 //    private static final String uriPath = "content://com.nolovr.shadow.core.contentprovider.authority.dynamic";
 
     // com.noolovr.shadow.core.contentprovider.authority.dynamic
@@ -37,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
          */
 
         // 设置URI
-        Uri uri_user = Uri.parse(uriPath);
+        Uri uri_user = Uri.parse(uriPathUser);
 
         // 插入表中数据
         ContentValues values = new ContentValues();
@@ -69,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
          */
         // 和上述类似,只是URI需要更改,从而匹配不同的URI CODE,从而找到不同的数据资源
         // cn.scu.myprovider
-        Uri uri_job = Uri.parse(uriPath);
+        Uri uri_job = Uri.parse(uriPathJob);
 
         // 插入表中数据
         ContentValues values2 = new ContentValues();
