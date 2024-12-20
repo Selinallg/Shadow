@@ -54,18 +54,23 @@ public class PluginLoadActivity extends Activity {
 
         Intent intent = getIntent();
         String partKey = intent.getStringExtra(Constant.KEY_PLUGIN_PART_KEY);
-        if (Constant.PART_KEY_PLUGIN_GS3D.equals(partKey)) {
+        if (Constant.PART_KEY_PLUGIN_GS3D.equals(partKey)||
+                Constant.PART_KEY_PLUGIN_CONTENT_PROVIDER.equals(partKey)
+        ) {
+            // zip2 插件包
             start_plugin2();
         } else if (Constant.PART_KEY_PLUGIN_SERVICE.equals(partKey)) {
 
+            // zip1 插件包
             startPlugin(Constant.FROM_ID_START_SERVICE);
         } else {
+            // zip1 插件包
             startPlugin(Constant.FROM_ID_START_ACTIVITY);
         }
 
     }
 
-
+    // zip1 插件包
     public void startPlugin(int fromid) {
         Log.d(TAG, "startPlugin: ");
         PluginHelper.getInstance().singlePool.execute(new Runnable() {
@@ -81,6 +86,8 @@ public class PluginLoadActivity extends Activity {
                 bundle.putString(Constant.KEY_PLUGIN_ZIP_PATH, PluginHelper.getInstance().pluginZipFile.getAbsolutePath());
                 bundle.putString(Constant.KEY_PLUGIN_PART_KEY, getIntent().getStringExtra(Constant.KEY_PLUGIN_PART_KEY));
                 bundle.putString(Constant.KEY_COMPONENT_CLASSNAME, getIntent().getStringExtra(Constant.KEY_COMPONENT_CLASSNAME));
+
+                bundle.putBundle(Constant.KEY_EXTRAS, getIntent().getBundleExtra(Constant.KEY_EXTRAS)); // 要传入到插件里的参数
 
                 HostApplication.getApp().getPluginManager()
                         .enter(PluginLoadActivity.this, fromid, bundle, new EnterCallback() {
@@ -129,7 +136,7 @@ public class PluginLoadActivity extends Activity {
         });
     }
 
-
+    // zip2 插件包
     public void start_plugin2() {
 
         Log.d(TAG, "start_plugin2: ");
@@ -146,10 +153,12 @@ public class PluginLoadActivity extends Activity {
                  */
                 Bundle bundle = new Bundle();//插件 zip，这几个参数也都可以不传，直接在 PluginManager 中硬编码
                 bundle.putString(Constant.KEY_COMMON_ZIP_PATH, PluginHelper.getInstance().pluginCommonZipFile.getAbsolutePath());
+
                 bundle.putString(Constant.KEY_PLUGIN_ZIP_PATH, PluginHelper.getInstance().plugin2ZipFile.getAbsolutePath());
-                bundle.putString(Constant.KEY_PLUGIN_PART_KEY, Constant.PART_KEY_PLUGIN_GS3D);// partKey 每个插件都有自己的 partKey 用来区分多个插件，如何配置在下面讲到
+                bundle.putString(Constant.KEY_PLUGIN_PART_KEY, getIntent().getStringExtra(Constant.KEY_PLUGIN_PART_KEY));// partKey 每个插件都有自己的 partKey 用来区分多个插件，如何配置在下面讲到
                 bundle.putString(Constant.KEY_COMPONENT_CLASSNAME, getIntent().getStringExtra(Constant.KEY_COMPONENT_CLASSNAME));//要启动的插件的Activity页面
-                bundle.putBundle(Constant.KEY_EXTRAS, new Bundle()); // 要传入到插件里的参数
+
+                bundle.putBundle(Constant.KEY_EXTRAS, getIntent().getBundleExtra(Constant.KEY_EXTRAS)); // 要传入到插件里的参数
 
                 HostApplication.getApp().getPluginManager().enter(PluginLoadActivity.this, Constant.FROM_ID_START_ACTIVITY, bundle, new EnterCallback() {
                     @Override

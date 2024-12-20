@@ -73,10 +73,17 @@ def copyLocalPropertiesForIncludeBuilds() {
     }
 }
 
+// zip2
 //include ':plugins:zip2:plugin-other'
 //includeBuild ':plugins:zip2:plugin-other'
 include ':plugins:zips:zip-plugin-other-apk'
 project(':plugins:zips:zip-plugin-other-apk').projectDir = file('plugins/zip2/zip-plugin-other-apk')
+include ':plugins:plugin-ContentProvider-apk'
+project(':plugins:plugin-ContentProvider-apk').projectDir = file('plugins/zip2/plugin-ContentProvider-apk')
+include ':plugins:plugin-ContentObserver-apk'
+project(':plugins:plugin-ContentObserver-apk').projectDir = file('plugins/zip2/plugin-ContentObserver-apk')
 
+
+//third-party
 include ':warehouse:third-party:slidingmenu'
 include ':warehouse:third-party:pinnedheaderexpandablelistview'

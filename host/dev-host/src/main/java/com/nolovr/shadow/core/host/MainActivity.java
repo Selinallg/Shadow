@@ -62,6 +62,7 @@ public class MainActivity extends Activity {
                 Constant.PART_KEY_PLUGIN_ANOTHER_APP,
                 Constant.PART_KEY_PLUGIN_DEMO,
                 Constant.PART_KEY_PLUGIN_SERVICE,
+                Constant.PART_KEY_PLUGIN_CONTENT_PROVIDER,
                 Constant.PART_KEY_PLUGIN_GS3D
         );
         partKeySpinner.setAdapter(partKeysAdapter);
@@ -81,6 +82,7 @@ public class MainActivity extends Activity {
                         break;
                     case Constant.PART_KEY_PLUGIN_ANOTHER_APP:
                     case Constant.PART_KEY_PLUGIN_DEMO:
+                    case Constant.PART_KEY_PLUGIN_CONTENT_PROVIDER:
                     case Constant.PART_KEY_PLUGIN_SERVICE:
                     case Constant.PART_KEY_PLUGIN_GS3D:
                         intent.putExtra(Constant.KEY_PLUGIN_PART_KEY, partKey);
@@ -96,6 +98,10 @@ public class MainActivity extends Activity {
                         intent.putExtra(Constant.KEY_COMPONENT_CLASSNAME, "com.test.plugin_demo.SplashActivity");
                         break;
                     }
+                    case Constant.PART_KEY_PLUGIN_CONTENT_PROVIDER:{
+                        intent.putExtra(Constant.KEY_COMPONENT_CLASSNAME, "scut.carson_ho.contentprovider.MainActivity");
+                        break;
+                    }
                     case Constant.PART_KEY_PLUGIN_GS3D:{
                         intent.putExtra(Constant.KEY_COMPONENT_CLASSNAME, "com.test.plugin_other.SplashActivity");
                         break;
@@ -106,8 +112,9 @@ public class MainActivity extends Activity {
                         intent.putExtra(Constant.KEY_COMPONENT_CLASSNAME, "com.nolovr.shadow.core.plugin.app.lib.gallery.splash.SplashActivity");
                         break;
                     }
-
                 }
+
+                intent.putExtra(Constant.KEY_EXTRAS, new Bundle()); // 要传入到插件里的参数
                 startActivity(intent);
             }
         });

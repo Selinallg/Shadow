@@ -7,12 +7,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <provider
-            android:authorities="com.nolovr.shadow.sample.provider"
-            android:enabled="true"
-            android:exported="true"
-            android:name=".MyContentProvider">
-        </provider>
+
 
         <service android:name=".MyService" />
 

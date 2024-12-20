@@ -82,10 +82,13 @@ public class SamplePluginManager extends FastPluginManager {
         if (PART_KEY_PLUGIN_MAIN_APP.equals(partKey) ||
                 Constant.PART_KEY_PLUGIN_COMMON.equals(partKey) ||
                 Constant.PART_KEY_PLUGIN_SERVICE.equals(partKey) ||
+//                Constant.PART_KEY_PLUGIN_CONTENT_PROVIDER.equals(partKey) ||
                 Constant.PART_KEY_PLUGIN_DEMO.equals(partKey)) {
             return "com.nolovr.shadow.core.host.PluginProcessPPS";
         }
-        if (Constant.PART_KEY_PLUGIN_GS3D.equals(partKey)) {
+        if (Constant.PART_KEY_PLUGIN_GS3D.equals(partKey)
+                || Constant.PART_KEY_PLUGIN_CONTENT_PROVIDER.equals(partKey)
+        ) {
             return "com.nolovr.shadow.core.host.Plugin3ProcessPPS";
         } else if (PART_KEY_PLUGIN_BASE.equals(partKey)) {
             return "com.nolovr.shadow.core.host.PluginProcessPPS";
@@ -167,7 +170,21 @@ public class SamplePluginManager extends FastPluginManager {
 
                     Log.d(TAG, "run: " + installedPlugin.plugins.size() + " " + installedPlugin.UUID + " " + installedPlugin.UUID_NickName);
 
-                    if (!partKey.equals(Constant.PART_KEY_PLUGIN_GS3D)) {
+                    // TODO: 2024-12-20 最好按zip包来 加载，因为有依赖关系 
+
+                    if (partKey.equals(Constant.PART_KEY_PLUGIN_CONTENT_PROVIDER)) {
+
+                        loadPlugin(installedPlugin.UUID, Constant.PART_KEY_PLUGIN_CONTENT_PROVIDER);
+                        callApplicationOnCreate(Constant.PART_KEY_PLUGIN_CONTENT_PROVIDER);
+                        Log.d(TAG, "run: loadPlugin content Provider");
+
+                    } else if (partKey.equals(Constant.PART_KEY_PLUGIN_GS3D)) {
+                        loadPlugin(installedPlugin.UUID, Constant.PART_KEY_PLUGIN_GS3D);
+                        callApplicationOnCreate(Constant.PART_KEY_PLUGIN_GS3D);
+                        Log.d(TAG, "run: loadPlugin gs3d");
+                    } else {
+
+                        // TODO: 2024-12-20 后续优化,每增加一个 apk 插件，需要 增加一个调用 
                         loadPlugin(installedPlugin.UUID, PART_KEY_PLUGIN_BASE);
                         loadPlugin(installedPlugin.UUID, PART_KEY_PLUGIN_MAIN_APP);
 
@@ -176,11 +193,6 @@ public class SamplePluginManager extends FastPluginManager {
 
                         loadPlugin(installedPlugin.UUID, Constant.PART_KEY_PLUGIN_DEMO);
                         callApplicationOnCreate(Constant.PART_KEY_PLUGIN_DEMO);
-
-                    } else {
-                        loadPlugin(installedPlugin.UUID, Constant.PART_KEY_PLUGIN_GS3D);
-                        callApplicationOnCreate(Constant.PART_KEY_PLUGIN_GS3D);
-                        Log.d(TAG, "run: loadPlugin gs3d");
                     }
 
                     Intent pluginIntent = new Intent();
@@ -206,7 +218,7 @@ public class SamplePluginManager extends FastPluginManager {
     }
 
 
-    private void callPluginService(final Context context, Bundle bundle,final EnterCallback callback) {
+    private void callPluginService(final Context context, Bundle bundle, final EnterCallback callback) {
 //        final String pluginZipPath = "/data/local/tmp/plugin-debug.zip";
 //        final String partKey = "sample-plugin";
 //        final String className = "com.tencent.shadow.sample.plugin.MyService";

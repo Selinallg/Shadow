@@ -93,11 +93,19 @@ shadow {
 //                runtimeApkConfig = new Tuple2('dev-runtime-debug.apk', ':dev-runtime:assembleDebug')
                 pluginApks {
                     pluginApk1 {
-                        businessName = 'dev-plugin-xx'
-                        partKey = 'dev-plugin-xx'
+                        businessName = 'gs3d'
+                        partKey = 'dev-plugin-gs3d'
                         buildTask = ':plugins:zips:zip-plugin-other-apk:assemblePluginDebug'
                         apkPath = 'plugins/zip2/zip-plugin-other-apk/build/outputs/apk/plugin/debug/zip-plugin-other-apk-plugin-debug.apk'
                         hostWhiteList = ["com.nolovr.shadow.core.host.lib","com.tencent.shadow.sample.host.lib"]
+                        dependsOn = ['plugin-common']
+                    }
+                    pluginApk2 {
+                        businessName = 'gs3d'
+                        partKey = 'plugin-ContentProvider-demo'
+                        buildTask = ':plugins:plugin-ContentProvider-apk:assemblePluginDebug'
+                        apkPath = 'plugins/zip2/plugin-ContentProvider-apk/build/outputs/apk/plugin/debug/plugin-ContentProvider-apk-plugin-debug.apk'
+                        hostWhiteList = ["com.nolovr.shadow.core.host.lib","com.tencent.shadow.sample.host.lib","scut.carson_ho.contentprovider"]
                         dependsOn = ['plugin-common']
                     }
                 }
@@ -108,11 +116,20 @@ shadow {
 //                runtimeApkConfig = new Tuple2('dev-runtime-release.apk', ':dev-runtime:assembleRelease')
                 pluginApks {
                     pluginApk1 {
-                        businessName = 'dev-plugin-xx'
-                        partKey = 'dev-plugin-xx'
+                        businessName = 'gs3d'
+                        partKey = 'dev-plugin-gs3d'
                         buildTask = ':plugins:zips:zip-plugin-other-apk:assemblePluginRelease'
-                        apkPath = 'plugins/zip2/zip-plugin-other-apk/build/outputs/apk/plugin/debug/zip-plugin-other-apk-plugin-debug.apk'
-                        hostWhiteList = ["com.nolovr.shadow.core.host.lib","com.tencent.shadow.sample.host.lib"]
+                        apkPath = 'plugins/zip2/zip-plugin-other-apk/build/outputs/apk/plugin/release/zip-plugin-other-apk-plugin-release.apk'
+                        hostWhiteList = ["com.nolovr.shadow.core.host.lib", "com.tencent.shadow.sample.host.lib"]
+                        dependsOn = ['plugin-common']
+                    }
+
+                    pluginApk2 {
+                        businessName = 'gs3d'
+                        partKey = 'plugin-ContentProvider-demo'
+                        buildTask = ':plugins:plugin-ContentProvider-apk:assemblePluginRelease'
+                        apkPath = 'plugins/zip2/plugin-ContentProvider-apk/build/outputs/apk/plugin/release/plugin-ContentProvider-apk-plugin-release.apk'
+                        hostWhiteList = ["com.nolovr.shadow.core.host.lib", "com.tencent.shadow.sample.host.lib", "scut.carson_ho.contentprovider"]
                         dependsOn = ['plugin-common']
                     }
                 }
