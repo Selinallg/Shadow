@@ -55,7 +55,8 @@ public class PluginLoadActivity extends Activity {
         Intent intent = getIntent();
         String partKey = intent.getStringExtra(Constant.KEY_PLUGIN_PART_KEY);
         if (Constant.PART_KEY_PLUGIN_GS3D.equals(partKey)||
-                Constant.PART_KEY_PLUGIN_CONTENT_PROVIDER.equals(partKey)
+                Constant.PART_KEY_PLUGIN_CONTENT_PROVIDER.equals(partKey)||
+                Constant.PART_KEY_PLUGIN_CONTENT_OBSERVER.equals(partKey)
         ) {
             // zip2 插件包
             start_plugin2();

@@ -88,7 +88,8 @@ public class SamplePluginManager extends FastPluginManager {
         }
         if (Constant.PART_KEY_PLUGIN_GS3D.equals(partKey)
                 || Constant.PART_KEY_PLUGIN_CONTENT_PROVIDER.equals(partKey)
-        ) {
+                ||Constant.PART_KEY_PLUGIN_CONTENT_OBSERVER.equals(partKey)
+        ){
             return "com.nolovr.shadow.core.host.Plugin3ProcessPPS";
         } else if (PART_KEY_PLUGIN_BASE.equals(partKey)) {
             return "com.nolovr.shadow.core.host.PluginProcessPPS";
@@ -177,6 +178,12 @@ public class SamplePluginManager extends FastPluginManager {
                         loadPlugin(installedPlugin.UUID, Constant.PART_KEY_PLUGIN_CONTENT_PROVIDER);
                         callApplicationOnCreate(Constant.PART_KEY_PLUGIN_CONTENT_PROVIDER);
                         Log.d(TAG, "run: loadPlugin content Provider");
+
+                    } else if (partKey.equals(Constant.PART_KEY_PLUGIN_CONTENT_OBSERVER)) {
+
+                        loadPlugin(installedPlugin.UUID, Constant.PART_KEY_PLUGIN_CONTENT_OBSERVER);
+                        callApplicationOnCreate(Constant.PART_KEY_PLUGIN_CONTENT_OBSERVER);
+                        Log.d(TAG, "run: loadPlugin content observer");
 
                     } else if (partKey.equals(Constant.PART_KEY_PLUGIN_GS3D)) {
                         loadPlugin(installedPlugin.UUID, Constant.PART_KEY_PLUGIN_GS3D);

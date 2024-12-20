@@ -37,6 +37,7 @@ final public class Constant {
 
     public static final String PART_KEY_PLUGIN_GS3D = "dev-plugin-gs3d"; // 与 zip压缩包json 文件里的配置一定要对应上
     public static final String PART_KEY_PLUGIN_CONTENT_PROVIDER = "plugin-ContentProvider-demo";
+    public static final String PART_KEY_PLUGIN_CONTENT_OBSERVER = "plugin-ContentObserver-demo";
 
     public static final int FROM_ID_NOOP = 1000;
     public static final int FROM_ID_START_ACTIVITY = 1001;

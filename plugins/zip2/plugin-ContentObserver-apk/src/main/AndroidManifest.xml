@@ -14,6 +14,9 @@
         <provider android:authorities="cn.scu.myprovider/user" />
         <provider android:authorities="cn.scu.myprovider/job" />
         <provider android:authorities="cn.scu.myprovider" />
+        <provider android:authorities="com.nolovr.shadow.core.contentprovider.authority.dynamic/user" />
+        <provider android:authorities="com.nolovr.shadow.core.contentprovider.authority.dynamic/job" />
+        <provider android:authorities="com.nolovr.shadow.core.contentprovider.authority.dynamic" />
     </queries>
 
     <application

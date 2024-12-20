@@ -12,6 +12,7 @@
         android:name="com.nolovr.shadow.core.host.HostApplication"
         android:theme="@android:style/Theme.DeviceDefault"
         android:usesCleartextTraffic="true"
+        android:requestLegacyExternalStorage="true"
         tools:ignore="GoogleAppIndexingWarning">
         <activity android:name="com.nolovr.shadow.core.host.MainActivity">
             <intent-filter>
@@ -88,5 +89,14 @@
             </intent-filter>
         </receiver>
     </application>
+
+    <queries>
+        <package android:name="com.nolovr.shadow.dev.host" />
+        <package android:name="scut.carson_ho.contentprovider" />
+        <package android:name="scut.carson_ho.contentprovider2" />
+        <provider android:authorities="cn.scu.myprovider/user" />
+        <provider android:authorities="cn.scu.myprovider/job" />
+        <provider android:authorities="cn.scu.myprovider" />
+    </queries>
 
 </manifest>

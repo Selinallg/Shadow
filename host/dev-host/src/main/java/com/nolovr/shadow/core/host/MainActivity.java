@@ -63,6 +63,7 @@ public class MainActivity extends Activity {
                 Constant.PART_KEY_PLUGIN_DEMO,
                 Constant.PART_KEY_PLUGIN_SERVICE,
                 Constant.PART_KEY_PLUGIN_CONTENT_PROVIDER,
+                Constant.PART_KEY_PLUGIN_CONTENT_OBSERVER,
                 Constant.PART_KEY_PLUGIN_GS3D
         );
         partKeySpinner.setAdapter(partKeysAdapter);
@@ -83,6 +84,7 @@ public class MainActivity extends Activity {
                     case Constant.PART_KEY_PLUGIN_ANOTHER_APP:
                     case Constant.PART_KEY_PLUGIN_DEMO:
                     case Constant.PART_KEY_PLUGIN_CONTENT_PROVIDER:
+                    case Constant.PART_KEY_PLUGIN_CONTENT_OBSERVER:
                     case Constant.PART_KEY_PLUGIN_SERVICE:
                     case Constant.PART_KEY_PLUGIN_GS3D:
                         intent.putExtra(Constant.KEY_PLUGIN_PART_KEY, partKey);
@@ -100,6 +102,11 @@ public class MainActivity extends Activity {
                     }
                     case Constant.PART_KEY_PLUGIN_CONTENT_PROVIDER:{
                         intent.putExtra(Constant.KEY_COMPONENT_CLASSNAME, "com.nolovr.shadow.core.contentprovider.MainActivity");
+                        break;
+                    }
+
+                    case Constant.PART_KEY_PLUGIN_CONTENT_OBSERVER:{
+                        intent.putExtra(Constant.KEY_COMPONENT_CLASSNAME, "scut.carson_ho.contentprovider2.MainActivity");
                         break;
                     }
                     case Constant.PART_KEY_PLUGIN_GS3D:{

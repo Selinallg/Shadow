@@ -108,6 +108,14 @@ shadow {
                         hostWhiteList = ["com.nolovr.shadow.core.host.lib","com.tencent.shadow.sample.host.lib","scut.carson_ho.contentprovider"]
                         dependsOn = ['plugin-common']
                     }
+                    pluginApk3 {
+                        businessName = 'gs3d'
+                        partKey = 'plugin-ContentObserver-demo'
+                        buildTask = ':plugins:plugin-ContentObserver-apk:assemblePluginDebug'
+                        apkPath = 'plugins/zip2/plugin-ContentObserver-apk/build/outputs/apk/plugin/debug/plugin-ContentObserver-apk-plugin-debug.apk'
+                        hostWhiteList = ["com.nolovr.shadow.core.host.lib","com.tencent.shadow.sample.host.lib","scut.carson_ho.contentprovider"]
+                        dependsOn = ['plugin-common']
+                    }
                 }
             }
 
@@ -129,6 +137,15 @@ shadow {
                         partKey = 'plugin-ContentProvider-demo'
                         buildTask = ':plugins:plugin-ContentProvider-apk:assemblePluginRelease'
                         apkPath = 'plugins/zip2/plugin-ContentProvider-apk/build/outputs/apk/plugin/release/plugin-ContentProvider-apk-plugin-release.apk'
+                        hostWhiteList = ["com.nolovr.shadow.core.host.lib", "com.tencent.shadow.sample.host.lib", "scut.carson_ho.contentprovider"]
+                        dependsOn = ['plugin-common']
+                    }
+
+                    pluginApk2 {
+                        businessName = 'gs3d'
+                        partKey = 'plugin-ContentObserver-demo'
+                        buildTask = ':plugins:plugin-ContentObserver-apk:assemblePluginRelease'
+                        apkPath = 'plugins/zip2/plugin-ContentObserver-apk/build/outputs/apk/plugin/release/plugin-ContentObserver-apk-plugin-release.apk'
                         hostWhiteList = ["com.nolovr.shadow.core.host.lib", "com.tencent.shadow.sample.host.lib", "scut.carson_ho.contentprovider"]
                         dependsOn = ['plugin-common']
                     }

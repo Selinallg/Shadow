@@ -12,6 +12,11 @@ import androidx.appcompat.app.AppCompatActivity;
 public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "_MainActivity";
+    private static final String uriPath = "content://cn.scu.myprovider/user";
+//    private static final String uriPath = "content://com.nolovr.shadow.core.contentprovider.authority.dynamic";
+
+    // com.noolovr.shadow.core.contentprovider.authority.dynamic
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        Log.d(TAG, "onResume: oopp");
         /**
          * 对user表进行操作
          * cn.scu.myprovider
@@ -31,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
          */
 
         // 设置URI
-        Uri uri_user = Uri.parse("content://cn.scu.myprovider/user");
+        Uri uri_user = Uri.parse(uriPath);
 
         // 插入表中数据
         ContentValues values = new ContentValues();
@@ -63,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
          */
         // 和上述类似,只是URI需要更改,从而匹配不同的URI CODE,从而找到不同的数据资源
         // cn.scu.myprovider
-        Uri uri_job = Uri.parse("content://cn.scu.myprovider/job");
+        Uri uri_job = Uri.parse(uriPath);
 
         // 插入表中数据
         ContentValues values2 = new ContentValues();
