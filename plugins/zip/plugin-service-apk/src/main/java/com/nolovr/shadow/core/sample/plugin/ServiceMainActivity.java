@@ -1,4 +1,4 @@
-package com.nolovr.shadow.sample.plugin;
+package com.nolovr.shadow.core.sample.plugin;
 
 import android.content.ComponentName;
 import android.content.Intent;

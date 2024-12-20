@@ -27,16 +27,20 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.util.Log;
 
 /**
  * TestProvider
  * Created by 90Chris on 2016/5/1.
  */
 public class TestProvider extends ContentProvider {
+
+    private static final String TAG = "TestProvider";
     private TestDBHelper mOpenHelper;
 
     @Override
     public boolean onCreate() {
+        Log.d(TAG, "onCreate: ");
         mOpenHelper = new TestDBHelper(getContext());
         return true;
     }

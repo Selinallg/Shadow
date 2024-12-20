@@ -42,4 +42,5 @@ https://github.com/listen2code/Shadow
 
 
 不同uuid的插件包如何切换？
+host 调用 插件 contentProvider
 

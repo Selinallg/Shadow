@@ -1,4 +1,4 @@
-package com.nolovr.shadow.sample.plugin;
+package com.nolovr.shadow.core.sample.plugin;
 
 import android.app.Service;
 import android.content.Intent;
@@ -22,6 +22,13 @@ public class MyService extends Service {
     @Override
     public IBinder onBind(Intent intent) {
         Log.i(TAG, "onBind: ");
+
+        Intent goIntent = new Intent(this, ServiceMainActivity.class);
+        goIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(goIntent);
+
+
+
         return new IMyAidlInterface.Stub() {
             @Override
             public String basicTypes(int anInt, long aLong, boolean aBoolean, float aFloat, double aDouble, String aString) throws RemoteException {

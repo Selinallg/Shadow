@@ -38,12 +38,14 @@ public class PluginContainerContentProvider extends ContentProvider {
 
 
     public PluginContainerContentProvider() {
+        Log.e(TAG, "PluginContainerContentProvider: ");
         ContentProviderDelegateProviderHolder.setDelegateProviderHolderPrepareListener(new ContentProviderDelegateProviderHolder.DelegateProviderHolderPrepareListener() {
             @Override
             public void onPrepare() {
                 HostContentProviderDelegate delegate;
                 if (ContentProviderDelegateProviderHolder.contentProviderDelegateProvider != null) {
                     delegate = ContentProviderDelegateProviderHolder.contentProviderDelegateProvider.getHostContentProviderDelegate();
+                    Log.e(TAG, "contentProviderDelegateProvider != null: " +delegate.getClass().getName());
                     delegate.onCreate();
                 } else {
                     Log.e(TAG, "PluginContainerContentProvider: DelegateProviderHolder没有初始化");
@@ -56,6 +58,7 @@ public class PluginContainerContentProvider extends ContentProvider {
 
     @Override
     public boolean onCreate() {
+        Log.e(TAG, "onCreate: ");
         return false;
     }
 

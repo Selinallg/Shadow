@@ -89,7 +89,7 @@ public class MainActivity extends Activity {
 
                 switch (partKey) {
                     case Constant.PART_KEY_PLUGIN_SERVICE:{
-                        intent.putExtra(Constant.KEY_COMPONENT_CLASSNAME, "com.nolovr.shadow.sample.plugin.MyService");
+                        intent.putExtra(Constant.KEY_COMPONENT_CLASSNAME, "com.nolovr.shadow.core.sample.plugin.MyService");
                         break;
                     }
                     case Constant.PART_KEY_PLUGIN_DEMO:{

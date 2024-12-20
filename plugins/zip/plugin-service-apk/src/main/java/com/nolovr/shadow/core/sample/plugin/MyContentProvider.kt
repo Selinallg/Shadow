@@ -1,12 +1,15 @@
-package com.nolovr.shadow.sample.plugin
+package com.nolovr.shadow.core.sample.plugin
 
 import android.content.ContentProvider
 import android.content.ContentValues
 import android.database.Cursor
 import android.net.Uri
+import android.util.Log
 
 class MyContentProvider : ContentProvider() {
-
+    companion object {
+        private const val TAG = "MyContentProvider"
+    }
     override fun delete(uri: Uri, selection: String?, selectionArgs: Array<String>?): Int {
         return 0
     }
@@ -20,6 +23,9 @@ class MyContentProvider : ContentProvider() {
     }
 
     override fun onCreate(): Boolean {
+        Log.i(TAG, "onCreate: ")
+        Log.d(TAG, "onCreate: ")
+        Log.e(TAG, "onCreate: ")
         return true
     }
 
