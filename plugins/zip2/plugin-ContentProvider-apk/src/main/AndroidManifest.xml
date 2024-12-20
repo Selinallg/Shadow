@@ -4,6 +4,7 @@
 
 
     <queries>
+        <package android:name="com.nolovr.shadow.dev.host" />
         <package android:name="scut.carson_ho.contentprovider" />
         <package android:name="scut.carson_ho.contentprovider2" />
         <provider android:authorities="cn.scu.myprovider/user" />
@@ -33,11 +34,17 @@
         </activity>
 
         <provider
-            android:name="MyProvider"
-            android:permission="scut.carson_ho.PROVIDER"
+            android:name=".MyProvider"
             android:authorities="cn.scu.myprovider"
             android:enabled="true"
             android:exported="true" />
+
+<!--        <provider-->
+<!--            android:name="MyProvider"-->
+<!--            android:permission="scut.carson_ho.PROVIDER"-->
+<!--            android:authorities="cn.scu.myprovider"-->
+<!--            android:enabled="true"-->
+<!--            android:exported="true" />-->
     </application>
 
 </manifest>

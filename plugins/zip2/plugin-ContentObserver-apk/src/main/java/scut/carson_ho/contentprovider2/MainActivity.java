@@ -16,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        Log.d(TAG, "onCreate: ");
 
     }
 
@@ -43,12 +43,12 @@ public class MainActivity extends AppCompatActivity {
         ContentResolver resolver = getContentResolver();
 //        // 通过ContentResolver 根据URI 向ContentProvider中插入数据
 //        resolver.insert(uri_user,values);
-
+        Log.d(TAG, "onResume: insert");
         // 通过ContentResolver 向ContentProvider中查询数据
         Cursor cursor = resolver.query(uri_user, new String[]{"_id", "name"}, null, null, null);
         if (cursor != null) {
             while (cursor.moveToNext()) {
-                System.out.println("query book:" + cursor.getInt(0) + " " + cursor.getString(1));
+                Log.e(TAG,"query book:" + cursor.getInt(0) + " " + cursor.getString(1));
                 Log.e(TAG,"query book:" + cursor.getInt(0) + " " + cursor.getString(1));
                 // 将表中数据全部输出
             }
@@ -73,14 +73,20 @@ public class MainActivity extends AppCompatActivity {
         // 获取ContentResolver
         ContentResolver resolver2 = getContentResolver();
         // 通过ContentResolver 根据URI 向ContentProvider中插入数据
-//        resolver2.insert(uri_job, values2);
+        try {
+            Log.i(TAG, "onResume: insert 2");
+            resolver2.insert(uri_job, values2);
+        } catch (Exception e) {
+            //throw new RuntimeException(e);
+            Log.e(TAG, "onResume: insert"+ e.getMessage() );
+        }
 
         // 通过ContentResolver 向ContentProvider中查询数据
         Cursor cursor2 = resolver2.query(uri_job, new String[]{"_id", "job"}, null, null, null);
         if (cursor2 != null) {
 
             while (cursor2.moveToNext()) {
-                System.out.println("query job:" + cursor2.getInt(0) + " " + cursor2.getString(1));
+                Log.e(TAG,"query job:" + cursor2.getInt(0) + " " + cursor2.getString(1));
                 Log.e(TAG,"query job:" + cursor2.getInt(0) + " " + cursor2.getString(1));
                 // 将表中数据全部输出
 

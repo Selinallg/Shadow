@@ -44,7 +44,9 @@ public class MyProvider extends ContentProvider {
     @Override
     public boolean onCreate() {
 
-        Log.e(TAG, "onCreate: ");
+        Log.e(TAG, "onCreate: ->"+this.getClass().getName());
+        Log.e(TAG, "onCreate: ->"+this.getContext().getPackageName());
+        Log.d(TAG, "onCreate: —>"+(this instanceof ContentProvider));
 
         mContext = this.getContext();
         // 在ContentProvider创建时对数据库进行初始化
@@ -52,14 +54,14 @@ public class MyProvider extends ContentProvider {
         mDbHelper = new DBHelper(getContext());
         db = mDbHelper.getWritableDatabase();
 
-//        // 初始化两个表的数据(先清空两个表,再各加入一个记录)
-//        db.execSQL("delete from user");
-//        db.execSQL("insert into user values(1,'Carson');");
-//        db.execSQL("insert into user values(2,'Kobe');");
-//
-//        db.execSQL("delete from job");
-//        db.execSQL("insert into job values(1,'Android');");
-//        db.execSQL("insert into job values(2,'iOS');");
+        // 初始化两个表的数据(先清空两个表,再各加入一个记录)
+        db.execSQL("delete from user");
+        db.execSQL("insert into user values(1,'Carson');");
+        db.execSQL("insert into user values(2,'Kobe');");
+
+        db.execSQL("delete from job");
+        db.execSQL("insert into job values(1,'Android');");
+        db.execSQL("insert into job values(2,'iOS');");
 
         Log.e(TAG, "onCreate: over");
 
@@ -72,6 +74,7 @@ public class MyProvider extends ContentProvider {
 
     @Override
     public Uri insert(Uri uri, ContentValues values) {
+        Log.d(TAG, "insert: "+uri.toString());
 
         // 根据URI匹配 URI_CODE，从而匹配ContentProvider中相应的表名
         // 该方法在最下面
@@ -96,6 +99,7 @@ public class MyProvider extends ContentProvider {
     @Override
     public Cursor query(Uri uri, String[] projection, String selection,
                         String[] selectionArgs, String sortOrder) {
+        Log.d(TAG, "query: ");
         // 根据URI匹配 URI_CODE，从而匹配ContentProvider中相应的表名
         // 该方法在最下面
         String table = getTableName(uri);

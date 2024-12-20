@@ -8,6 +8,7 @@
 
 
     <queries>
+        <package android:name="com.nolovr.shadow.dev.host" />
         <package android:name="scut.carson_ho.contentprovider" />
         <package android:name="scut.carson_ho.contentprovider2" />
         <provider android:authorities="cn.scu.myprovider/user" />
