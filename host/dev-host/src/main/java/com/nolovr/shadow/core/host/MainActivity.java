@@ -31,6 +31,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.nolovr.shadow.core.constant.Constant;
+import com.nolovr.shadow.core.host.dev.DevActivity;
 import com.nolovr.shadow.core.host.plugin_view.HostAddPluginViewActivity;
 
 /**
@@ -127,12 +128,13 @@ public class MainActivity extends Activity {
         });
         rootView.addView(startPluginButton);
 
-//        Button plugin2Button = new Button(this);
-//        plugin2Button.setText("启动插件包2");
-//        plugin2Button.setOnClickListener(v -> {
-//            start_plugin2();
-//        });
-//        rootView.addView(plugin2Button);
+        Button plugin2Button = new Button(this);
+        plugin2Button.setText("宿主调试界面");
+        plugin2Button.setOnClickListener(v -> {
+            Intent intent = new Intent(this, DevActivity.class);
+            startActivity(intent);
+        });
+        rootView.addView(plugin2Button);
 
 
         Button startHostAddPluginViewActivityButton = new Button(this);

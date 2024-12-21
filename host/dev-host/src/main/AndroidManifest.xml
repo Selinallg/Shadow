@@ -88,6 +88,7 @@
                 <action android:name="sample_host.manager.startPluginService" />
             </intent-filter>
         </receiver>
+        <activity android:name=".dev.DevActivity" />
     </application>
 
     <queries>
