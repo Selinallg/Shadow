@@ -84,6 +84,10 @@ include ':plugins:plugin-ContentObserver-apk'
 project(':plugins:plugin-ContentObserver-apk').projectDir = file('plugins/zip2/plugin-ContentObserver-apk')
 
 
+include ':plugins:zips:zip-plugin-A4ijkplayer-apk'
+project(':plugins:zips:zip-plugin-A4ijkplayer-apk').projectDir = file('plugins/zip3/zip-plugin-A4ijkplayer-apk')
+
+
 //third-party
 include ':warehouse:third-party:slidingmenu'
 include ':warehouse:third-party:pinnedheaderexpandablelistview'
