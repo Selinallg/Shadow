@@ -11,7 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static final String TAG = "_MainActivity";
+    private static final String TAG = "_ObserverMainActivity";
     private static final String uriPathUser = "content://cn.scu.myprovider/user";
     private static final String uriPathJob = "content://cn.scu.myprovider/job";
 //    private static final String uriPath = "content://com.nolovr.shadow.core.contentprovider.authority.dynamic";

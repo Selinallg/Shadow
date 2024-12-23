@@ -47,7 +47,14 @@ final public class Constant {
     public static final int FROM_ID_LOAD_VIEW_TO_HOST = 1004;
 
 
+    // plugine entry
     public static final String ENTER_PART_KEY_PLUGIN_SO = "com.alanwang4523.a4ijkplayerdemo.activities.FileExplorerActivity";// zip3
+    public static final String ENTER_PART_KEY_PLUGIN_SERVICE = "com.nolovr.shadow.core.sample.plugin.MyService";
+    public static final String ENTER_PART_KEY_PLUGIN_DEMO = "com.test.plugin_demo.SplashActivity"; // demo 用，一条龙添加
 
+    public static final String ENTER_PART_KEY_PLUGIN_CONTENT_PROVIDER = "com.nolovr.shadow.core.contentprovider.MainActivity";
+    public static final String ENTER_PART_KEY_PLUGIN_CONTENT_OBSERVER = "scut.carson_ho.contentprovider2.MainActivity";
+    public static final String ENTER_PART_KEY_PLUGIN_GS3D = "com.test.plugin_other.SplashActivity"; // 与 zip压缩包json 文件里的配置一定要对应上
+    public static final String ENTER_PART_KEY_PLUGIN_MAIN_APP = "com.nolovr.shadow.core.plugin.app.lib.gallery.splash.SplashActivity";
 
 }
