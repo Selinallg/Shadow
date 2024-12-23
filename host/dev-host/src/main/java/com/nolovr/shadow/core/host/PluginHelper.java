@@ -45,12 +45,14 @@ public class PluginHelper {
     public final static String sPluginCommonZip = BuildConfig.DEBUG ? "pluginCommon-debug.zip" : "pluginCommon-release.zip";
     public final static String sPluginZip = BuildConfig.DEBUG ? "plugin-debug.zip" : "plugin-release.zip";
     public final static String s2PluginZip = BuildConfig.DEBUG ? "plugin2-debug.zip" : "plugin2-release.zip";
+    public final static String s3PluginZip = BuildConfig.DEBUG ? "pluginSo-debug.zip" : "pluginSo-release.zip";
 
     public File pluginManagerFile;
 
     public File pluginCommonZipFile;
     public File pluginZipFile;
     public File plugin2ZipFile;
+    public File plugin3ZipFile;
 
     public ExecutorService singlePool = Executors.newSingleThreadExecutor();
 
@@ -74,6 +76,8 @@ public class PluginHelper {
         pluginZipFile = new File(context.getFilesDir(), sPluginZip);
         // 插件包 2
         plugin2ZipFile = new File(context.getFilesDir(), s2PluginZip);
+        // 插件包 3
+        plugin3ZipFile = new File(context.getFilesDir(), s3PluginZip);
 
         mContext = context.getApplicationContext();
 
@@ -96,23 +100,28 @@ public class PluginHelper {
             //  动态加载的插件管理apk pluginmanager.apk
             InputStream is = mContext.getAssets().open(sPluginManagerName);
             FileUtils.copyInputStreamToFile(is, pluginManagerFile);
-            Log.d(TAG, "preparePlugin: pluginManagerFile="+pluginManagerFile.getAbsolutePath());
+            Log.d(TAG, "preparePlugin: pluginManagerFile=" + pluginManagerFile.getAbsolutePath());
 
             //  动态加载common的插件包 pluginCommon-debug.zip
             InputStream commonZip = mContext.getAssets().open(sPluginCommonZip);
             FileUtils.copyInputStreamToFile(commonZip, pluginCommonZipFile);
-            Log.d(TAG, "preparePlugin: pluginCommonZipFile="+pluginCommonZipFile.getAbsolutePath());
+            Log.d(TAG, "preparePlugin: pluginCommonZipFile=" + pluginCommonZipFile.getAbsolutePath());
 
 
             //  动态加载的业务插件包 plugin2-debug.zip
             InputStream zip = mContext.getAssets().open(sPluginZip);
             FileUtils.copyInputStreamToFile(zip, pluginZipFile);
-            Log.d(TAG, "preparePlugin: pluginZipFile="+pluginZipFile.getAbsolutePath());
+            Log.d(TAG, "preparePlugin: pluginZipFile=" + pluginZipFile.getAbsolutePath());
 
             //  动态加载的业务插件包 plugin2-debug.zip
             InputStream zip2 = mContext.getAssets().open(s2PluginZip);
             FileUtils.copyInputStreamToFile(zip2, plugin2ZipFile);
-            Log.d(TAG, "preparePlugin: plugin2ZipFile="+plugin2ZipFile.getAbsolutePath());
+            Log.d(TAG, "preparePlugin: plugin2ZipFile=" + plugin2ZipFile.getAbsolutePath());
+
+            //  动态加载的业务插件包 plugin2-debug.zip
+            InputStream zip3 = mContext.getAssets().open(s3PluginZip);
+            FileUtils.copyInputStreamToFile(zip3, plugin3ZipFile);
+            Log.d(TAG, "preparePlugin: plugin3ZipFile=" + plugin3ZipFile.getAbsolutePath());
 
 
         } catch (IOException e) {

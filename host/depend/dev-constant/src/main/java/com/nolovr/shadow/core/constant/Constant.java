@@ -39,9 +39,15 @@ final public class Constant {
     public static final String PART_KEY_PLUGIN_CONTENT_PROVIDER = "plugin-ContentProvider-demo";
     public static final String PART_KEY_PLUGIN_CONTENT_OBSERVER = "plugin-ContentObserver-demo";
 
+    public static final String PART_KEY_PLUGIN_SO = "dev-plugin-nativeSo";// zip3
     public static final int FROM_ID_NOOP = 1000;
     public static final int FROM_ID_START_ACTIVITY = 1001;
     public static final int FROM_ID_START_SERVICE = 1002;
     public static final int FROM_ID_CLOSE = 1003;
     public static final int FROM_ID_LOAD_VIEW_TO_HOST = 1004;
+
+
+    public static final String ENTER_PART_KEY_PLUGIN_SO = "com.alanwang4523.a4ijkplayerdemo.activities.FileExplorerActivity";// zip3
+
+
 }

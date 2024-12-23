@@ -65,7 +65,7 @@ public class PluginLoadActivity extends Activity {
             // zip1 插件包
             startPlugin(Constant.FROM_ID_START_SERVICE);
         } else {
-            // zip1 插件包
+            // zip1 zip3 插件包
             startPlugin(Constant.FROM_ID_START_ACTIVITY);
         }
 
@@ -84,7 +84,7 @@ public class PluginLoadActivity extends Activity {
                 // 通用的插件包
                 bundle.putString(Constant.KEY_COMMON_ZIP_PATH, PluginHelper.getInstance().pluginCommonZipFile.getAbsolutePath());
 
-                bundle.putString(Constant.KEY_PLUGIN_ZIP_PATH, PluginHelper.getInstance().pluginZipFile.getAbsolutePath());
+                bundle.putString(Constant.KEY_PLUGIN_ZIP_PATH, getIntent().getStringExtra(Constant.KEY_PLUGIN_ZIP_PATH));
                 bundle.putString(Constant.KEY_PLUGIN_PART_KEY, getIntent().getStringExtra(Constant.KEY_PLUGIN_PART_KEY));
                 bundle.putString(Constant.KEY_COMPONENT_CLASSNAME, getIntent().getStringExtra(Constant.KEY_COMPONENT_CLASSNAME));
 
@@ -155,7 +155,7 @@ public class PluginLoadActivity extends Activity {
                 Bundle bundle = new Bundle();//插件 zip，这几个参数也都可以不传，直接在 PluginManager 中硬编码
                 bundle.putString(Constant.KEY_COMMON_ZIP_PATH, PluginHelper.getInstance().pluginCommonZipFile.getAbsolutePath());
 
-                bundle.putString(Constant.KEY_PLUGIN_ZIP_PATH, PluginHelper.getInstance().plugin2ZipFile.getAbsolutePath());
+                bundle.putString(Constant.KEY_PLUGIN_ZIP_PATH, getIntent().getStringExtra(Constant.KEY_PLUGIN_ZIP_PATH));
                 bundle.putString(Constant.KEY_PLUGIN_PART_KEY, getIntent().getStringExtra(Constant.KEY_PLUGIN_PART_KEY));// partKey 每个插件都有自己的 partKey 用来区分多个插件，如何配置在下面讲到
                 bundle.putString(Constant.KEY_COMPONENT_CLASSNAME, getIntent().getStringExtra(Constant.KEY_COMPONENT_CLASSNAME));//要启动的插件的Activity页面
 

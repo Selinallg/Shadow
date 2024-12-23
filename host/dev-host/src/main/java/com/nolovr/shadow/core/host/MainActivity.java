@@ -65,6 +65,7 @@ public class MainActivity extends Activity {
                 Constant.PART_KEY_PLUGIN_SERVICE,
                 Constant.PART_KEY_PLUGIN_CONTENT_PROVIDER,
                 Constant.PART_KEY_PLUGIN_CONTENT_OBSERVER,
+                Constant.PART_KEY_PLUGIN_SO,
                 Constant.PART_KEY_PLUGIN_GS3D
         );
         partKeySpinner.setAdapter(partKeysAdapter);
@@ -86,6 +87,7 @@ public class MainActivity extends Activity {
                     case Constant.PART_KEY_PLUGIN_DEMO:
                     case Constant.PART_KEY_PLUGIN_CONTENT_PROVIDER:
                     case Constant.PART_KEY_PLUGIN_CONTENT_OBSERVER:
+                    case Constant.PART_KEY_PLUGIN_SO:
                     case Constant.PART_KEY_PLUGIN_SERVICE:
                     case Constant.PART_KEY_PLUGIN_GS3D:
                         intent.putExtra(Constant.KEY_PLUGIN_PART_KEY, partKey);
@@ -94,29 +96,40 @@ public class MainActivity extends Activity {
 
                 switch (partKey) {
                     case Constant.PART_KEY_PLUGIN_SERVICE:{
+                        intent.putExtra(Constant.KEY_PLUGIN_ZIP_PATH, PluginHelper.getInstance().pluginZipFile.getAbsolutePath());
                         intent.putExtra(Constant.KEY_COMPONENT_CLASSNAME, "com.nolovr.shadow.core.sample.plugin.MyService");
                         break;
                     }
                     case Constant.PART_KEY_PLUGIN_DEMO:{
+                        intent.putExtra(Constant.KEY_PLUGIN_ZIP_PATH, PluginHelper.getInstance().pluginZipFile.getAbsolutePath());
                         intent.putExtra(Constant.KEY_COMPONENT_CLASSNAME, "com.test.plugin_demo.SplashActivity");
                         break;
                     }
                     case Constant.PART_KEY_PLUGIN_CONTENT_PROVIDER:{
+                        intent.putExtra(Constant.KEY_PLUGIN_ZIP_PATH, PluginHelper.getInstance().plugin2ZipFile.getAbsolutePath());
                         intent.putExtra(Constant.KEY_COMPONENT_CLASSNAME, "com.nolovr.shadow.core.contentprovider.MainActivity");
                         break;
                     }
 
                     case Constant.PART_KEY_PLUGIN_CONTENT_OBSERVER:{
+                        intent.putExtra(Constant.KEY_PLUGIN_ZIP_PATH, PluginHelper.getInstance().plugin2ZipFile.getAbsolutePath());
                         intent.putExtra(Constant.KEY_COMPONENT_CLASSNAME, "scut.carson_ho.contentprovider2.MainActivity");
                         break;
                     }
+                    case Constant.PART_KEY_PLUGIN_SO:{
+                        intent.putExtra(Constant.KEY_PLUGIN_ZIP_PATH, PluginHelper.getInstance().plugin3ZipFile.getAbsolutePath());
+                        intent.putExtra(Constant.KEY_COMPONENT_CLASSNAME, Constant.ENTER_PART_KEY_PLUGIN_SO);
+                        break;
+                    }
                     case Constant.PART_KEY_PLUGIN_GS3D:{
+                        intent.putExtra(Constant.KEY_PLUGIN_ZIP_PATH, PluginHelper.getInstance().plugin2ZipFile.getAbsolutePath());
                         intent.putExtra(Constant.KEY_COMPONENT_CLASSNAME, "com.test.plugin_other.SplashActivity");
                         break;
                     }
                     //为了演示多进程多插件，其实两个插件内容完全一样，除了所在进程
                     case Constant.PART_KEY_PLUGIN_MAIN_APP:
                     case Constant.PART_KEY_PLUGIN_ANOTHER_APP:{
+                        intent.putExtra(Constant.KEY_PLUGIN_ZIP_PATH, PluginHelper.getInstance().pluginZipFile.getAbsolutePath());
                         intent.putExtra(Constant.KEY_COMPONENT_CLASSNAME, "com.nolovr.shadow.core.plugin.app.lib.gallery.splash.SplashActivity");
                         break;
                     }
