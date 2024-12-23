@@ -45,7 +45,7 @@ https://github.com/listen2code/Shadow
 
 不同uuid的插件包如何切换？
 host 调用 插件 contentProvider
-有so的插件加载测试
+有so的插件加载测试  ok
 
 升级插件包
 插件中的service 应用外无法访问的。！！！！！！！！
@@ -59,5 +59,11 @@ host 调用 插件 contentProvider
 插件访问 三方    OK
 
 SamplePluginManager 对应关系 很重要
+
+插件进程可以在自己的AndroidManifest文件声明一个Activity为另一个单独进程吗？
+不能，插件中Manifest的进程配置无效
+
+插件包如何进行版本更新？
+一个zip包里边有多个业务包
 
 

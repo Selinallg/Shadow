@@ -18,6 +18,7 @@
 
 package com.nolovr.shadow.core.plugin.app.lib.usecases.packagemanager;
 
+import android.annotation.SuppressLint;
 import android.content.ComponentName;
 import android.content.pm.ActivityInfo;
 import android.content.pm.ApplicationInfo;
@@ -25,6 +26,7 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import com.nolovr.shadow.core.plugin.app.lib.R;
@@ -32,6 +34,8 @@ import com.nolovr.shadow.core.plugin.app.lib.gallery.BaseActivity;
 import com.nolovr.shadow.core.plugin.app.lib.gallery.cases.entity.UseCase;
 
 public class TestPackageManagerActivity extends BaseActivity {
+
+    private static final String TAG = "_TestPackageManagerActiv";
 
     public static class Case extends UseCase {
         @Override
@@ -60,9 +64,13 @@ public class TestPackageManagerActivity extends BaseActivity {
     }
 
 
+    @SuppressLint("LongLogTag")
     public void getApplicationInfo(View view) {
         try {
             ApplicationInfo applicationInfo = getPackageManager().getApplicationInfo(getPackageName(), 0);
+
+            Log.d(TAG, "getApplicationInfo: "+applicationInfo.className);
+
             mTvTextView.setText("ApplicationInfo className:" + applicationInfo.className +
                     "\nnativeLibraryDir:" + applicationInfo.nativeLibraryDir
                     + "\nmetaData:" + applicationInfo.metaData);
