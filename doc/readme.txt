@@ -27,6 +27,8 @@ uuidNickName = "1.1.5"
 
 hostWhiteList 怎么用？
 加载一个带so 的插件 功能验证
+不同uuid插件加载
+
 
 设计理念:
 1.runtime和loader在common里
@@ -43,8 +45,10 @@ https://github.com/listen2code/Shadow
 
 不同uuid的插件包如何切换？
 host 调用 插件 contentProvider
+有so的插件加载测试
 
 升级插件包
+插件中的service 应用外无法访问的。！！！！！！！！
 
 插件中contentprovider 应用外无法访问的。！！！！！！！！
         cp

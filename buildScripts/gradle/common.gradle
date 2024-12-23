@@ -31,6 +31,7 @@ allprojects {
     ext.DEV_ARCHIVE_PREFIX_COMMON = 'pluginCommon'
     ext.DEV_ARCHIVE_PREFIX_ZIP_BS1 = 'plugin'
     ext.DEV_ARCHIVE_PREFIX_ZIP_BS2 = 'plugin2'
+    ext.DEV_ARCHIVE_PREFIX_ZIP_SO = 'pluginSo'
 
 
 

@@ -32,12 +32,14 @@ android {
             assets.srcDir('build/generated/assets/plugin-zip/debug/')
             assets.srcDir('build/generated/assets/plugin2-zip/debug/')
             assets.srcDir('build/generated/assets/pluginCommon-zip/debug/')
+            assets.srcDir('build/generated/assets/pluginSo-zip/debug/')
         }
         release {
             assets.srcDir('build/generated/assets/dev-manager/release/')
             assets.srcDir('build/generated/assets/plugin-zip/release/')
             assets.srcDir('build/generated/assets/plugin2-zip/release/')
             assets.srcDir('build/generated/assets/pluginCommon-zip/release/')
+            assets.srcDir('build/generated/assets/pluginSo-zip/release/')
         }
     }
     lintOptions {
@@ -123,6 +125,16 @@ def generateAssets(generateAssetsTask, buildType) {
             'pluginCommon-zip',
             "${project.DEV_ARCHIVE_PREFIX_COMMON}-${buildType}.zip",
             pluginCommonZip,
+            "package${buildType.capitalize()}Plugin"
+    )
+
+    def pluginSoZip = file("${getRootProject().getBuildDir()}/pluginSo-${buildType}.zip")
+    generateAssetsTask.dependsOn createCopyTask(
+            ':plugins:zips:zip-plugin-A4ijkplayer-apk',
+            buildType,
+            'pluginSo-zip',
+            "${project.DEV_ARCHIVE_PREFIX_ZIP_SO}-${buildType}.zip",
+            pluginSoZip,
             "package${buildType.capitalize()}Plugin"
     )
 }
