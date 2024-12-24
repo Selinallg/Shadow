@@ -78,6 +78,8 @@ def copyLocalPropertiesForIncludeBuilds() {
 //includeBuild ':plugins:zip2:plugin-other'
 include ':plugins:zips:zip-plugin-other-apk'
 project(':plugins:zips:zip-plugin-other-apk').projectDir = file('plugins/zip2/zip-plugin-other-apk')
+include ':plugins:plugin-other-lib'
+project(':plugins:plugin-other-lib').projectDir = file('plugins/zip2/plugin-other-lib')
 include ':plugins:plugin-ContentProvider-apk'
 project(':plugins:plugin-ContentProvider-apk').projectDir = file('plugins/zip2/plugin-ContentProvider-apk')
 include ':plugins:plugin-ContentObserver-apk'

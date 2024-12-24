@@ -35,8 +35,8 @@ public class SplashActivity extends Activity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                finish();
                 startActivity(new Intent(SplashActivity.this, PluginMainActivity.class));
+                finish();
             }
 
         }, 2000);
