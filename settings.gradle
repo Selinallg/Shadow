@@ -2,58 +2,6 @@ import java.nio.file.Files
 
 rootProject.name = 'shadow'
 
-copyLocalPropertiesForIncludeBuilds()
-includeBuild 'shadow/coding'
-includeBuild 'shadow/core'
-includeBuild 'shadow/dynamic'
-
-
-includeDev()
-
-def includeDev() {
-    include 'dev-loader',
-            'dev-runtime',
-            ':plugins:plugin-base-lib',
-            ':plugins:plugin-base-apk',
-            ':plugins:plugin-demo-apk',
-            ':plugins:plugin-common-lib',// 插件通用库
-            ':plugins:zips:zip-plugin-common-apk',// 插件通用库插件包
-            ':plugins:zips:zip-plugin-app-apk'
-
-    project(':dev-loader').projectDir = file('plugins/dev-loader')
-    project(':dev-runtime').projectDir = file('plugins/dev-runtime')
-    project(':plugins:plugin-base-lib').projectDir = file('plugins/zip/plugin-base-lib')
-    project(':plugins:plugin-base-apk').projectDir = file('plugins/zip/plugin-base-apk')
-    project(':plugins:zips:zip-plugin-app-apk').projectDir = file('plugins/zip/zip-plugin-app-apk')
-    project(':plugins:plugin-demo-apk').projectDir = file('plugins/zip/plugin-demo-apk')
-
-    project(':plugins:plugin-common-lib').projectDir = file('plugins/zip-common/plugin-common-lib')
-    project(':plugins:zips:zip-plugin-common-apk').projectDir = file('plugins/zip-common/zip-plugin-common-apk')
-}
-
-
-includeDevHost()
-def includeDevHost() {
-    include ':host:depend:dev-constant',
-            ':host:depend:dev-interface',
-            ':host:depend:dev-host-lib',
-            ':host:dev-host',
-            'dev-manager'
-
-
-    project(':host:depend:dev-constant').projectDir = file('host/depend/dev-constant')
-    project(':host:depend:dev-interface').projectDir = file('host/depend/dev-interface')
-    project(':host:depend:dev-host-lib').projectDir = file('host/depend/dev-host-lib')
-    project(':host:dev-host').projectDir = file('host/dev-host')
-    project(':dev-manager').projectDir = file('host/dev-manager')
-
-
-}
-
-
-//include ':warehouse:third-party:slidingmenu'
-include ':plugins:plugin-service-apk'
-project(':plugins:plugin-service-apk').projectDir = file('plugins/zip/plugin-service-apk')
 
 /**
  * Android Studio当前不会为IncludeBuild创建包含sdk.dir的local.properties
@@ -73,6 +21,58 @@ def copyLocalPropertiesForIncludeBuilds() {
     }
 }
 
+copyLocalPropertiesForIncludeBuilds()
+includeBuild 'shadow/coding'
+includeBuild 'shadow/core'
+includeBuild 'shadow/dynamic'
+
+
+includeDevHost()
+def includeDevHost() {
+    include ':host:depend:dev-constant',
+            ':host:depend:dev-interface',
+            ':host:depend:dev-host-lib',
+            ':host:dev-host',
+            'dev-manager'
+
+
+    project(':host:depend:dev-constant').projectDir = file('host/depend/dev-constant')
+    project(':host:depend:dev-interface').projectDir = file('host/depend/dev-interface')
+    project(':host:depend:dev-host-lib').projectDir = file('host/depend/dev-host-lib')
+    project(':host:dev-host').projectDir = file('host/dev-host')
+    project(':dev-manager').projectDir = file('host/dev-manager')
+
+}
+
+// loader runtime
+include 'dev-loader'
+project(':dev-loader').projectDir = file('plugins/dev-loader')
+include 'dev-runtime'
+project(':dev-runtime').projectDir = file('plugins/dev-runtime')
+
+
+// zip
+includeDev()
+def includeDev() {
+    include ':plugins:plugin-base-lib',
+            ':plugins:plugin-base-apk',
+            ':plugins:plugin-demo-apk',
+            ':plugins:plugin-common-lib',// 插件通用库
+            ':plugins:zips:zip-plugin-common-apk',// 插件通用库插件包
+            ':plugins:zips:zip-plugin-app-apk'
+
+
+    project(':plugins:plugin-base-lib').projectDir = file('plugins/zip/plugin-base-lib')
+    project(':plugins:plugin-base-apk').projectDir = file('plugins/zip/plugin-base-apk')
+    project(':plugins:zips:zip-plugin-app-apk').projectDir = file('plugins/zip/zip-plugin-app-apk')
+    project(':plugins:plugin-demo-apk').projectDir = file('plugins/zip/plugin-demo-apk')
+
+    project(':plugins:plugin-common-lib').projectDir = file('plugins/zip-common/plugin-common-lib')
+    project(':plugins:zips:zip-plugin-common-apk').projectDir = file('plugins/zip-common/zip-plugin-common-apk')
+}
+
+
+
 // zip2
 //include ':plugins:zip2:plugin-other'
 //includeBuild ':plugins:zip2:plugin-other'
@@ -84,8 +84,11 @@ include ':plugins:plugin-ContentProvider-apk'
 project(':plugins:plugin-ContentProvider-apk').projectDir = file('plugins/zip2/plugin-ContentProvider-apk')
 include ':plugins:plugin-ContentObserver-apk'
 project(':plugins:plugin-ContentObserver-apk').projectDir = file('plugins/zip2/plugin-ContentObserver-apk')
+include ':plugins:plugin-service-apk'
+project(':plugins:plugin-service-apk').projectDir = file('plugins/zip/plugin-service-apk')
 
 
+// zip3
 include ':plugins:zips:zip-plugin-A4ijkplayer-apk'
 project(':plugins:zips:zip-plugin-A4ijkplayer-apk').projectDir = file('plugins/zip3/zip-plugin-A4ijkplayer-apk')
 
@@ -93,3 +96,4 @@ project(':plugins:zips:zip-plugin-A4ijkplayer-apk').projectDir = file('plugins/z
 //third-party
 include ':warehouse:third-party:slidingmenu'
 include ':warehouse:third-party:pinnedheaderexpandablelistview'
+
