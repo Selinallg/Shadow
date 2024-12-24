@@ -32,10 +32,10 @@ android {
 
     defaultConfig {
         applicationId 'com.nolovr.shadow.core.plugin.app2'
-        minSdkVersion 21
-        targetSdkVersion 30
-        versionCode 1
-        versionName "1.0"
+        minSdkVersion project.MIN_SDK_VERSION
+        targetSdkVersion project.TARGET_SDK_VERSION
+        versionCode project.VERSION_CODE
+        versionName project.VERSION_NAME
 
     }
 
@@ -46,9 +46,25 @@ android {
         }
     }
 
+    // 签名配置
+    signingConfigs {
+
+        noloDev {
+            storeFile file("../../../keystore/nolo-dev.jks")
+            storePassword "nolo20150420"
+            keyAlias "nolo-dev"
+            keyPassword "nolo20150420"
+
+            v1SigningEnabled true
+            v2SigningEnabled true
+
+        }
+    }
+
     buildTypes {
         release {
-            minifyEnabled false
+            signingConfig signingConfigs.noloDev
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
@@ -141,7 +157,7 @@ shadow {
                         dependsOn = ['plugin-common']
                     }
 
-                    pluginApk2 {
+                    pluginApk3 {
                         businessName = 'gs3d'
                         partKey = 'plugin-ContentObserver-demo'
                         buildTask = ':plugins:plugin-ContentObserver-apk:assemblePluginRelease'

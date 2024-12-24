@@ -21,6 +21,11 @@
 #-renamesourcefileattribute SourceFile
 
 -keep class org.slf4j.**{*;}
--keep class com.tencent.shadow.dynamic.impl.**{*;}
 
+-keep class com.tencent.shadow.dynamic.impl.**{*;}
 -keep class com.tencent.shadow.dynamic.loader.**{*;}
+
+-keep class com.nolovr.shadow.dynamic.impl.**{*;}
+-keep class com.nolovr.shadow.dynamic.loader.**{*;}
+-keep class com.tencent.shadow.**{*;}
+-keep class com.nolovr.shadow.**{*;}

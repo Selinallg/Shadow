@@ -30,13 +30,25 @@ android {
         versionName project.VERSION_NAME
     }
 
+    // 签名配置
+    signingConfigs {
+
+        noloDev {
+            storeFile file("../../../keystore/nolo-dev.jks")
+            storePassword "nolo20150420"
+            keyAlias "nolo-dev"
+            keyPassword "nolo20150420"
+
+            v1SigningEnabled true
+            v2SigningEnabled true
+        }
+    }
+
     buildTypes {
         release {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-
-            signingConfig signingConfigs.create("release")
-            signingConfig.initWith(buildTypes.debug.signingConfig)
+            signingConfig signingConfigs.noloDev
         }
     }
 
@@ -179,7 +191,7 @@ shadow {
                         businessName = 'dev-plugin-app2'
                         partKey = 'dev-plugin-app2'
                         buildTask = ':plugins:zips:zip-plugin-app-apk:assemblePluginRelease'
-                        apkPath = 'plugins/zip/zip-plugin-app-apk/build/outputs/apk/plugin/release/zip-plugin-app-apk-plugin-debug2.apk'
+                        apkPath = 'plugins/zip/zip-plugin-app-apk/build/outputs/apk/plugin/release/zip-plugin-app-apk-plugin-release2.apk'
                         hostWhiteList = ["com.nolovr.shadow.core.host.lib","com.tencent.shadow.sample.host.lib"]
                         dependsOn = ['plugin-base-apk']
                     }

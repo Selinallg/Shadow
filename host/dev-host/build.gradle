@@ -10,18 +10,35 @@ android {
         versionCode project.VERSION_CODE
         versionName project.VERSION_NAME
     }
+
+    // 签名配置
+    signingConfigs {
+
+        noloDev {
+            storeFile file("../../keystore/nolo-dev.jks")
+            storePassword "nolo20150420"
+            keyAlias "nolo-dev"
+            keyPassword "nolo20150420"
+
+            v1SigningEnabled true
+            v2SigningEnabled true
+
+        }
+    }
+
+
     buildTypes {
         debug {
             minifyEnabled false
+            signingConfig signingConfigs.noloDev
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
 
         release {
-            minifyEnabled true
+            minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-
-            signingConfig signingConfigs.create("release")
-            signingConfig.initWith(buildTypes.debug.signingConfig)
+            signingConfig signingConfigs.noloDev
+//            signingConfig.initWith(buildTypes.debug.signingConfig)
         }
     }
 

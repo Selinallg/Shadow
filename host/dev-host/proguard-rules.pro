@@ -26,3 +26,11 @@
 -keep class com.tencent.shadow.dynamic.host.**{*;}
 -keep class com.tencent.shadow.core.common.**{*;}
 -keep class com.tencent.shadow.core.runtime.container.**{*;}
+
+
+-keep class com.nolovr.shadow.dynamic.host.**{*;}
+-keep class com.nolovr.shadow.core.common.**{*;}
+-keep class com.nolovr.shadow.core.runtime.container.**{*;}
+-keep class com.tencent.shadow.sample.host.lib.**{*;}
+-keep class com.tencent.shadow.**{*;}
+-keep class com.nolovr.shadow.**{*;}
