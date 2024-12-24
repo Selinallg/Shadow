@@ -19,15 +19,18 @@
 package com.nolovr.shadow.core.plugin.app.lib.gallery;
 
 import android.app.Application;
+import android.content.Context;
+import android.util.Log;
 
 public class TestApplication extends Application {
-
+    private static final String TAG = "TestApplication";
     private static TestApplication sInstence;
 
     public boolean isOnCreate;
 
     @Override
     public void onCreate() {
+        Log.d(TAG, "onCreate: "+ getApplicationContext().getClass().getName());
         sInstence = this;
         isOnCreate = true;
         super.onCreate();
@@ -35,5 +38,11 @@ public class TestApplication extends Application {
 
     public static TestApplication getInstance() {
         return sInstence;
+    }
+
+    @Override
+    protected void attachBaseContext(Context base) {
+        Log.d(TAG, "attachBaseContext: ");
+        super.attachBaseContext(base);
     }
 }

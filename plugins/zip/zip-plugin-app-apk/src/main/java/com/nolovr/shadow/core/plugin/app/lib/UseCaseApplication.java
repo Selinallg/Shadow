@@ -3,6 +3,8 @@ package com.nolovr.shadow.core.plugin.app.lib;
 import static com.nolovr.shadow.core.plugin.app.lib.gallery.cases.UseCaseManager.useCases;
 
 import android.app.Application;
+import android.content.Context;
+import android.util.Log;
 
 import com.nolovr.shadow.core.plugin.app.lib.gallery.cases.UseCaseManager;
 import com.nolovr.shadow.core.plugin.app.lib.gallery.cases.entity.UseCase;
@@ -30,10 +32,18 @@ import com.nolovr.shadow.core.plugin.app.lib.usecases.webview.WebView7Activity;
 import com.nolovr.shadow.core.plugin.app.lib.usecases.webview.WebViewActivity;
 
 public class UseCaseApplication extends Application {
+    private static final String TAG = "UseCaseApplication";
     @Override
     public void onCreate() {
         super.onCreate();
+        Log.d(TAG, "onCreate: "+ getApplicationContext().getClass().getName());
         initCase();
+    }
+    
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(base);
+        Log.d(TAG, "attachBaseContext: ");
     }
 
     private static void initCase() {
