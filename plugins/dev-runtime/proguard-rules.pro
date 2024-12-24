@@ -26,6 +26,3 @@
 -keep class com.tencent.shadow.core.runtime.**{*;}
 
 -keep class * extends com.tencent.shadow.core.runtime.container.PluginContainerActivity
-
--keep class com.nolovr.shadow.**{*;}
--keep class com.tencent.shadow.**{*;}

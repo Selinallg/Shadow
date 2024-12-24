@@ -27,5 +27,3 @@
 
 -keep class com.nolovr.shadow.dynamic.impl.**{*;}
 -keep class com.nolovr.shadow.dynamic.loader.**{*;}
--keep class com.tencent.shadow.**{*;}
--keep class com.nolovr.shadow.**{*;}

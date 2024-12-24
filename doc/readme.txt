@@ -66,4 +66,15 @@ SamplePluginManager 对应关系 很重要
 插件包如何进行版本更新？
 一个zip包里边有多个业务包
 
+混淆:'com.tencent.shadow.plugin' 崩溃
+解解方案：applicant（不混淆） + module（混淆）方案
+参考：
+plugin-other-lib          module
+zip-plugin-other-apk      applicantion
+
+plugin-common-lib         module
+zip-plugin-common-apk     applicantion
+
+
+
 
