@@ -1,0 +1,95 @@
+
+buildscript {
+    repositories {
+        if (!System.getenv().containsKey("DISABLE_TENCENT_MAVEN_MIRROR")) {
+            maven { url 'https://mirrors.tencent.com/nexus/repository/maven-public/' }
+        } else {
+            google()
+            mavenCentral()
+        }
+    }
+
+    dependencies {
+
+        classpath 'com.tencent.shadow.core:runtime'
+        classpath 'com.tencent.shadow.core:activity-container'
+        classpath 'com.tencent.shadow.core:gradle-plugin'
+        classpath "org.javassist:javassist:$javassist_version"
+
+    }
+}
+
+//apply plugin: 'com.tencent.shadow.plugin'
+plugins {
+    id 'com.android.application'
+    id 'com.tencent.shadow.plugin'
+    id 'kotlin-android'
+}
+
+
+android {
+    compileSdk project.COMPILE_SDK_VERSION
+    namespace 'com.arialyy.simple2'
+
+    defaultConfig {
+        applicationId 'com.arialyy.simple2'
+        minSdkVersion project.MIN_SDK_VERSION
+        targetSdkVersion project.TARGET_SDK_VERSION
+        versionCode project.VERSION_CODE
+        versionName project.VERSION_NAME
+
+    }
+
+    buildFeatures {
+        buildConfig = false
+    }
+
+    // 签名配置
+    signingConfigs {
+
+        noloDev {
+            storeFile file("../../../keystore/nolo-dev.jks")
+            storePassword "nolo20150420"
+            keyAlias "nolo-dev"
+            keyPassword "nolo20150420"
+
+            v1SigningEnabled true
+            v2SigningEnabled true
+        }
+    }
+
+    // 将插件applicationId设置为和宿主相同
+    productFlavors {
+        plugin {
+            applicationId project.DEV_HOST_APP_APPLICATION_ID
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            signingConfig signingConfigs.noloDev
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
+    // 将插件的资源ID分区改为和宿主0x7F不同的值
+    aaptOptions {
+        additionalParameters "--package-id", "0x3E", "--allow-reserved-package-id"
+    }
+}
+
+dependencies {
+    implementation project(":plugins:plugin-p2host-lib")
+
+    //Shadow Transform后业务代码会有一部分实际引用runtime中的类
+    //如果不以compileOnly方式依赖，会导致其他Transform或者Proguard找不到这些类
+    pluginCompileOnly 'com.tencent.shadow.core:runtime'
+}

@@ -127,6 +127,14 @@ shadow {
                         hostWhiteList = ["com.nolovr.shadow.core.host.lib", "com.tencent.shadow.sample.host.lib"]
                         dependsOn = ['plugin-common']
                     }
+                    pluginApk2 {
+                        businessName = 'p2host'
+                        partKey = 'p2host'
+                        buildTask = ':plugins:plugin-p2host-apk:assemblePluginDebug'
+                        apkPath = 'plugins/zip3/plugin-p2host-apk/build/outputs/apk/plugin/debug/plugin-p2host-apk-plugin-debug.apk'
+                        hostWhiteList = ["com.nolovr.shadow.core.host.lib", "com.tencent.shadow.sample.host.lib"]
+                        dependsOn = ['plugin-common']
+                    }
 
                 }
             }
@@ -140,6 +148,14 @@ shadow {
                         partKey = 'dev-plugin-nativeSo'
                         buildTask = ':plugins:zips:zip-plugin-A4ijkplayer-apk:assemblePluginRelease'
                         apkPath = 'plugins/zip3/zip-plugin-A4ijkplayer-apk/build/outputs/apk/plugin/release/zip-plugin-A4ijkplayer-apk-plugin-release.apk'
+                        hostWhiteList = ["com.nolovr.shadow.core.host.lib", "com.tencent.shadow.sample.host.lib"]
+                        dependsOn = ['plugin-common']
+                    }
+                    pluginApk2 {
+                        businessName = 'p2host'
+                        partKey = 'p2host'
+                        buildTask = ':plugins:plugin-p2host-apk:assemblePluginRelease'
+                        apkPath = 'plugins/zip3/plugin-p2host-apk/build/outputs/apk/plugin/release/plugin-p2host-apk-plugin-release.apk'
                         hostWhiteList = ["com.nolovr.shadow.core.host.lib", "com.tencent.shadow.sample.host.lib"]
                         dependsOn = ['plugin-common']
                     }

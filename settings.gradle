@@ -94,6 +94,11 @@ include ':plugins:zips:zip-plugin-A4ijkplayer-apk'
 project(':plugins:zips:zip-plugin-A4ijkplayer-apk').projectDir = file('plugins/zip3/zip-plugin-A4ijkplayer-apk')
 include ':plugins:plugin-A4ijkplayer-lib'
 project(':plugins:plugin-A4ijkplayer-lib').projectDir = file('plugins/zip3/plugin-A4ijkplayer-lib')
+include ':plugins:plugin-p2host-apk'
+project(':plugins:plugin-p2host-apk').projectDir = file('plugins/zip3/plugin-p2host-apk')
+include ':plugins:plugin-p2host-lib'
+project(':plugins:plugin-p2host-lib').projectDir = file('plugins/zip3/plugin-p2host-lib')
+
 
 
 //third-party
