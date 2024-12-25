@@ -1,0 +1,133 @@
+//plugins {
+//    id 'com.android.application'
+//}
+//
+//android {
+//    namespace 'com.alanwang4523.a4ijkplayerdemo'
+//    compileSdk 31
+//
+//
+//    sourceSets {
+//        main {
+//            jniLibs.srcDirs = ["src/main/jniLibs"]
+//        }
+//    }
+//
+//    defaultConfig {
+//        applicationId "com.alanwang4523.a4ijkplayerdemo"
+//        minSdk 21
+//        targetSdk 21
+//        versionCode 1
+//        versionName "1.0"
+//
+//        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+//
+//        externalNativeBuild {
+//            cmake {
+//                abiFilters 'armeabi-v7a', 'arm64-v8a'
+//            }
+//        }
+//    }
+//
+//    buildTypes {
+//        release {
+//            minifyEnabled false
+//            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+//        }
+//    }
+//    compileOptions {
+//        sourceCompatibility JavaVersion.VERSION_1_8
+//        targetCompatibility JavaVersion.VERSION_1_8
+//    }
+//}
+//
+//dependencies {
+//    implementation 'androidx.appcompat:appcompat:1.2.0'
+//    implementation 'androidx.preference:preference:1.2.0'
+//    implementation 'com.google.android.material:material:1.2.0'
+//    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+//    //implementation fileTree(dir: '../../../warehouse/third-party/aar', include: ['*.jar', '.aar'])
+//    implementation fileTree(dir: '../../../warehouse/third-party/aar', include: ['A4ijkplayer-release.aar'])
+//
+//    implementation 'com.squareup:otto:1.3.8'
+//
+//}
+
+//apply plugin: 'com.tencent.shadow.plugin'
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+}
+
+
+android {
+    compileSdk project.COMPILE_SDK_VERSION
+
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ["src/main/jniLibs"]
+        }
+    }
+
+    defaultConfig {
+        minSdkVersion project.MIN_SDK_VERSION
+        targetSdkVersion project.TARGET_SDK_VERSION
+        versionCode project.VERSION_CODE
+        versionName project.VERSION_NAME
+
+        externalNativeBuild {
+            cmake {
+                abiFilters 'armeabi-v7a', 'arm64-v8a'
+            }
+        }
+    }
+
+    // 签名配置
+    signingConfigs {
+
+        noloDev {
+            storeFile file("../../../keystore/nolo-dev.jks")
+            storePassword "nolo20150420"
+            keyAlias "nolo-dev"
+            keyPassword "nolo20150420"
+
+            v1SigningEnabled true
+            v2SigningEnabled true
+
+        }
+    }
+
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            signingConfig signingConfigs.noloDev
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
+
+}
+
+dependencies {
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation "androidx.core:core-ktx:$core_ktx_version"
+    implementation "androidx.appcompat:appcompat:$appcompat_version"
+    implementation "androidx.preference:preference:$preference_version"
+    implementation "com.google.android.material:material:$material_version"
+    implementation "androidx.constraintlayout:constraintlayout:$constraintlayout_version"
+
+    implementation 'com.squareup:otto:1.3.8'
+    compileOnly fileTree(dir: '../../../warehouse/third-party/aar', include: ['A4ijkplayer-release.aar'])
+
+
+}
+

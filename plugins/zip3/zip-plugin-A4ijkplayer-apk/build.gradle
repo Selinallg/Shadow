@@ -1,57 +1,3 @@
-//plugins {
-//    id 'com.android.application'
-//}
-//
-//android {
-//    namespace 'com.alanwang4523.a4ijkplayerdemo'
-//    compileSdk 31
-//
-//
-//    sourceSets {
-//        main {
-//            jniLibs.srcDirs = ["src/main/jniLibs"]
-//        }
-//    }
-//
-//    defaultConfig {
-//        applicationId "com.alanwang4523.a4ijkplayerdemo"
-//        minSdk 21
-//        targetSdk 21
-//        versionCode 1
-//        versionName "1.0"
-//
-//        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-//
-//        externalNativeBuild {
-//            cmake {
-//                abiFilters 'armeabi-v7a', 'arm64-v8a'
-//            }
-//        }
-//    }
-//
-//    buildTypes {
-//        release {
-//            minifyEnabled false
-//            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-//        }
-//    }
-//    compileOptions {
-//        sourceCompatibility JavaVersion.VERSION_1_8
-//        targetCompatibility JavaVersion.VERSION_1_8
-//    }
-//}
-//
-//dependencies {
-//    implementation 'androidx.appcompat:appcompat:1.2.0'
-//    implementation 'androidx.preference:preference:1.2.0'
-//    implementation 'com.google.android.material:material:1.2.0'
-//    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
-//    //implementation fileTree(dir: '../../../warehouse/third-party/aar', include: ['*.jar', '.aar'])
-//    implementation fileTree(dir: '../../../warehouse/third-party/aar', include: ['A4ijkplayer-release.aar'])
-//
-//    implementation 'com.squareup:otto:1.3.8'
-//
-//}
 
 buildscript {
     repositories {
@@ -104,6 +50,11 @@ android {
         }
     }
 
+    buildFeatures {
+        buildConfig = false
+    }
+
+
     // 签名配置
     signingConfigs {
 
@@ -148,16 +99,7 @@ android {
 }
 
 dependencies {
-
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    implementation "androidx.core:core-ktx:$core_ktx_version"
-    implementation "androidx.appcompat:appcompat:$appcompat_version"
-    implementation "androidx.preference:preference:$preference_version"
-    implementation "com.google.android.material:material:$material_version"
-    implementation "androidx.constraintlayout:constraintlayout:$constraintlayout_version"
-
-    implementation 'com.squareup:otto:1.3.8'
-    //implementation fileTree(dir: '../../../warehouse/third-party/aar', include: ['*.jar', '.aar'])
+    implementation project(":plugins:plugin-A4ijkplayer-lib")
     implementation fileTree(dir: '../../../warehouse/third-party/aar', include: ['A4ijkplayer-release.aar'])
 
     //Shadow Transform后业务代码会有一部分实际引用runtime中的类
