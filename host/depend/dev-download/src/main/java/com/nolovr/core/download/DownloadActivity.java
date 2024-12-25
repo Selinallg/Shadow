@@ -220,7 +220,7 @@ public class DownloadActivity extends PermissionActivity {
         int p = task.getPercent();    //任务进度百分比
         String speed = task.getConvertSpeed();    //转换单位后的下载速度，单位转换需要在配置文件中打开
         long speed1 = task.getSpeed(); //原始byte长度速度
-        Log.d(TAG, "running: p=" + p + " speed=" + speed);
+        Log.d(TAG, "running: p=" + p + " speed=" + speed+ " speed1=" + speed1);
     }
 
     // 5

@@ -27,6 +27,7 @@ import android.os.Build;
 import android.os.StrictMode;
 import android.webkit.WebView;
 
+import com.nolovr.core.download.DownApplication;
 import com.tencent.shadow.core.common.LoggerFactory;
 import com.tencent.shadow.dynamic.host.DynamicRuntime;
 import com.tencent.shadow.dynamic.host.PluginManager;
@@ -35,7 +36,7 @@ import com.nolovr.shadow.core.host.manager.Shadow;
 
 import java.io.File;
 
-public class HostApplication extends Application {
+public class HostApplication extends DownApplication {
     private static HostApplication sApp;
 
     private PluginManager mPluginManager;

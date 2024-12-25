@@ -11,6 +11,9 @@ public class DownApplication extends Application {
     public void onCreate() {
         super.onCreate();
         Aria.init(this);
+        // 修改配置参数
+        //Aria.get(pContext).getDownloadConfig().setMaxTaskNum(3);
+        Aria.get(this).getDownloadConfig().setConvertSpeed(true);
     }
 
     @Override
