@@ -32,6 +32,7 @@ def includeDevHost() {
     include ':host:depend:dev-constant',
             ':host:depend:dev-interface',
             ':host:depend:dev-host-lib',
+            ':host:depend:dev-download',
             ':host:dev-host',
             'dev-manager'
 

@@ -88,6 +88,7 @@ dependencies {
     implementation project(':host:depend:dev-constant')
     implementation project(':host:depend:dev-interface')
     implementation project(':host:depend:dev-host-lib')
+    implementation project(':host:depend:dev-download')
 }
 
 def createCopyTask(projectName, buildType, name, apkName, inputFile, taskName) {

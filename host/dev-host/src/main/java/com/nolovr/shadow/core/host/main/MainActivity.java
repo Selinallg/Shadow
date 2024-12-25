@@ -29,7 +29,9 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.nolovr.core.download.DownloadActivity;
 import com.nolovr.shadow.core.constant.Constant;
 import com.nolovr.shadow.core.host.PluginHelper;
 import com.nolovr.shadow.core.host.PluginLoadActivity;
@@ -151,6 +153,16 @@ public class MainActivity extends Activity {
             startActivity(intent);
         });
         rootView.addView(plugin2Button);
+
+
+        Button downloadButton = new Button(this);
+        downloadButton.setText("插件下载");
+        downloadButton.setOnClickListener(v -> {
+            Intent intent = new Intent(this, DownloadActivity.class);
+            startActivity(intent);
+//            Toast.makeText(this, "插件下载", Toast.LENGTH_SHORT).show();
+        });
+        rootView.addView(downloadButton);
 
 
         Button startHostAddPluginViewActivityButton = new Button(this);
