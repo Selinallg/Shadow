@@ -99,3 +99,17 @@ project(':plugins:plugin-A4ijkplayer-lib').projectDir = file('plugins/zip3/plugi
 include ':warehouse:third-party:slidingmenu'
 include ':warehouse:third-party:pinnedheaderexpandablelistview'
 
+//common
+// 下载模块，主要为了适配m3u8的下载
+include ':common:download:Aria:Aria'
+include ':common:download:Aria:AriaAnnotations'
+include ':common:download:Aria:AriaCompiler'
+include ':common:download:Aria:PublicComponent'
+include ':common:download:Aria:FtpComponent'
+include ':common:download:Aria:SFtpComponent'
+include ':common:download:Aria:HttpComponent'
+include ':common:download:Aria:M3U8Component'
+
+include ':common:download:Aria:simple:AppFrame'
+include ':common:download:Aria:simple:official-Simple'
+include ':common:download:Aria:simple:Simple2'
