@@ -16,7 +16,7 @@
  *
  */
 
-package com.nolovr.shadow.core.host;
+package com.nolovr.shadow.core.host.main;
 
 import static com.nolovr.shadow.core.constant.Constant.PART_KEY_PLUGIN_BASE;
 
@@ -31,6 +31,9 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.nolovr.shadow.core.constant.Constant;
+import com.nolovr.shadow.core.host.PluginHelper;
+import com.nolovr.shadow.core.host.PluginLoadActivity;
+import com.nolovr.shadow.core.host.R;
 import com.nolovr.shadow.core.host.dev.DevActivity;
 import com.nolovr.shadow.core.host.plugin_view.HostAddPluginViewActivity;
 

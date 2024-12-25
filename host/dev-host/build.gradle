@@ -1,5 +1,9 @@
 apply plugin: 'com.android.application'
 
+
+def getDate() {
+    return "${new Date().format("yyMMdd-HHmm")}";
+}
 android {
     compileSdk project.COMPILE_SDK_VERSION
     defaultConfig {
@@ -13,7 +17,6 @@ android {
 
     // 签名配置
     signingConfigs {
-
         noloDev {
             storeFile file("../../keystore/nolo-dev.jks")
             storePassword "nolo20150420"
@@ -22,7 +25,6 @@ android {
 
             v1SigningEnabled true
             v2SigningEnabled true
-
         }
     }
 
@@ -63,7 +65,19 @@ android {
         checkReleaseBuilds false
         abortOnError false
     }
+
+    applicationVariants.all { variant ->
+        variant.outputs.all { output ->
+            def outputFile = output.outputFile
+            if (outputFile != null && outputFile.name.endsWith('.apk')) {
+                print(outputFile.name)
+                outputFileName = "Shadow-V${defaultConfig.versionName}-${defaultConfig.versionCode}-${getDate()}.apk"
+            }
+        }
+    }
 }
+
+
 
 dependencies {
     implementation "commons-io:commons-io:$commons_io_android_version"//sample-host从assets中复制插件用的
