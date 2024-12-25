@@ -44,5 +44,14 @@ allprojects {
             google()
             mavenCentral()
         }
+
+        configurations.all {
+            resolutionStrategy {
+                // 强制所有库使用相同的Kotlin版本
+                force "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+//                force "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+//                force "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+            }
+        }
     }
 }

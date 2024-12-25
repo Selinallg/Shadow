@@ -25,10 +25,12 @@ import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
+
+import androidx.annotation.Nullable;
+
 import com.nolovr.shadow.core.plugin.app.lib.R;
 import com.nolovr.shadow.core.plugin.app.lib.gallery.BaseActivity;
 import com.nolovr.shadow.core.plugin.app.lib.gallery.cases.entity.UseCase;

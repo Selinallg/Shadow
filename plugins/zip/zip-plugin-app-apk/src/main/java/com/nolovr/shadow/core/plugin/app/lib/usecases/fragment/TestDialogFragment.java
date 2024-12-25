@@ -4,13 +4,15 @@ import android.app.Dialog;
 import android.app.DialogFragment;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.TextView;
+
+import androidx.annotation.Nullable;
+
 import com.nolovr.shadow.core.plugin.app.lib.R;
 
 public class TestDialogFragment extends DialogFragment {

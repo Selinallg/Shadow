@@ -110,6 +110,4 @@ include ':common:download:Aria:SFtpComponent'
 include ':common:download:Aria:HttpComponent'
 include ':common:download:Aria:M3U8Component'
 
-include ':common:download:Aria:simple:AppFrame'
-include ':common:download:Aria:simple:official-Simple'
 include ':common:download:Aria:simple:Simple2'

@@ -20,9 +20,11 @@ package com.nolovr.shadow.core.plugin.app.lib.usecases.activity;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.TextView;
+
+import androidx.annotation.Nullable;
+
 import com.nolovr.shadow.core.plugin.app.lib.R;
 import com.nolovr.shadow.core.plugin.app.lib.gallery.cases.entity.UseCase;
 import com.nolovr.shadow.core.plugin.app.lib.gallery.util.ToastUtil;

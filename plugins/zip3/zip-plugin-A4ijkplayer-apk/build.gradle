@@ -43,11 +43,11 @@ android {
         versionCode project.VERSION_CODE
         versionName project.VERSION_NAME
 
-        externalNativeBuild {
-            cmake {
-                abiFilters 'armeabi-v7a', 'arm64-v8a'
-            }
-        }
+//        externalNativeBuild {
+//            cmake {
+//                abiFilters 'armeabi-v7a', 'arm64-v8a'
+//            }
+//        }
     }
 
     buildFeatures {

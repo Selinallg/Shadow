@@ -20,7 +20,8 @@ package com.nolovr.shadow.core.plugin.app.lib.gallery;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
+
+import androidx.annotation.Nullable;
 
 public class BaseActivity extends Activity {
 

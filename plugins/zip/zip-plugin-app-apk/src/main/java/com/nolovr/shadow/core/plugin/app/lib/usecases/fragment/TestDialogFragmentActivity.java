@@ -19,7 +19,9 @@
 package com.nolovr.shadow.core.plugin.app.lib.usecases.fragment;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
+
+import androidx.annotation.Nullable;
+
 import com.nolovr.shadow.core.plugin.app.lib.R;
 import com.nolovr.shadow.core.plugin.app.lib.gallery.BaseActivity;
 import com.nolovr.shadow.core.plugin.app.lib.gallery.cases.entity.UseCase;
