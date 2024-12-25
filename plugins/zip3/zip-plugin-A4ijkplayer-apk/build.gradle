@@ -129,7 +129,7 @@ shadow {
                     }
                     pluginApk2 {
                         businessName = 'p2host'
-                        partKey = 'p2host'
+                        partKey = 'plugin-p2host'
                         buildTask = ':plugins:plugin-p2host-apk:assemblePluginDebug'
                         apkPath = 'plugins/zip3/plugin-p2host-apk/build/outputs/apk/plugin/debug/plugin-p2host-apk-plugin-debug.apk'
                         hostWhiteList = ["com.nolovr.shadow.core.host.lib", "com.tencent.shadow.sample.host.lib"]
@@ -153,7 +153,7 @@ shadow {
                     }
                     pluginApk2 {
                         businessName = 'p2host'
-                        partKey = 'p2host'
+                        partKey = 'plugin-p2host'
                         buildTask = ':plugins:plugin-p2host-apk:assemblePluginRelease'
                         apkPath = 'plugins/zip3/plugin-p2host-apk/build/outputs/apk/plugin/release/plugin-p2host-apk-plugin-release.apk'
                         hostWhiteList = ["com.nolovr.shadow.core.host.lib", "com.tencent.shadow.sample.host.lib"]

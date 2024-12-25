@@ -40,6 +40,7 @@ final public class Constant {
     public static final String PART_KEY_PLUGIN_CONTENT_OBSERVER = "plugin-ContentObserver-demo";
 
     public static final String PART_KEY_PLUGIN_SO = "dev-plugin-nativeSo";// zip3
+    public static final String PART_KEY_PLUGIN_P2HOST = "plugin-p2host";// zip3 plugin access host
     public static final int FROM_ID_NOOP = 1000;
     public static final int FROM_ID_START_ACTIVITY = 1001;
     public static final int FROM_ID_START_SERVICE = 1002;
@@ -48,6 +49,7 @@ final public class Constant {
 
 
     // plugine entry
+    public static final String ENTER_PART_KEY_PLUGIN_P2HOST = "com.arialyy.simple2.DownloadActivity";// zip3
     public static final String ENTER_PART_KEY_PLUGIN_SO = "com.alanwang4523.a4ijkplayerdemo.activities.FileExplorerActivity";// zip3
     public static final String ENTER_PART_KEY_PLUGIN_SERVICE = "com.nolovr.shadow.core.sample.plugin.MyService";
     public static final String ENTER_PART_KEY_PLUGIN_DEMO = "com.test.plugin_demo.SplashActivity"; // demo 用，一条龙添加

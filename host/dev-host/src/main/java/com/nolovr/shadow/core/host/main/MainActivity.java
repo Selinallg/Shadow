@@ -71,6 +71,7 @@ public class MainActivity extends Activity {
                 Constant.PART_KEY_PLUGIN_CONTENT_PROVIDER,
                 Constant.PART_KEY_PLUGIN_CONTENT_OBSERVER,
                 Constant.PART_KEY_PLUGIN_SO,
+                Constant.PART_KEY_PLUGIN_P2HOST,
                 Constant.PART_KEY_PLUGIN_GS3D
         );
         partKeySpinner.setAdapter(partKeysAdapter);
@@ -93,6 +94,7 @@ public class MainActivity extends Activity {
                     case Constant.PART_KEY_PLUGIN_CONTENT_PROVIDER:
                     case Constant.PART_KEY_PLUGIN_CONTENT_OBSERVER:
                     case Constant.PART_KEY_PLUGIN_SO:
+                    case Constant.PART_KEY_PLUGIN_P2HOST:
                     case Constant.PART_KEY_PLUGIN_SERVICE:
                     case Constant.PART_KEY_PLUGIN_GS3D:
                         intent.putExtra(Constant.KEY_PLUGIN_PART_KEY, partKey);
@@ -124,6 +126,10 @@ public class MainActivity extends Activity {
                     case Constant.PART_KEY_PLUGIN_SO:{
                         intent.putExtra(Constant.KEY_PLUGIN_ZIP_PATH, PluginHelper.getInstance().plugin3ZipFile.getAbsolutePath());
                         intent.putExtra(Constant.KEY_COMPONENT_CLASSNAME, Constant.ENTER_PART_KEY_PLUGIN_SO);
+                        break;
+                    }case Constant.PART_KEY_PLUGIN_P2HOST:{
+                        intent.putExtra(Constant.KEY_PLUGIN_ZIP_PATH, PluginHelper.getInstance().plugin3ZipFile.getAbsolutePath());
+                        intent.putExtra(Constant.KEY_COMPONENT_CLASSNAME, Constant.ENTER_PART_KEY_PLUGIN_P2HOST);
                         break;
                     }
                     case Constant.PART_KEY_PLUGIN_GS3D:{

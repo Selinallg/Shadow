@@ -18,7 +18,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Aria">
         <activity
-            android:name=".MainActivity"
+            android:name=".DownloadActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

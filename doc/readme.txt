@@ -77,6 +77,9 @@ zip-plugin-other-apk      applicantion
 plugin-common-lib         module
 zip-plugin-common-apk     applicantion
 
+插件访问宿主中的类
+插件如何判断升级？
+
 
 
 

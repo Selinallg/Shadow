@@ -27,9 +27,9 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class MainActivity extends PermissionActivity {
+public class DownloadActivity extends PermissionActivity {
 
-    private static final String TAG = "_MainActivity";
+    private static final String TAG = "_DownloadActivity";
     private static final String DOWNLOAD_PATH = "/sdcard/gs3d/huimian2.m3u8.mp4";
 
     public static final String DOWNLOAD_URL =
@@ -43,7 +43,7 @@ public class MainActivity extends PermissionActivity {
     protected void onCreate(Bundle savedInstanceState) {
         Log.d(TAG, "onCreate: ");
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_download);
         Aria.download(this).register();
     }
 
