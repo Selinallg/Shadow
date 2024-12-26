@@ -32,6 +32,10 @@ import java.util.concurrent.Executors;
 public class PluginHelper {
 
     private static final String TAG = "PluginHelper";
+    /**
+     * 插件包的根目录名称
+     */
+    public final static String pluginsName = "nolo-plugins";
 
     /**
      * 动态加载的插件管理apk
@@ -46,6 +50,11 @@ public class PluginHelper {
     public final static String sPluginZip = BuildConfig.DEBUG ? "plugin-debug.zip" : "plugin-release.zip";
     public final static String s2PluginZip = BuildConfig.DEBUG ? "plugin2-debug.zip" : "plugin2-release.zip";
     public final static String s3PluginZip = BuildConfig.DEBUG ? "pluginSo-debug.zip" : "pluginSo-release.zip";
+
+    /**
+     * 插件包的根目录
+     */
+    private File pluginRoot;
 
     public File pluginManagerFile;
 
@@ -65,19 +74,26 @@ public class PluginHelper {
     }
 
     private PluginHelper() {
+
     }
 
     public void init(Context context) {
+
+        pluginRoot = new File(context.getFilesDir(), pluginsName);
+        if (!pluginRoot.exists()) {
+            pluginRoot.mkdirs();
+        }
+
         // manager
-        pluginManagerFile = new File(context.getFilesDir(), sPluginManagerName);
+        pluginManagerFile = new File(pluginRoot, sPluginManagerName);
         // 插件包 common
-        pluginCommonZipFile = new File(context.getFilesDir(), sPluginCommonZip);
+        pluginCommonZipFile = new File(pluginRoot, sPluginCommonZip);
         // 插件包 1
-        pluginZipFile = new File(context.getFilesDir(), sPluginZip);
+        pluginZipFile = new File(pluginRoot, sPluginZip);
         // 插件包 2
-        plugin2ZipFile = new File(context.getFilesDir(), s2PluginZip);
+        plugin2ZipFile = new File(pluginRoot, s2PluginZip);
         // 插件包 3
-        plugin3ZipFile = new File(context.getFilesDir(), s3PluginZip);
+        plugin3ZipFile = new File(pluginRoot, s3PluginZip);
 
         mContext = context.getApplicationContext();
 
@@ -88,6 +104,10 @@ public class PluginHelper {
             }
         });
 
+    }
+
+    public File getPluginRoot() {
+        return pluginRoot;
     }
 
     // pluginManagerFile=/data/user/0/com.tencent.shadow.sample.host/files/pluginmanager.apk

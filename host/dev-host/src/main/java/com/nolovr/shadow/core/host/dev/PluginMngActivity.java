@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
+import com.nolovr.shadow.core.host.PluginHelper;
 import com.nolovr.shadow.core.host.R;
 
 import java.io.File;
@@ -27,7 +28,7 @@ public class PluginMngActivity extends Activity {
     }
 
     public void checkPluginList(View view) {
-        File pluginRoot = context.getFilesDir();
+        File pluginRoot = PluginHelper.getInstance().getPluginRoot();
         if (pluginRoot.exists() && pluginRoot.isDirectory() && pluginRoot.listFiles() != null) {
             for (File file : pluginRoot.listFiles()) {
                 Log.d(TAG, "checkPluginList: " + file.getAbsolutePath());
