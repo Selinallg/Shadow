@@ -31,7 +31,11 @@ public abstract class ImplLoader {
     protected abstract String[] getCustomWhiteList();
 
     public String[] loadWhiteList(InstalledApk installedApk) {
-        return loadWhiteList(installedApk, WHITE_LIST_CLASS_NAME, WHITE_LIST_FIELD_NAME);
+        String[] allWhiteList = loadWhiteList(installedApk, WHITE_LIST_CLASS_NAME, WHITE_LIST_FIELD_NAME);
+//        for (String s : allWhiteList) {
+//            System.out.println("ImplLoader s = " + s);
+//        }
+        return allWhiteList;
     }
 
     public String[] loadWhiteList(InstalledApk installedApk, String whiteListClassName, String whiteListFieldName) {

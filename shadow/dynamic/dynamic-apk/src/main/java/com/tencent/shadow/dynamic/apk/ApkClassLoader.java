@@ -62,18 +62,20 @@ public class ApkClassLoader extends DexClassLoader {
 
         boolean isInterface = false;
         for (String interfacePackageName : mInterfacePackageNames) {
+            //System.out.println("ApkClassLoader s = " + interfacePackageName);
             if (packageName.equals(interfacePackageName)) {
                 isInterface = true;
                 break;
             }
         }
-
+        //System.out.println("ApkClassLoader isInterface = " + isInterface);
         if (isInterface) {
             return super.loadClass(className, resolve);
         } else {
             Class<?> clazz = findLoadedClass(className);
 
             if (clazz == null) {
+                //System.out.println("ApkClassLoaderclazz == null" );
                 ClassNotFoundException suppressed = null;
                 try {
                     clazz = findClass(className);
