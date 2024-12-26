@@ -19,6 +19,7 @@
 package com.nolovr.shadow.core.host.lib;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 
@@ -28,6 +29,7 @@ import com.nolovr.shadow.core.host.lib.R;
  * 这是一个将要打包到宿主中的类。原本的目的是宿主依赖插件，宿主
  */
 public class HostUiLayerProvider {
+    private static final String TAG = "HostUiLayerProvider";
     private static HostUiLayerProvider sInstance;
 
     public static void init(Context mHostApplicationContext) {
@@ -41,6 +43,7 @@ public class HostUiLayerProvider {
     final private Context mHostApplicationContext;
 
     private HostUiLayerProvider(Context mHostApplicationContext) {
+        Log.d(TAG, "HostUiLayerProvider: "+this.hashCode());
         this.mHostApplicationContext = mHostApplicationContext;
     }
 
