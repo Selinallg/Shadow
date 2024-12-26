@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.nolovr.shadow.core.constant.Constant;
 import com.nolovr.shadow.core.host.lib.HostAddPluginViewContainer;
 import com.nolovr.shadow.core.host.lib.HostAddPluginViewContainerHolder;
 
@@ -61,7 +62,7 @@ public class HostAddPluginViewActivity extends Activity implements HostAddPlugin
         //因为当前Activity和插件都在:plugin进程，不能直接操作主进程的manager对象，所以通过一个广播调用manager。
         Intent intent = new Intent();
         intent.setPackage(getPackageName());
-        intent.setAction("sample_host.manager.startPluginService");
+        intent.setAction(Constant.Action.ACTION_START_PLUGIN_SERVICE);
 
         final int id = System.identityHashCode(this);
         HostAddPluginViewContainerHolder.instances.put(id, this);

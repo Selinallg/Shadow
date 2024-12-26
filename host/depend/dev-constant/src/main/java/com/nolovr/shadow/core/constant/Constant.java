@@ -19,10 +19,16 @@
 package com.nolovr.shadow.core.constant;
 
 final public class Constant {
+
+    final public class Action {
+        public static final String ACTION_START_PLUGIN_SERVICE = "sample_host.manager.startPluginService";
+
+    }
+
     public static final String KEY_COMMON_ZIP_PATH = "commonZipPath";
     public static final String KEY_PLUGIN_ZIP_PATH = "pluginZipPath";
     public static final String KEY_COMPONENT_CLASSNAME = "KEY_COMPONENT_CLASSNAME";
-//    public static final String KEY_SERVICE_CLASSNAME = "KEY_SERVICE_CLASSNAME";
+    //    public static final String KEY_SERVICE_CLASSNAME = "KEY_SERVICE_CLASSNAME";
     public static final String KEY_EXTRAS = "KEY_EXTRAS";
     public static final String KEY_PLUGIN_PART_KEY = "KEY_PLUGIN_PART_KEY";
 
