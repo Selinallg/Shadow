@@ -37,6 +37,7 @@ import com.nolovr.shadow.core.host.PluginHelper;
 import com.nolovr.shadow.core.host.PluginLoadActivity;
 import com.nolovr.shadow.core.host.R;
 import com.nolovr.shadow.core.host.dev.DevActivity;
+import com.nolovr.shadow.core.host.dev.PluginMngActivity;
 import com.nolovr.shadow.core.host.plugin_view.HostAddPluginViewActivity;
 
 /**
@@ -169,6 +170,15 @@ public class MainActivity extends Activity {
 //            Toast.makeText(this, "插件下载", Toast.LENGTH_SHORT).show();
         });
         rootView.addView(downloadButton);
+
+        Button pluginMngButton = new Button(this);
+        pluginMngButton.setText("插件管理");
+        pluginMngButton.setOnClickListener(v -> {
+            Intent intent = new Intent(this, PluginMngActivity.class);
+            startActivity(intent);
+//            Toast.makeText(this, "插件下载", Toast.LENGTH_SHORT).show();
+        });
+        rootView.addView(pluginMngButton);
 
 
         Button startHostAddPluginViewActivityButton = new Button(this);
