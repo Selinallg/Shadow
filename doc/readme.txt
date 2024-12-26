@@ -78,6 +78,17 @@ plugin-common-lib         module
 zip-plugin-common-apk     applicantion
 
 插件访问宿主中的类
+1,依赖
+pluginCompileOnly project(":host:depend:dev-host-lib")
+normalImplementation project(":host:depend:dev-host-lib")
+2，白名单 无效
+dev-manager 中 WhiteList
+dev-loader 中 WhiteList
+打包zip的gradle中 WhiteList
+
+插件访问宿主中的类，只能放在这个包下
+com.nolovr.shadow.core.host.lib
+
 插件如何判断升级？
 
 

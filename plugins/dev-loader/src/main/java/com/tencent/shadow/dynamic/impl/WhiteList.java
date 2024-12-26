@@ -29,6 +29,6 @@ public interface WhiteList {
                     "com.nolovr.shadow.core.constant",
                     "com.nolovr.shadow.core.host.lib",
                     "com.tencent.shadow.sample.host.lib",
-                    "com.nolovr.shadow.core.host.lib.cb"
+                    "com.nolovr.shadow.core.host.lib.cb",
             };
 }

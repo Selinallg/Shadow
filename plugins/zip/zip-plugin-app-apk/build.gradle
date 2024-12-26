@@ -154,7 +154,7 @@ shadow {
                         partKey = 'plugin-service-apk'
                         buildTask = ':plugins:plugin-service-apk:assemblePluginDebug'
                         apkPath = 'plugins/zip/plugin-service-apk/build/outputs/apk/plugin/debug/plugin-service-apk-plugin-debug.apk'
-                        hostWhiteList = ["com.nolovr.shadow.core.host.lib","com.tencent.shadow.sample.host.lib","com.nolovr.shadow.core.host.lib.cb.RequestCallback"]
+                        hostWhiteList = ["com.nolovr.shadow.core.host.lib","com.tencent.shadow.sample.host.lib","com.nolovr.shadow.core.host.lib.cb"]
                         dependsOn = ['plugin-common']
                     }
                     sampleBase {
@@ -200,7 +200,7 @@ shadow {
                         partKey = 'plugin-service-apk'
                         buildTask = ':plugins:plugin-service-apk:assemblePluginRelease'
                         apkPath = 'plugins/zip/plugin-service-apk/build/outputs/apk/plugin/release/plugin-service-apk-plugin-release.apk'
-                        hostWhiteList = ["com.nolovr.shadow.core.host.lib","com.tencent.shadow.sample.host.lib","com.nolovr.shadow.core.host.lib.cb.RequestCallback"]
+                        hostWhiteList = ["com.nolovr.shadow.core.host.lib","com.tencent.shadow.sample.host.lib","com.nolovr.shadow.core.host.lib.cb"]
                         dependsOn = ['plugin-common']
                     }
                     sampleBase {
