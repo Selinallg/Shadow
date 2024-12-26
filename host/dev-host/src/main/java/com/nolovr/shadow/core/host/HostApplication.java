@@ -28,6 +28,7 @@ import android.os.StrictMode;
 import android.webkit.WebView;
 
 import com.nolovr.core.download.DownApplication;
+import com.nolovr.shadow.core.host.lib.HostEngineProvider;
 import com.tencent.shadow.core.common.LoggerFactory;
 import com.tencent.shadow.dynamic.host.DynamicRuntime;
 import com.tencent.shadow.dynamic.host.PluginManager;
@@ -64,6 +65,8 @@ public class HostApplication extends DownApplication {
 
         // 测试插件中调用宿主类的方法
         HostUiLayerProvider.init(this);
+        HostEngineProvider.getInstance().init(this);
+        //HostEngineProvider.getInstance().release();
     }
 
     private static void setWebViewDataDirectorySuffix() {

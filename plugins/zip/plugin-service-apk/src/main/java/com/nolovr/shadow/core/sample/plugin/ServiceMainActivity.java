@@ -11,7 +11,12 @@ import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.nolovr.shadow.core.host.lib.HostEngineProvider;
+import com.nolovr.shadow.core.host.lib.RequestCallback;
 import com.nolovr.shadow.core.plugin.IMyAidlInterface;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 
 public class ServiceMainActivity extends AppCompatActivity {
@@ -19,7 +24,13 @@ public class ServiceMainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main_service);
+
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
     }
 
     public void startService(View view) {
@@ -48,5 +59,41 @@ public class ServiceMainActivity extends AppCompatActivity {
         }, BIND_AUTO_CREATE);
 
         Log.i(TAG, "bindservice: " + ret);
+    }
+
+    public void syncMethod(View view) {
+        try {
+            JSONObject root = new JSONObject();
+            root.put("key1", "value1");
+            root.put("key2", "value2");
+            String resultJson = HostEngineProvider.getInstance().action(root.toString());
+            Log.d(TAG, "syncMethod: resultJson=" + resultJson);
+        } catch (JSONException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+
+    public void asyncMethod(View view) {
+        try {
+            JSONObject root = new JSONObject();
+            root.put("key1", "value1");
+            root.put("key2", "value2");
+            HostEngineProvider.getInstance().request(root.toString(), new RequestCallback() {
+                @Override
+                public void onSuccess(Object result) {
+                    Log.d(TAG, "onSuccess: resultJson=" + result.toString());
+                }
+
+                @Override
+                public void onFailure(Object info) {
+                    Log.d(TAG, "onFailure: resultJson=" + info.toString());
+
+                }
+            });
+
+        } catch (JSONException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
