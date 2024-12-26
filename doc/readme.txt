@@ -90,6 +90,9 @@ dev-loader 中 WhiteList
 com.nolovr.shadow.core.host.lib
 
 插件如何判断升级？
+插件管理: BasePluginManager
+卸载、删除插件
+https://github.com/Tencent/Shadow/issues/963
 
 
 

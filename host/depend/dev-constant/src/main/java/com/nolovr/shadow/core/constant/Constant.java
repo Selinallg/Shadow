@@ -20,8 +20,11 @@ package com.nolovr.shadow.core.constant;
 
 final public class Constant {
 
+    public static final String UUID = "1234567890";
+
     final public class Action {
         public static final String ACTION_START_PLUGIN_SERVICE = "sample_host.manager.startPluginService";
+        public static final String ACTION_START_HOSTADD_PLUGIN_VIEW_SERVICE = "com.nolovr.shadow.core.plugin.app.lib.usecases.service.HostAddPluginViewService";
 
     }
 
@@ -52,6 +55,10 @@ final public class Constant {
     public static final int FROM_ID_START_SERVICE = 1002;
     public static final int FROM_ID_CLOSE = 1003;
     public static final int FROM_ID_LOAD_VIEW_TO_HOST = 1004;
+    public static final int FROM_ID_QUERY_PLUGIN_INFO = 2003;
+    public static final int FROM_ID_DEL_ALL_PLUGIN = 2004;
+    public static final int FROM_ID_DEL_ALL_PLUGINPART = 2005;
+    public static final int FROM_ID_DEL_PART_KEY_PLUGINPART = 2006;
 
 
     // plugine entry

@@ -353,7 +353,7 @@ public abstract class BasePluginManager {
         return suc;
     }
 
-    private boolean deletePart(InstalledPlugin.Part part) {
+    protected boolean deletePart(InstalledPlugin.Part part) {
         boolean suc = true;
         if (!deleteFileOrDirectory(part.pluginFile)) {
             suc = false;

@@ -88,10 +88,10 @@ public class SamplePluginManager extends FastPluginManager {
         }
         if (Constant.PART_KEY_PLUGIN_GS3D.equals(partKey)
                 || Constant.PART_KEY_PLUGIN_CONTENT_PROVIDER.equals(partKey)
-                ||Constant.PART_KEY_PLUGIN_CONTENT_OBSERVER.equals(partKey)
-                ||Constant.PART_KEY_PLUGIN_SO.equals(partKey)
-                ||Constant.PART_KEY_PLUGIN_P2HOST.equals(partKey)
-        ){
+                || Constant.PART_KEY_PLUGIN_CONTENT_OBSERVER.equals(partKey)
+                || Constant.PART_KEY_PLUGIN_SO.equals(partKey)
+                || Constant.PART_KEY_PLUGIN_P2HOST.equals(partKey)
+        ) {
             return "com.nolovr.shadow.core.host.Plugin3ProcessPPS";
         } else if (PART_KEY_PLUGIN_BASE.equals(partKey)) {
             return "com.nolovr.shadow.core.host.PluginProcessPPS";
@@ -105,8 +105,17 @@ public class SamplePluginManager extends FastPluginManager {
 
     @Override
     public void enter(final Context context, long fromId, Bundle bundle, final EnterCallback callback) {
+        // TODO: 2024-12-26 fromid 执行不同的逻辑
         if (fromId == Constant.FROM_ID_NOOP) {
             //do nothing.
+        } else if (fromId == Constant.FROM_ID_QUERY_PLUGIN_INFO) {
+            printInfo();
+        } else if (fromId == Constant.FROM_ID_DEL_ALL_PLUGIN) {
+            delAllPlugin();
+        } else if (fromId == Constant.FROM_ID_DEL_ALL_PLUGINPART) {
+            delAllPluginPart();
+        } else if (fromId == Constant.FROM_ID_DEL_PART_KEY_PLUGINPART) {
+            delPluginPart(bundle);
         } else if (fromId == Constant.FROM_ID_START_ACTIVITY) {
             onStartActivity(context, bundle, callback);
         } else if (fromId == Constant.FROM_ID_START_SERVICE) {
@@ -114,6 +123,7 @@ public class SamplePluginManager extends FastPluginManager {
         } else if (fromId == Constant.FROM_ID_CLOSE) {
             close();
         } else if (fromId == Constant.FROM_ID_LOAD_VIEW_TO_HOST) {
+            // startPluginService
             loadViewToHost(context, bundle);
         } else {
             throw new IllegalArgumentException("不认识的fromId==" + fromId);
@@ -124,8 +134,7 @@ public class SamplePluginManager extends FastPluginManager {
         Intent pluginIntent = new Intent();
         pluginIntent.setClassName(
                 context.getPackageName(),
-                //"com.tencent.shadow.sample.plugin.app.lib.usecases.service.HostAddPluginViewService"
-                "com.nolovr.shadow.core.plugin.app.lib.usecases.service.HostAddPluginViewService"
+                Constant.Action.ACTION_START_HOSTADD_PLUGIN_VIEW_SERVICE
         );
         pluginIntent.putExtras(bundle);
         try {
@@ -187,7 +196,7 @@ public class SamplePluginManager extends FastPluginManager {
                         callApplicationOnCreate(Constant.PART_KEY_PLUGIN_CONTENT_OBSERVER);
                         Log.d(TAG, "run: loadPlugin content observer");
 
-                    }  else if (partKey.equals(Constant.PART_KEY_PLUGIN_SO)) {
+                    } else if (partKey.equals(Constant.PART_KEY_PLUGIN_SO)) {
 
                         loadPlugin(installedPlugin.UUID, Constant.PART_KEY_PLUGIN_SO);
                         callApplicationOnCreate(Constant.PART_KEY_PLUGIN_SO);
@@ -306,4 +315,97 @@ public class SamplePluginManager extends FastPluginManager {
         InstalledPlugin installedPlugin = installPlugin(commonZipPath, null, true);//这个调用是阻塞的
         loadPlugin(installedPlugin.UUID, Constant.PART_KEY_PLUGIN_COMMON);
     }
+
+    // 插件管理
+    private void printInfo() {
+        List<InstalledPlugin> installedPlugins = getInstalledPlugins(100);
+        Log.d(TAG, "printInfo: size:--->"+installedPlugins.size());
+        // zip
+        for (InstalledPlugin plugin : installedPlugins) {
+            Log.e(TAG, "for printInfo: plugin " + plugin.plugins.size() + " " + plugin.UUID + " " + plugin.UUID_NickName);
+            // apk
+            for (String key : plugin.plugins.keySet()) {
+                InstalledPlugin.PluginPart pluginPart = plugin.plugins.get(key);
+                Log.i(TAG, "for for printInfo pluginPart : pluginType=" + pluginPart.pluginType + " \r\n" + pluginPart.pluginFile + " \r\n " + pluginPart.businessName+
+                        " \r\n " + pluginPart.pluginFile.exists());
+            }
+            Log.d(TAG, "xxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
+//      boolean ret = deleteInstalledPlugin(plugin.UUID);
+//      Log.d(TAG, "for run: ret="+ret);
+        }
+
+        Log.e(TAG, "=========");
+
+        InstalledPlugin installedPlugin = getInstalledPlugin(Constant.UUID);
+        if (installedPlugin == null) {
+            InstalledPlugin.PluginPart pluginPart = installedPlugin.getPlugin(Constant.PART_KEY_PLUGIN_SERVICE);
+            Log.d(TAG, "printInfo: businessName " + pluginPart.businessName);
+            String[] hostWhiteList = pluginPart.hostWhiteList;
+            for (String whiteName : hostWhiteList) {
+                Log.d(TAG, "printInfo: whiteName=" + whiteName);
+            }
+
+            InstalledPlugin.Part part = getPluginPartByPartKey(Constant.UUID, Constant.PART_KEY_PLUGIN_SERVICE);
+            Log.d(TAG, "printInfo: part pluginType=" + part.pluginType);
+
+            // boolean ret = deleteInstalledPlugin(Constant.UUID);
+
+            // deleteInstalledPlugin 内部封装了 deletePart
+            // boolean ret2 = deletePart(part);
+
+            //boolean ret3 = deleteFileOrDirectory(new File("xxx"));
+        }
+    }
+
+    private void delAllPlugin() {
+        List<InstalledPlugin> installedPlugins = getInstalledPlugins(100);
+        // zip
+        for (InstalledPlugin plugin : installedPlugins) {
+            Log.e(TAG, "for delAllPlugin: plugin " + plugin.plugins.size() + " " + plugin.UUID + " " + plugin.UUID_NickName);
+            boolean ret = deleteInstalledPlugin(plugin.UUID);
+            Log.i(TAG, "delAllPlugin: " + ret);
+            Log.d(TAG, "xxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
+        }
+    }
+
+
+    // 不支持，数据库没有删除
+    private void delAllPluginPart() {
+        List<InstalledPlugin> installedPlugins = getInstalledPlugins(100);
+        // zip
+        for (InstalledPlugin plugin : installedPlugins) {
+            Log.e(TAG, "for delAllPluginPart: plugin " + plugin.plugins.size() + " " + plugin.UUID + " " + plugin.UUID_NickName);
+            // apk
+            for (String key : plugin.plugins.keySet()) {
+                InstalledPlugin.PluginPart pluginPart = plugin.plugins.get(key);
+                boolean ret = deletePart(pluginPart);
+                Log.i(TAG, "delAllPluginPart: key=" + key + " ret=" + ret);
+                Log.i(TAG, "for for delAllPluginPart pluginPart : pluginType=" + pluginPart.pluginType + " \r\n" + pluginPart.pluginFile + " \r\n " + pluginPart.businessName);
+            }
+            Log.d(TAG, "xxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
+        }
+    }
+
+    // 不支持，数据库没有删除
+    private void delPluginPart(Bundle bundle) {
+        String partKey = (String) bundle.get(Constant.KEY_PLUGIN_PART_KEY);
+        Log.e(TAG, "delPluginPart: partKey=" + partKey);
+        List<InstalledPlugin> installedPlugins = getInstalledPlugins(100);
+        // zip
+        for (InstalledPlugin plugin : installedPlugins) {
+            Log.e(TAG, "for delAllPluginPart: plugin " + plugin.plugins.size() + " " + plugin.UUID + " " + plugin.UUID_NickName);
+            // apk
+            for (String key : plugin.plugins.keySet()) {
+                Log.i(TAG, "want delPluginPart: key=" + key);
+                if (!key.equals(partKey)) {
+                    InstalledPlugin.PluginPart pluginPart = plugin.plugins.get(key);
+                    boolean ret = deletePart(pluginPart);
+                    Log.e(TAG, "delPluginPart: key=" + key + " ret=" + ret);
+                }
+//                Log.i(TAG, "for for delAllPluginPart pluginPart : pluginType=" + pluginPart.pluginType + " \r\n" + pluginPart.pluginFile + " \r\n " + pluginPart.businessName);
+            }
+            Log.d(TAG, "xxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
+        }
+    }
+
 }

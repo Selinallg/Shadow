@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/container"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -11,7 +10,7 @@
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
         <Button
             android:text="插件列表"
             android:onClick="checkPluginList"
@@ -27,10 +26,30 @@
 
         <Button
             android:text="卸载插件"
-            android:onClick="uninstallPlugin"
+            android:onClick="uninstallAllPlugin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+        </Button>
+
+        <Button
+            android:text="卸载插件2"
+            android:onClick="uninstallAllPluginPart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+        </Button>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:text="卸载指定"
+            android:onClick="uninstallPluginPart"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
         </Button>
     </LinearLayout>
 
-</FrameLayout>
+</LinearLayout>
